@@ -1346,7 +1346,16 @@ hyperlink{[G8]}{[G8]}
  User’s homepage: this mockup shows how the user home page shall look like;
  from this page the user should be able to request a ride or make a reservation,
  and to check the list of reservation he/she has already requested.
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/home_mobile.png
+	width 5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1371,6 +1380,33 @@ hyperlink{[G5]}{[G5]}
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/res_pupop_web.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/res_key_mobile.png
+	width 5cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename resources/mockups/res_mobile.png
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -1388,6 +1424,26 @@ hyperlink{[G3]}{[G3]}
  To select where he wants to be picked up, the user can choose to use his
  current location (default choice, provided by his GPS module, if there
  is one on the device he i currently using), or to select a different spot.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/ride_web.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/ride_mobile.png
+	width 5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1410,6 +1466,33 @@ hyperlink{[G4]}{[G4]}
  is accepted, but can also be used to display other kinds of messages.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/not_web.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/home.png
+	width 5cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename resources/mockups/not_mobile.png
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -1429,6 +1512,33 @@ hyperlink{[G9]}{[G9]}
  reservations he has already requested.
  If the reservation hasn’t already been performed, and only until at least
  2 hours before the meeting, the user can delete it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/res_history_1.png
+	width 5cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename resources/mockups/history_mobile.png
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/red_dat.png
+	width 5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1455,6 +1565,16 @@ hyperlink{[G15]}{[G15]}
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/driver.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -1472,6 +1592,26 @@ hyperlink{[G10]}{[G10]}
  are displayed to the driver.
  These notifications contain informations about the ride he has been assigned
  to, and allow him to accept or refuse it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/drive_not_res.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/mockups/driver_ride_not.png
+	width 10cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -2677,7 +2817,7 @@ Class Diagrams
 \begin_layout Standard
 \begin_inset Graphics
 	filename resources/uml/ClassDiagram1.png
-	scale 40
+	width 13cm
 
 \end_inset
 
@@ -2698,7 +2838,7 @@ Use cases
 \begin_layout Standard
 \begin_inset Graphics
 	filename resources/uml/UseCaseDiagram1.png
-	scale 40
+	width 13cm
 
 \end_inset
 
@@ -2736,7 +2876,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC1] Guest user
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC1]}{[AC1]}
+\end_layout
+
+\end_inset
+
+ Guest user
 \end_layout
 
 \end_inset
@@ -2756,7 +2908,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G1]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G1]}{[G1]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2903,6 +3067,16 @@ All the exceptions are handled by informing the user of the problem and
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/SignUpRequest.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 User logs in
 \end_layout
@@ -2927,7 +3101,45 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC2] Passenger User, [AC3] Driver User, [AC4] Administrator
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger User, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Driver User, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC4]}{[AC4]}
+\end_layout
+
+\end_inset
+
+ Administrator
 \end_layout
 
 \end_inset
@@ -2947,7 +3159,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G2]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G2]}{[G2]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3064,6 +3288,16 @@ All the exceptions are handled by informing the user of the problem and
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/UserLogin.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Passenger user requests a ride
 \end_layout
@@ -3088,7 +3322,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC2] Passenger User
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger User
 \end_layout
 
 \end_inset
@@ -3108,7 +3354,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G3] 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G3]}{[G3]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3249,6 +3507,16 @@ If one of the previous exceptions is thrown, the user will be informed and
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/RideRequest.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Passenger user requests a reservation
 \end_layout
@@ -3273,7 +3541,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC2] Passenger User 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger User
 \end_layout
 
 \end_inset
@@ -3293,7 +3573,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G5] 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G15]}{[G5]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3412,6 +3704,16 @@ If one of the previous exceptions is thrown, the user will be informed and
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/ReservationRequest.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Passenger user deletes a reservation
 \end_layout
@@ -3436,7 +3738,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC2] Passenger User
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger User
 \end_layout
 
 \end_inset
@@ -3456,7 +3770,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G9]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G9]}{[G9]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3581,6 +3907,16 @@ The reservation has already been assigned to a driver, which means that
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/ReservationDelete.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Passenger user receives a ride confirmation notification
 \end_layout
@@ -3605,7 +3941,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC2] Passenger user 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger User
 \end_layout
 
 \end_inset
@@ -3625,7 +3973,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G4] 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G4]}{[G14]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3757,7 +4117,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC3] Driver User 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Driver User
 \end_layout
 
 \end_inset
@@ -3777,7 +4149,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G13] 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G13]}{[G13]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3886,6 +4270,16 @@ The driver user doesn’t provide a choice within the maximum time limit.
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/Ride.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Passenger user receives a reservation reminder notification
 \end_layout
@@ -3910,7 +4304,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC2] Passenger user 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger User
 \end_layout
 
 \end_inset
@@ -3930,7 +4336,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G6] 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G6]}{[G6]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4063,7 +4481,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC3] Driver user 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Driver User
 \end_layout
 
 \end_inset
@@ -4083,7 +4513,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G15] 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G15]}{[G15]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4190,6 +4632,16 @@ Exceptions
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/Reservation.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Driver user changes his status
 \end_layout
@@ -4214,7 +4666,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC3] Driver User 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Driver User
 \end_layout
 
 \end_inset
@@ -4234,7 +4698,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G12] 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G12]}{[G12]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4332,6 +4808,16 @@ No exceptions
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/DriverStatus.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Driver user completes the current ride
 \end_layout
@@ -4356,7 +4842,19 @@ Actor
 \begin_inset Text
 
 \begin_layout Plain Layout
-[AC3] Driver user
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Driver User
 \end_layout
 
 \end_inset
@@ -4376,7 +4874,19 @@ Goal
 \begin_inset Text
 
 \begin_layout Plain Layout
-[G16]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G16]}{[G16]}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4478,6 +4988,20 @@ No exceptions
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/RideComplete.png
+	width 13cm
 
 \end_inset
 
