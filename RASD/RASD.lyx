@@ -1,0 +1,4488 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Subsection
+Description of the given problem
+\end_layout
+
+\begin_layout Standard
+We are going to project an application called myTaxiService, for both web
+ and mobile, which has been requested by the government of a large city
+ to optimize its taxi service.
+ The main aim of this application is to allow people to call a taxi for
+ a ride without actually having to make a phone call, but sending a request
+ through the application instead, and to automate the handling and transmission
+ of the requests from clients to drivers in such a way to make the service
+ fast and efficient.
+ The users of the application, after registering to the service, will be
+ able to request an immediately needed ride, receiving immediate notification
+ of the incoming taxi code and estimated waiting time, or to make a reservation
+ in advance for a ride, specifying its time, date, starting and ending point.
+ These requests will be handled by a system which guarantees a fair management
+ of taxi queues, obtained dividing the city into zones and handling requests
+ depending on where they are coming from, and forwarding them to available
+ taxis which are currently in the same area where the client needs to be
+ picked up.
+ There will thus be an application for taxi drivers, used to inform the
+ system about their current state (“available” for a ride or “unavailable”)
+ and to handle the ride requests assigned by the system.
+ 
+\end_layout
+
+\begin_layout Subsection
+Identifying Stakeholders
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[S1]}{[S1]}
+\end_layout
+
+\end_inset
+
+ City’s public transportation company: they want to optimize the service
+ offered by taxis in this city by implementing this system;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[S2]}{[S2]}
+\end_layout
+
+\end_inset
+
+ Taxi drivers: the application is going to influence and optimize the performanc
+e of their job; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[S3]}{[S3]}
+\end_layout
+
+\end_inset
+
+ Users of the taxi service: they are interested in a system that can easily
+ allow them to request taxis and reserve rides;
+\end_layout
+
+\begin_layout Subsection
+Actors Identifying
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AC1]}{[AC1]}
+\end_layout
+
+\end_inset
+
+ Guest: a person who hasn’t signed up yet into the system; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger user: a person who has registered to the system and can request
+ a ride or a reservation; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Driver user: the user associated to a driver, created by the administrator;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AC4]}{[AC4]}
+\end_layout
+
+\end_inset
+
+ Administrator: the person who is responsible for the system and the user
+ accounts management, in particular for creating the accounts for drivers.
+\end_layout
+
+\begin_layout Subsection
+Goals
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC1]}{[AC1]}
+\end_layout
+
+\end_inset
+
+ Being a guest user, myTaxiService application should only provide one functiona
+lity:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G1]}{[G1]}
+\end_layout
+
+\end_inset
+
+ User registration;
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ From the perspective of the passenger user, we think that the application
+ should provide the following features in both web and mobile applications:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G2]}{[G2]}
+\end_layout
+
+\end_inset
+
+ User login and logout; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G3]}{[G3]}
+\end_layout
+
+\end_inset
+
+ Sending a ride request for an immediately needed ride, specifying where
+ to be picked up; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G4]}{[G4]}
+\end_layout
+
+\end_inset
+
+ Receiving notification that the ride request the user has sent has been
+ accepted or queued, if no taxis are currently available;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G5}{[G5}
+\end_layout
+
+\end_inset
+
+ Sending ride reservation requests, specifying the origin and destination
+ of the ride and the reservation time and date; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G6]}{[G6]}
+\end_layout
+
+\end_inset
+
+ Receiving notification that a reservation request the user has made has
+ been accepted or refused; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G7]}{[G7]}
+\end_layout
+
+\end_inset
+
+ Receiving a reservation reminder notification 10 minutes before a reservation
+ has to be performed; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G8]}{[G8]}
+\end_layout
+
+\end_inset
+
+ Checking the user’s ride reservation history; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G9]}{[G9]}
+\end_layout
+
+\end_inset
+
+ Deleting ride reservations included in the history that have been made
+ and not yet performed; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G10]}{[G10]}
+\end_layout
+
+\end_inset
+
+ Viewing and modifying the user’s personal informations (e-mail address,
+ password);
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Furthermore, from the perspective of the driver user, the following features
+ will be provided (accessible from the specific driver application only):
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G11]}{[G11]}
+\end_layout
+
+\end_inset
+
+ User authentication and logout; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G12]}{[G12]}
+\end_layout
+
+\end_inset
+
+ Informing the system about the taxi’s current state: “available” to handle
+ new ride requests, or “unavailable”; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G13]}{[G13]}
+\end_layout
+
+\end_inset
+
+ Receiving ride requests, assigned by the system, to be handled immediately;
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G14]}{[G14]}
+\end_layout
+
+\end_inset
+
+ Being able to accept or refuse the ride requests within a limited amount
+ of time;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G15]}{[G15]}
+\end_layout
+
+\end_inset
+
+ Receiving reserved ride requests, assigned by the system and notified 10
+ minutes in advance with respect to the reservation time; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G16]}{[G16]}
+\end_layout
+
+\end_inset
+
+ Notify, at the end of each ride, if it was successfully completed or if
+ the client couldn’t be found where he should have been;
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AC4]}{[AC4]}
+\end_layout
+
+\end_inset
+
+ To the system administrator, the application should provide the following
+ capabilities:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G17]}{[G17]}
+\end_layout
+
+\end_inset
+
+ Creating, deleting and managing all the kind of user accounts (administrator,
+ passenger, driver) and their attributes; 
+\end_layout
+
+\begin_layout Standard
+Finally, for what concerns the central system, it should achieve the following
+ goals:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G18]}{[G18]}
+\end_layout
+
+\end_inset
+
+ Send notifications to answer ride and reservation requests coming from
+ passenger users; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G19]}{[G19]}
+\end_layout
+
+\end_inset
+
+ Forward ride and reservation requests to driver users; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G20]}{[G20]}
+\end_layout
+
+\end_inset
+
+ Keep updated in real time informations about taxis’ positions and availability;
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G21]}{[G21]}
+\end_layout
+
+\end_inset
+
+ Guarantee a fair management of taxi queues;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G22]}{[G22]}
+\end_layout
+
+\end_inset
+
+ Keep track in real time of each driver’s position and state; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G23]}{[G23]}
+\end_layout
+
+\end_inset
+
+ Forwarding ride requests coming from a certain zone to the taxis in that
+ zone;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G24]}{[G24]}
+\end_layout
+
+\end_inset
+
+ Keeping a set of queues, one for each zone in which the city is divided,
+ in which identifiers of the available taxis currently in that zone are
+ stored; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G25]}{[G25]}
+\end_layout
+
+\end_inset
+
+ Add a taxi into a zone’s queue when its driver sets taxi’s state to “available”
+, and remove it when he sets the state into “unavailable”; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G26]}{[G26]}
+\end_layout
+
+\end_inset
+
+ Compute in real time the distribution of the taxis in the various city
+ zones using GPS informations received from the taxis themselves;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G27]}{[G27]}
+\end_layout
+
+\end_inset
+
+ Forwarding ride requests coming from a certain zone to the taxis in that
+ zone, starting from the first taxi in the queue of available ones, until
+ an acceptance answer is received from the chosen taxi;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G28]}{[G28]}
+\end_layout
+
+\end_inset
+
+ Answering ride requests through a confirmation notification after a taxi
+ has accepted it, informing the passenger about the incoming taxi code and
+ the estimated waiting time;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[G29]}{[G29]}
+\end_layout
+
+\end_inset
+
+ Answering ride requests telling that the sending user has been put into
+ a waiting queue if no taxis are currently available in his zone; 
+\end_layout
+
+\begin_layout Subsection
+Domain properties
+\end_layout
+
+\begin_layout Standard
+We assume that the following conditions hold in the analyzed world:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[D1]}{[D1]}
+\end_layout
+
+\end_inset
+
+ The number of people to be served in a ride due to a single request doesn’t
+ exceed the capacity of passengers of a single taxi; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[D2]}{[D2]}
+\end_layout
+
+\end_inset
+
+ Whenever a taxi arrives where he should pick up a client and he can’t find
+ him, he waits at most a few minutes, and then signals “missing client”
+ on the application if he doesn’t show up;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[D3]}{[D3]}
+\end_layout
+
+\end_inset
+
+ Taxi drivers behave in general as honest workers: they won’t keep refusing
+ ride requests, also because at the end of each month the transportation
+ company checks how much they earned and how many rides they completed,
+ to evaluate their job performance;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[D4]}{[D4]}
+\end_layout
+
+\end_inset
+
+ Whenever a driver accepts a ride request of any kind, he will actually
+ and immediately start heading where he is requested to pick the passenger
+ up;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[D5]}{[D5]}
+\end_layout
+
+\end_inset
+
+ A driver taking care of an accepted ride request of any kind will always
+ reach the spot where he is requested to pick up the passenger, around the
+ time he is supposed to; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[D6]}{[D6 ]}
+\end_layout
+
+\end_inset
+
+ Each taxicab owned by the transportation company already has an embedded
+ terminal running an Android OS which is connected to the internet and is
+ used as a navigation system through Google Maps’ API, and on which the
+ myTaxiService mobile application for drivers can be installed;
+\end_layout
+
+\begin_layout Subsection
+Glossary 
+\end_layout
+
+\begin_layout Subsubsection
+Definitions
+\end_layout
+
+\begin_layout Standard
+....
+\end_layout
+
+\begin_layout Subsubsection
+Abbreviations
+\end_layout
+
+\begin_layout Itemize
+[Gn]: n-goal 
+\end_layout
+
+\begin_layout Itemize
+[Dn]: n-domain assumption 
+\end_layout
+
+\begin_layout Itemize
+[Sn]: n-stakeholder
+\end_layout
+
+\begin_layout Itemize
+[An]: n-assumption 
+\end_layout
+
+\begin_layout Itemize
+[Acn]: n-actor
+\end_layout
+
+\begin_layout Subsection
+Reference Documents 
+\end_layout
+
+\begin_layout Itemize
+Examples of RASDs from the previous years; 
+\end_layout
+
+\begin_layout Itemize
+IEEE Recommended Practice for Software Requirements Specifications (Revision
+ of IEEE Std 830-1993);
+\end_layout
+
+\begin_layout Section
+Overall Description
+\end_layout
+
+\begin_layout Subsection
+Product Perspective
+\end_layout
+
+\begin_layout Standard
+We will develop the web and mobile passenger applications to offer the passenger
+ users the same experience and functionalities on both.
+ Anyone aiming to use any of the services provided by myTaxiService application
+ as a passenger will need to complete a user registration first; no service
+ will be available without being logged in as a registered user.
+ After logging in, the user will immediately be able to easily send ride
+ or reservation requests.
+ An automated system running on the company’s servers, which is constantly
+ keeping trace of taxis positions and availability, will handle the incoming
+ requests following a defined policy and will forward them to the drivers
+ through their specific driver application.
+ Drivers can receive and handle requests using the embedded terminal installed
+ on every taxi of the company, which runs the specific mobile application
+ for drivers.
+ Each driver is associated with a unique driver user account, which is created
+ by the system administrator and can be accessed on taxi’s terminal using
+ the personal driver ID and password, provided by the transportation company.
+ After authentication, the driver will be able to set his state on “available”
+ or “unavailable”, to receive immediate ride requests and to accept or refuse
+ them, and to receive reserved ride requests.
+ 
+\end_layout
+
+\begin_layout Subsection
+User characteristics
+\end_layout
+
+\begin_layout Standard
+No special skills will be required to correctly use the software.
+ Both passenger and driver users should be able to easily understand how
+ the application works and interact with it through a simple and intuitive
+ interface.
+\end_layout
+
+\begin_layout Subsection
+Constraints
+\end_layout
+
+\begin_layout Subsubsection
+Regulatory policies
+\end_layout
+
+\begin_layout Itemize
+The system we provide must meet the following regulatory policies: 
+\end_layout
+
+\begin_layout Itemize
+Taxi policy of the country where myTaxiService will be available; 
+\end_layout
+
+\begin_layout Itemize
+Privacy policy for the treatment of personal data stored in the system;
+\end_layout
+
+\begin_layout Itemize
+Policy for the use of the external software involved in the application,
+ i.e.
+ Google Maps; Policy about the usage of cookies;
+\end_layout
+
+\begin_layout Subsubsection
+Interfaces to other applications
+\end_layout
+
+\begin_layout Standard
+The system should be able to interact with Google Maps’ API , which is used
+ by the central system to estimate the time needed by each taxi to reach
+ his destination and in the passenger user’s application to select the origin
+ and destination points of a requested ride, when they need to be selected.
+ It has also to be created the interface between the driver user’s application
+ and the existent navigation system running on embedded taxi terminals,
+ which also uses Google Maps, and has to be interfaced with our application
+ in order to allow the automatic transmission of the informations about
+ the origin and destination points of a ride when it is accepted by the
+ driver.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Parallel operations 
+\end_layout
+
+\begin_layout Standard
+The system must be developed to handle parallel and simultaneous requests
+ from multiple users, both drivers and passengers, at the same time.
+ A proper DBMS must be configured to manage multiple data accesses.
+\end_layout
+
+\begin_layout Subsubsection
+Documents related 
+\end_layout
+
+\begin_layout Itemize
+Feasibility study: in order to better understand which marketing and development
+ plans shall be done to achieve the fixed goals;
+\end_layout
+
+\begin_layout Itemize
+RASD: Requirement Analysis and Specification Document, to well-understand
+ the given problem and to analyze in a detailed way which are our goals
+ and how to reach them, defining proper requirements and specifications;
+\end_layout
+
+\begin_layout Itemize
+DD: Design Document, to define the real structure of our mobile and web
+ application; 
+\end_layout
+
+\begin_layout Itemize
+Code documentation: in order to keep track of the structure of the system
+ we are going to develop and guarantee a much easier maintenance of it;
+ 
+\end_layout
+
+\begin_layout Itemize
+Installation Manual: a guide to install the system core of myTaxiService;
+\end_layout
+
+\begin_layout Itemize
+User Manual: a guide on how to use myTaxiService, that will be available
+ for free download on both the website and the application;
+\end_layout
+
+\begin_layout Itemize
+Testing Document: a report of the tests we will perform during the software
+ development; 
+\end_layout
+
+\begin_layout Subsection
+Assumptions
+\end_layout
+
+\begin_layout Standard
+To solve ambiguities in the assignment text, here we provide a list of assumptio
+ns we make in our proposed solution:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A1]}{[A1]}
+\end_layout
+
+\end_inset
+
+ Before the development of the application described in this document, ride
+ and reservation requests could be made only by phone, and the forwarding
+ to taxi drivers was handled by a series of dedicated human operators; no
+ automated system was present.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A2]}{[A2]}
+\end_layout
+
+\end_inset
+
+ The service provided by the taxis of this company is not exclusively due
+ to requests from the application: for instance, if a driver currently in
+ “available” state happens to find a person asking for a ride on the side
+ of the road, he can answer positively and accept him or her as a client,
+ provided that he immediately sets his current state on “unavailable”.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A3]}{[A3]}
+\end_layout
+
+\end_inset
+
+ To guarantee system security and to ensure a fair behavior by the drivers,
+ the driver application of myTaxiService will be available to be used directly
+ and only on the embedded terminals present on each taxi vehicle, on which
+ it will be installed by the company; the application won’t be available
+ for download from any kind of public source.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A4]}{[A4]}
+\end_layout
+
+\end_inset
+
+ If a driver doesn’t accept or refuse a ride request within a certain defined
+ time limit, the system will consider it as refused by the driver.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A5]}{[A5]}
+\end_layout
+
+\end_inset
+
+ If the driver informs the system that he is available in a certain area
+ and then moves to another one, the system is able to detect it in real
+ time.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A6]}{[A6]}
+\end_layout
+
+\end_inset
+
+ If there aren’t available drivers when a passenger requests a ride in a
+ certain city zone, the system will inform the passenger about the situation
+ and ask him if he wants to wait for a taxi to free up or not.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A7]}{[A7]}
+\end_layout
+
+\end_inset
+
+ In handling reserved rides, the system is able to manage the requests and
+ queues in such a way that it is always ensured that a driver is available
+ to handle the request 10 minutes before the ride has to be performed.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A8]}{[A8]}
+\end_layout
+
+\end_inset
+
+ Drivers can’t refuse a reserved ride request; to fulfill the government’s
+ transportation policy, implemented in order to provide a reliable reservation
+ service, these requests must be accepted by the assigned drivers.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[A9]}{[A9]}
+\end_layout
+
+\end_inset
+
+ User registration is required to use any of the functionalities offered
+ by myTaxiService passenger application, in order to collect more detailed
+ informations about the usage of the service and to protect the system from
+ a bad use of the application (i.e.
+ ride requests spamming, never showing up after requesting a ride, … ).
+\end_layout
+
+\begin_layout Subsection
+Future possible implementations
+\end_layout
+
+\begin_layout Itemize
+Shared rides: the transportation company has planned to optimize the proposed
+ system in order to allow shared rides in the near future.
+ The system will be able to plan the route the driver has to follow in a
+ way that allows to pick up other passengers during the ride.
+ In order to achieve this goal the system will also ask the destination
+ of the ride when a user requests one, in the same way as it’s already done
+ for reservation requests, and the exact number of people that are included
+ in the ride request.
+ 
+\end_layout
+
+\begin_layout Itemize
+SMS notifications: the company also aims to implement a notification functionali
+ty that uses SMS to send reminder notifications to passengers which have
+ reserved rides in the near future, and in general to allow users without
+ internet access to receive notifications; to achieve this, the passenger
+ users will be requested to provide their mobile phone numbers, if they
+ want to.
+ 
+\end_layout
+
+\begin_layout Section
+Specific requirements
+\end_layout
+
+\begin_layout Subsection
+External Interface requirements 
+\end_layout
+
+\begin_layout Subsubsection
+User interfaces
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G3]}{[G3]}, 
+\backslash
+hyperlink{[G5]}{[G5]}, 
+\backslash
+hyperlink{[G8]}{[G8]}
+\end_layout
+
+\end_inset
+
+ User’s homepage: this mockup shows how the user home page shall look like;
+ from this page the user should be able to request a ride or make a reservation,
+ and to check the list of reservation he/she has already requested.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G5]}{[G5]}
+\end_layout
+
+\end_inset
+
+ Ride reservation page: This mockup shows how a user can request a ride
+ reservation.
+ The user can select origin and destination locations by typing the address
+ or by clicking on “from” or “to” icons and then directly on the map, and
+ select date and time by directly typing into boxes or by selecting the
+ value inside a popup.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G3]}{[G3]}
+\end_layout
+
+\end_inset
+
+ Ride request page: This mockup shows how the user can request a ride.
+ To select where he wants to be picked up, the user can choose to use his
+ current location (default choice, provided by his GPS module, if there
+ is one on the device he i currently using), or to select a different spot.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G4]}{[G4]}
+\end_layout
+
+\end_inset
+
+ Ride notifications: This mockup shows how notifications are displayed when
+ they are received from the system.
+ Notifications are mainly used to provide informations about the code of
+ the incoming taxi and the estimated waiting time when a requested ride
+ is accepted, but can also be used to display other kinds of messages.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G8]}{[G8]}, 
+\backslash
+hyperlink{[G9]}{[G9]}
+\end_layout
+
+\end_inset
+
+ Reservation history: This mockup shows how the user can view the list of
+ reservations he has already requested.
+ If the reservation hasn’t already been performed, and only until at least
+ 2 hours before the meeting, the user can delete it.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G11]}{[G11]}, 
+\backslash
+hyperlink{[G15]}{[G15]}
+\end_layout
+
+\end_inset
+
+ Driver user’s homepage (during a ride): This mockup shows the homepage
+ of the driver user after he has been assigned and has accepted a ride request.
+ From this page the driver can change his status from unavailable to available
+ and vice versa , communicate to the system that he has just accepted an
+ extraordinary ride from a user on the road and complete the current ride.
+ Each of those functionality is enabled only if the driver can perform it.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G10]}{[G10]}
+\end_layout
+
+\end_inset
+
+ Ride/Reservation request notifications: This mockup shows how notifications
+ are displayed to the driver.
+ These notifications contain informations about the ride he has been assigned
+ to, and allow him to accept or refuse it.
+\end_layout
+
+\begin_layout Subsection
+Software Interfaces 
+\end_layout
+
+\begin_layout Itemize
+Database Management System (DBMS) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Name: MySQL; 
+\end_layout
+
+\begin_layout Itemize
+Version: Enterprise Edition 5.7 
+\end_layout
+
+\begin_layout Itemize
+Source: http://www.mysql.com/ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+HTTP Server 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Name: Apache HTTP Server 
+\end_layout
+
+\begin_layout Itemize
+Edition: 2.4
+\end_layout
+
+\begin_layout Itemize
+Source: https://httpd.apache.org/;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Mapping Service:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Name: Google Maps API 
+\end_layout
+
+\begin_layout Itemize
+Version: Web / iOS / Android 
+\end_layout
+
+\begin_layout Itemize
+Source: https://developers.google.com/maps/
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Communications Interfaces
+\end_layout
+
+\begin_layout Itemize
+TCP protocol (both HTTP and HTTPS applications running on standard ports)
+ for client-server communication
+\end_layout
+
+\begin_layout Itemize
+SSL encryption protocol for DBMS communication
+\end_layout
+
+\begin_layout Subsection
+Functions
+\end_layout
+
+\begin_layout Standard
+Here we list the functional requirements the system shall match, identified
+ basing on IEEE Standard Requirement Specification document definition,
+ paired with the goals proposed in the “Goals” section and divided by the
+ category of actor or entity which is dealing with such requirement:
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hyperlink{[AC1]}{[AC1]}
+\end_layout
+
+\end_inset
+
+ Guest requirements
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G1]}{[G1]}
+\end_layout
+
+\end_inset
+
+ User registration:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The application shall provide a registration funcionality on its main page;
+\end_layout
+
+\begin_layout Itemize
+The registration process shall request the guest to insert a username, a
+ password and an email address;
+\end_layout
+
+\begin_layout Itemize
+The system shall check the validity of such provided informations (unique
+ username, unique and valid e-mail address, password of at least 8 alphanumerica
+l characters), and ask to insert them again if something is detected as
+ not valid, specifying which of the fields generated the problem;
+\end_layout
+
+\begin_layout Itemize
+If the provided informations are valid, the system shall generate and send
+ a registration confirmation email to the user, to be used to effectively
+ activate the new account;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger user requirements
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G2]}{[G2]}
+\end_layout
+
+\end_inset
+
+ User login and logout:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The application shall provide a login functionality for passenger users
+ on its main page, allowing to login by typing username and password;
+\end_layout
+
+\begin_layout Itemize
+After successfully completing the login, the user shall be displayed his
+ home page;
+\end_layout
+
+\begin_layout Itemize
+The application shall provide a logout functionality on the user’s home
+ page, accessible from the menu that opens by clicking on the “user account”
+ visual icon (top right of the user’s home page);
+\end_layout
+
+\begin_layout Itemize
+When a user logs in through the mobile application, the application shall
+ keep him logged in even after the user closes it, so that he is already
+ logged in when he wants to use the service again.
+ This shall happen until the user actually performs a logout;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G3]}{[G3]}
+\end_layout
+
+\end_inset
+
+ Sending request for an immediately needed ride, specifying where to be
+ picked up:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The user shall be able to access the “ride request” screen interface from
+ his home page;
+\end_layout
+
+\begin_layout Itemize
+In the “ride request” screen, the application shall allow the user to send
+ a ride request, specifying the position where he wants to be picked up
+ by typing it into a box or selecting it on the city’s map;
+\end_layout
+
+\begin_layout Itemize
+The user’s position when requesting a ride shall be set by default as the
+ one provided by his GPS module, if there is one on the device he is currently
+ using;
+\end_layout
+
+\begin_layout Itemize
+The system shall check that the provided position is valid (an existing
+ address or coordinate if typed in by hand) and inside the area in which
+ the system is available, and ask to select it again if it is not;
+\end_layout
+
+\begin_layout Itemize
+The system shall prevent the user to send multiple ride requests: if the
+ user has already requested a ride in the short past, that functionality
+ shall be disabled until the current request is answered and completed;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G4]}{[G4]}
+\end_layout
+
+\end_inset
+
+ Receiving notification that the ride request the user has sent has been
+ accepted or queued, if no taxis are currently available:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+After sending a ride request, in case of a lack of available taxis, the
+ system shall immediately notify the user he has been put into a waiting
+ queue, showing an estimated waiting time for a taxi to free up; thus the
+ user shall be asked to further confirm the request if he can wait a little,
+ or to cancel it;
+\end_layout
+
+\begin_layout Itemize
+If the user confirms, or equally if the system didn’t detect a lack of available
+ taxis at the beginning, he shall be told to wait until a new notification
+ comes;
+\end_layout
+
+\begin_layout Itemize
+As soon as the sent request is accepted by a driver, the user shall receive
+ and be shown a popup notification confirming that the request has been
+ accepted, and showing the incoming taxi code and estimated waiting time;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G5]}{[G5]}
+\end_layout
+
+\end_inset
+
+ Sending ride reservation requests, specifying the origin and destination
+ of the ride and the reservation time and date:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The user shall be able to access the “ride reservation” screen interface
+ from his home page;
+\end_layout
+
+\begin_layout Itemize
+In the “ride reservation” screen, the application shall allow the user to
+ send a ride reservation request, asking him to specify the origin and destinati
+on of the ride (to be specified in the same way as described above for [G3]
+ requirements), and its time and date;
+\end_layout
+
+\begin_layout Itemize
+Time and date shall be selected from a popup box allowing to select valid
+ inputs only (i.e.
+ not a date in the past or on a not existing day);
+\end_layout
+
+\begin_layout Itemize
+The system shall check that the provided origin and destination locations
+ are valid and inside the area in which the system is available, and ask
+ to select them again if they are not;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G6]}{[G6]}
+\end_layout
+
+\end_inset
+
+ Receiving notification that a reservation request the user has made has
+ been accepted or refused:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A popup notification shall be shown right after the reservation request
+ is sent, telling if it has been accepted or not (see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G17]}{[G17]}
+\end_layout
+
+\end_inset
+
+ requirements for details on system’s acceptance policy);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G7]}{[G7]}
+\end_layout
+
+\end_inset
+
+ Receiving a reservation reminder notification 10 minutes before a reservation
+ has to be performed:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ten minutes before a reserved ride has to be performed, the user shall be
+ shown a reminder notification, telling him the incoming taxi code and the
+ estimated waiting time;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G8]}{[G8]}
+\end_layout
+
+\end_inset
+
+ Checking the user’s ride reservation history: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The user shall be able to view his ride reservation history on a dedicated
+ screen, accessible from his home page;
+\end_layout
+
+\begin_layout Itemize
+The history shall display all the reservations made by the user and accepted
+ by the system that will be performed in the future, and the ones that have
+ been completed in the last month;
+\end_layout
+
+\begin_layout Itemize
+The history shall be displayed divided into already performed and not yet
+ performed rides:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Not yet performed reservations shall be displayed from the closest to happen
+ to the farthest;
+\end_layout
+
+\begin_layout Itemize
+Already performed rides shall be displayed from the last one performed to
+ the oldest one;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+By clicking on a not yet performed reservation, all the ride details shall
+ be shown;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G9]}{[G9]}
+\end_layout
+
+\end_inset
+
+ Deleting ride reservations included in the history that have been made
+ and not yet performed;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Besides each not yet performed reservation there shall be a “delete” button
+ (appears by sliding with the finger from right to left on the reservation
+ in the mobile application), which allows to delete that reservation (asking
+ further confirmation before completing the cancellation);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G10]}{[G10]}
+\end_layout
+
+\end_inset
+
+ Viewing and modifying the user’s personal informations (e-mail address,
+ password);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The user shall be able to view his profile informations; this shall be done
+ by opening the “user account” menu through the visual icon on the top right
+ of his home page and by selecting “view profile”;
+\end_layout
+
+\begin_layout Itemize
+On the “view profile” screen, the user shall be able to modify his password
+ and e-mail address (provided that he provides new valid ones);
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hyperlink{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Driver user requirements
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G11]}{[G11]}
+\end_layout
+
+\end_inset
+
+ User authentication and logout:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The application shall allow the driver user to log into the system from
+ the main page, by inserting its driver ID and password;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G12]}{[G12]}
+\end_layout
+
+\end_inset
+
+ Informing the system about his current state: “available” to handle new
+ ride requests, or “unavailable”:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+On the user’s home page, the application shall allow the driver to inform
+ the system when he is in “available” or “unavailable” state, by simply
+ sliding with a finger on a switch between the two states;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G13]}{[G13]}
+\end_layout
+
+\end_inset
+
+ Receiving ride requests, assigned by the system, to be handled immediately:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The application shall notify the driver that the system has assigned him
+ a ride or a reservation through a popup window, showing the ride’s starting
+ point;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G14]}{[G14]}
+\end_layout
+
+\end_inset
+
+ Being able to accept or refuse the request within a limited amount of time:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When a ride request is displayed, the application shall ask the driver to
+ accept or refuse the assigned ride, giving a fixed limited amount of time
+ to answer;
+\end_layout
+
+\begin_layout Itemize
+If the driver accepts the request, his state shall automatically be set
+ on “unavailable”, the screen shall switch to the taxi’s navigation system
+ application and his destination shall be displayed;
+\end_layout
+
+\begin_layout Itemize
+If the driver refuses the request or doesn’t provide an answer within the
+ given time, the system shall consider the request as refused and close
+ the popup window, keeping the driver’s state on “available”;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G15]}{[G15]}
+\end_layout
+
+\end_inset
+
+ Receiving reserved ride requests, assigned by the system and notified 10
+ minutes in advance with respect to the reservation time: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When a reserved ride request is assigned to the driver by the system, a
+ popup window shall be shown 10 minutes in advance, showing the reservation
+ details;
+\end_layout
+
+\begin_layout Itemize
+Since this request can’t be refused, after the driver accepts it the screen
+ shall switch to the navigation system application, and the origin and destinati
+on of the ride shall be displayed on the map;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G16]}{[G16]}
+\end_layout
+
+\end_inset
+
+ Notify, at the end of each ride, if it was successfully completed or if
+ the client couldn’t be found where he should have been:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When a ride or reservation request is accepted by the driver user, the “complete
+ ride” and “missing client” buttons shall become available on his application’s
+ main page;
+\end_layout
+
+\begin_layout Itemize
+After tapping on one of the buttons (used to end a ride), the application
+ shall communicate to the system that the current ride has ended, and the
+ user’s status shall be automatically set back to “available”;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hyperlink{[AC4]}{[AC4]}
+\end_layout
+
+\end_inset
+
+ Administrator requirements
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[G16]}{[G16]}
+\end_layout
+
+\end_inset
+
+ Creating, deleting and managing all the kind of user accounts (administrator,
+ passenger, driver) and their attributes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The administrator interface shall be accessible by logging in from myTaxiService
+ web application only, through the usual login form used by passenger users;
+\end_layout
+
+\begin_layout Itemize
+The administrator interface shall allow him to create new passenger users
+ providing a valid username, password and email;
+\end_layout
+
+\begin_layout Itemize
+The interface shall allow him to create new administrator users providing
+ a valid username and a password;
+\end_layout
+
+\begin_layout Itemize
+The interface shall allow him to create new driver users providing a valid
+ driver ID as a username and a password;
+\end_layout
+
+\begin_layout Itemize
+The interface shall allow him to formulate queries searching for existing
+ users, displaying the results in a “query result” screen;
+\end_layout
+
+\begin_layout Itemize
+The interface of the “query result” screen shall allow him to delete any
+ user (either admin, driver or passenger) and to edit any user’s information;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+System requirements 
+\end_layout
+
+\begin_layout Standard
+Here we list the non-functional requirements the system shall provide, paired
+ with the goals proposed in the “Goals” section and divided by the category
+ of actor or entity which is dealing with or providing such requirement:
+\end_layout
+
+\begin_layout Subsubsection
+Maintainability 
+\end_layout
+
+\begin_layout Itemize
+The system shall permit replacement and upgrade of the hardware without
+ downtime; 
+\end_layout
+
+\begin_layout Itemize
+The system shall permit software upgrade without downtime; 
+\end_layout
+
+\begin_layout Itemize
+The MTTR (Mean Time to Repair) of the system shall not exceed 24 hours;
+\end_layout
+
+\begin_layout Subsubsection
+Reliability 
+\end_layout
+
+\begin_layout Itemize
+The MTTF (Mean Time To Failure) shall not exceed 2 years;
+\end_layout
+
+\begin_layout Itemize
+Each release of the application should satisfy all the code tests before
+ being released;
+\end_layout
+
+\begin_layout Subsubsection
+Availability 
+\end_layout
+
+\begin_layout Itemize
+The system should be available 24 hours a day, 7 days a week;
+\end_layout
+
+\begin_layout Itemize
+The Availability of the system (MTTF/(MTTF+MTTR)) should be 9,99%;
+\end_layout
+
+\begin_layout Subsubsection
+Capacity 
+\end_layout
+
+\begin_layout Itemize
+The system shall support a minimum of 2000 passenger users simultaneously
+ connected;
+\end_layout
+
+\begin_layout Itemize
+The system shall support a minimum of 500 driver users simultaneously connected;
+\end_layout
+
+\begin_layout Itemize
+The system shall support a minimum of 1000 simultaneous requests;
+\end_layout
+
+\begin_layout Subsubsection
+Time Response
+\end_layout
+
+\begin_layout Itemize
+The system shall provide a feedback for each user’s action within a maximum
+ of 5 seconds; 
+\end_layout
+
+\begin_layout Itemize
+Every time an event that interests the user occurs, the system shall notify
+ him within a maximum of 5 seconds; 
+\end_layout
+
+\begin_layout Subsubsection
+Accuracy 
+\end_layout
+
+\begin_layout Itemize
+The system shall update the position of each taxis every 10 seconds; 
+\end_layout
+
+\begin_layout Itemize
+The error between the position of the taxi retrieved by GPS module and the
+ real one should not exceed 10 meters;
+\end_layout
+
+\begin_layout Subsubsection
+Security
+\end_layout
+
+\begin_layout Standard
+In order to guarantee the security of the whole system, the following requiremen
+ts must be ensured: 
+\end_layout
+
+\begin_layout Itemize
+Passwords must be stored encrypted using hash functions;
+\end_layout
+
+\begin_layout Itemize
+The system should accepts users’ passwords only if they comply with certain
+ complexity constraints: for instance, the password must have at least 8
+ characters, at least one digit and a non alphanumeric character;
+\end_layout
+
+\begin_layout Itemize
+The system should validate each input of the user in order to protect the
+ system from accidental or malicious usage, like for instance SQL injection;
+\end_layout
+
+\begin_layout Itemize
+Communication between client and server must be encrypted using HTTPS protocol;
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Usability 
+\end_layout
+
+\begin_layout Itemize
+Passenger users should be able to complete the registration process within
+ 5 minutes;
+\end_layout
+
+\begin_layout Itemize
+Passenger users should able to learn how each functionality works in less
+ than 2 minutes;
+\end_layout
+
+\begin_layout Itemize
+Passenger user should be able to complete ride/reservation request process
+ within 2 minutes; 
+\end_layout
+
+\begin_layout Section
+Scenarios Identifying
+\end_layout
+
+\begin_layout Standard
+Here we list some of the possible scenarios of myTaxiService application
+ usage, divided by the kind of actor they apply to:
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hyperlink{[AC1]}{[AC1]}
+\end_layout
+
+\end_inset
+
+ Guest scenario
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: passenger user registration 
+\end_layout
+
+\begin_layout Standard
+David just got off from work, but he missed the last available bus to his
+ home.
+ So he downloads myTaxiService app on his smartphone, he opens it and registers
+ a new account, providing his email, a valid username and password.
+ He checks his email inbox folder, in which he finds myTaxiService registration
+ confirmation email, he confirms the subscription and logs in on the application
+ with his brand new account; he won't have to repeat this login operation
+ again: the app will keep him logged in until he possibly chooses to log
+ out.
+ He can now perform all the activities of a registered passenger user.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hyperlink{[AC2]}{[AC2]}
+\end_layout
+
+\end_inset
+
+ Passenger user scenarios
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: accepted ride request through mobile application 
+\end_layout
+
+\begin_layout Standard
+David and his girlfriend went to the cinema this evening, and since the
+ movie finished late they missed the last available bus to their home.
+ So David, who has already registered to myTaxiService, decides to call
+ a taxi: he opens the app on his smartphone and just taps on “request a
+ ride”, and sends the request by tapping on “send request”, keeping the
+ position provided by his GPS module as the ride's desired starting point.
+ After few seconds, he receives a confirmation notification, telling him
+ that taxicab no.
+ 17689 is on his way, and will meet him in about 3 minutes.
+ Thus David taps on “ok” and waits for the cab to come and bring him and
+ his girlfriend home, fast and safely.
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: login and queued ride request through web application 
+\end_layout
+
+\begin_layout Standard
+Carla is home and has to get to her friend's Anna party, that is starting
+ at 7 p.m.
+ at her place.
+ Carla's got no driving license, and she lives far from any public transportatio
+n spot, so she decides to call a taxi, to avoid being late.
+ Carla is currently chatting with Anna on her laptop, so she decides to
+ call the taxi using myTaxiService web application.
+ She opens a new tab of her browser and types myTaxiService.com; being already
+ registered to the service, she quickly logs in and clicks on “request a
+ ride”.
+ She types her home's address as ride's starting point and sends the request.
+ Since it's rush hour, it happens that there's currently no available taxi
+ in that area of the city.
+ So Carla immediately receives a notification which tells her she's been
+ put into a waiting queue, and that she'll have to wait about 6 minutes
+ for a cab to be available; she is asked if she wants to confirm or delete
+ her request.
+ She chooses to confirm it, since she's got no hurry, and she waits.
+ After a few minutes, a new notification is received and shown on her homepage,
+ telling that taxicab no.
+ 17446 will pick her up in about 4 minutes.
+ She then goes out of her house and waits a little, until the taxi comes
+ and takes her to her friends' party.
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: ride reservation request with non valid and valid time 
+\end_layout
+
+\begin_layout Standard
+Philip is in Memphis, where he has been for some days to attend an important
+ conference.
+ He is boarding on his plane in 15 minutes, and he knows he'll land in about
+ 1.5 hours.
+ Since he’ll land at rush hour, he wants to be sure that a taxi will be
+ waiting for him outside the airport, to bring him home.
+ To do this, he opens his myTaxiService app on his brand new iPhone; being
+ a regular user of the service, he is already logged in.
+ He taps on “reserve a ride”, on his home page.
+ He selects the date and time when he wants to be picked up, taps on “from”
+ button and taps on the airport on the city's map shown; then he taps on
+ “to” box and writes his home address.
+ He then clicks “send”, and the system immediately answers through a notificatio
+n: he has set the reservation time too close (less than 2 hours in advance),
+ so the system tells him the reservation can’t be completed.
+ Philip executes again the above steps, this time inserting a valid reservation
+ time; after sending, he is immediately confirmed that the reservation has
+ been successfully completed.
+ Later, after landing, Philip receives a reminder notification on his phone,
+ reminding him that taxicab no.
+ 14599 will be waiting for him outside the airport in 10 minutes.
+ He is thus able to collect his luggage and go meet the cab in the taxi
+ waiting area.
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: deleting ride reservation request 
+\end_layout
+
+\begin_layout Standard
+Philip is in Chicago, where he has been for some days to attend another
+ important conference.
+ He should board on his plane in 20 minutes, and he should land in about
+ 5 hours as usual, so he has already made a reservation for a taxi to wait
+ for him when he arrives at the airport.
+ But suddenly, an announcement is made at the airport, telling that his
+ flight will be delayed of an unknown amount of hours, due to some problems
+ with the plane.
+ So, Mario decides to delete his ride reservation.
+ He does it by opening myTaxiService app on his smartphone, tapping on “check
+ reservation history”, sliding his finger on the target reserved ride and
+ tapping on the “delete” button appeared beside it.
+ He then confirms the cancellation in the popup window that has just appeared,
+ and sadly waits for news about his flight.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hyperlink{[AC3]}{[AC3]}
+\end_layout
+
+\end_inset
+
+ Driver user scenarios 
+\end_layout
+
+\begin_layout Standard
+Mario is a taxi driver working for myTaxiService public company.
+ The following scenarios are the most common ones that can happen during
+ his working day:
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: login, accepted and completed ride requesta 
+\end_layout
+
+\begin_layout Standard
+Mario has just started his shift for today, and he gets into his cab.
+ He turns on the navigation system and the terminal, and he logs in the
+ application using his personal driver ID and password.
+ His state is set by default on “unavailable” when he logs in, so he immediately
+ sets it on “available” and gets ready to work.
+ After a minute, a ride request notification pops up on the terminal's screen:
+ a client needs a ride from Central Station.
+ Mario accepts the request by tapping on “accept”, and the terminal immediately
+ shows the navigation system, highlighting his destination on the map and
+ the best route to follow.
+ He can easily switch between the navigation app and myTaxiService driver
+ app by just sliding horizontally with his finger on the terminal’s screen.
+ When he accepts the request, his taxi's state is automatically set on “unavaila
+ble”.
+ He starts heading to his destination, where in a couple of minutes he meets
+ his client.
+ He brings him where he needs to, gets paid and, back to the driver application
+ on the terminal, taps on “terminate ride”, which automatically sets the
+ state on “available”, and gets ready for the next ride.
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: reserved ride request and missing client
+\end_layout
+
+\begin_layout Standard
+Mario is in the middle of his working day, and he just completed a ride:
+ his state is set back to “available”.
+ After some minutes, a reserved ride request appears on the taxi's terminal,
+ telling him he should be in People's Square in 10 minutes, to pick up a
+ client who reserved a ride to the Central Station.
+ He taps on “ok” and the screen switches to the navigation app, immediately
+ showing him the best route to follow to reach People's square, and then
+ the Central Station.
+ The taxi's state has been automatically set on “unavailable”.
+ So he heads to People's Square, where he waits a couple of minutes, but
+ his passenger won't show up.
+ He thus assumes he has renounced to his reserved ride, and so he taps on
+ “missing client”, which communicates the system about the fact and sets
+ back the taxi's state to “available”.
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: state switching, ride request refusal, extraordinary ride, logout
+\end_layout
+
+\begin_layout Standard
+Mario has just left a passenger at his destination, and has set back his
+ state to “available”.
+ After a few seconds, a new ride request pops up on the application running
+ on the terminal.
+ Mario suddenly realizes he has to pee, since it's been sitting in the cab
+ for 5 straight hours; so he taps on “refuse” and sets his state to “unavailable
+”, and heads toward the closest public toilet.
+ After doing what he needed, he comes back to his taxi and sets his state
+ back to “available”, but he sees a guy waving his hand towards him: he
+ is asking for a ride.
+ Thus, Mario immediately switches his state to “unavailable” and welcomes
+ the new passenger, asking where he should bring him.
+ After completing the ride and telling the application so, Mario realizes
+ that his shift is over for today, and so he keeps the taxi's state on “unavaila
+ble”, heading to the company’s garage.
+ Once reached, he logs out from the driver application through the terminal,
+ and goes home.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hyperlink{[AC4]}{[AC4]}
+\end_layout
+
+\end_inset
+
+ Administrator scenario
+\end_layout
+
+\begin_layout Subsubsection
+Scenario: driver user cancellation and creation
+\end_layout
+
+\begin_layout Standard
+Bill, one of myTaxiService administrators, is told by his boss that the
+ company has just fired the driver Mario R***i, with driver ID MR130477A,
+ and has hired the new driver Pablo E*****r, with given ID PE011249A as
+ a replacement.
+ He is in charge to delete the driver user account of Mario and to create
+ a new one for Pablo.
+ He logs into the system with his administrator credentials and he searches
+ for the driver user with username MR130477A; he deletes it by clicking
+ on the corresponding command.
+ Then he clicks on “create new user” button and creates a new driver user
+ with username PE011249A, he sets a valid and safe password, and he confirms.
+ He will then provide Pablo the password, and instruct him on how to complete
+ the login on the driver application.
+ 
+\end_layout
+
+\begin_layout Section
+UML Models
+\end_layout
+
+\begin_layout Subsection
+Class Diagrams
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/ClassDiagram1.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Use cases
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/UseCaseDiagram1.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Guest registers to myTaxiService
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC1] Guest user
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G1]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No conditions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The guest user clicks on “Sign up” button on the main page of the application;
+ 
+\end_layout
+
+\begin_layout Itemize
+The system shows him the registration form containing the fields: email,
+ username, password, confirm password; 
+\end_layout
+
+\begin_layout Itemize
+The guest user fills all the fields; 
+\end_layout
+
+\begin_layout Itemize
+The guest user clicks on “Register” button; 
+\end_layout
+
+\begin_layout Itemize
+The system creates a new passenger user account that has to be verified
+ in order to be used; 
+\end_layout
+
+\begin_layout Itemize
+The guest user receives an email in which a confirmation link is provided;
+ 
+\end_layout
+
+\begin_layout Itemize
+The user confirms his subscription by clicking on the confirmation link,
+ activating his account;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The guest user will now be able to log into the system.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+One or more fields are left blank; 
+\end_layout
+
+\begin_layout Itemize
+The provided email is not well formed; The provided email has been already
+ used; 
+\end_layout
+
+\begin_layout Itemize
+The provided user has already been used; 
+\end_layout
+
+\begin_layout Itemize
+The provided password doesn't match the one inside the “confirm password”
+ field; 
+\end_layout
+
+\begin_layout Itemize
+The provided password doesn't match the complexity constraints;
+\end_layout
+
+\begin_layout Plain Layout
+All the exceptions are handled by informing the user of the problem and
+ then the event flow shall restart from point 2.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+User logs in
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC2] Passenger User, [AC3] Driver User, [AC4] Administrator
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G2]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The user must own a valid account
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user, from the main page of the application, fills Username and Password
+ fields; 
+\end_layout
+
+\begin_layout Itemize
+The user clicks on the “Login” button; 
+\end_layout
+
+\begin_layout Itemize
+The user is redirected to his home page;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The user will be able to use all the functionalities offered to passenger
+ users.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+One or more fields are left blank; 
+\end_layout
+
+\begin_layout Itemize
+The provided username doesn't exist;
+\end_layout
+
+\begin_layout Itemize
+The password doesn't match the one paired with the provided username;
+\end_layout
+
+\begin_layout Plain Layout
+All the exceptions are handled by informing the user of the problem and
+ then the event flow shall restart from point 2.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Passenger user requests a ride
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC2] Passenger User
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G3] 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The user must be logged in; The user mustn’t have already sent a ride request
+ which hasn’t been completed yet;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user, from his main page, clicks on the button "Request a ride now";
+ 
+\end_layout
+
+\begin_layout Itemize
+The system shows him a page containing a map that the user can use to select
+ the meeting point and a box in which he can directly type the address;
+ 
+\end_layout
+
+\begin_layout Itemize
+the box is filled by default with the location provided by the GPS module,
+ if there is one on the user’s device; 
+\end_layout
+
+\begin_layout Itemize
+The user selects where he wants to be picked up by either leaving his current
+ position, typing a different address in the form box, or just selecting
+ a location on the map; 
+\end_layout
+
+\begin_layout Itemize
+The user clicks on "Send" button; 
+\end_layout
+
+\begin_layout Itemize
+The user receives a notification that tells him if the requested ride has
+ been correctly saved in the system or if the provided data are not valid;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The user is now waiting to receive the notification that a driver has taken
+ in care of his ride, and won’t be able to make another ride request until
+ the ride is completed.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The selected point or address is outside the area in which myTaxiService
+ is available;
+\end_layout
+
+\begin_layout Itemize
+The typed address is invalid; 
+\end_layout
+
+\begin_layout Itemize
+If there aren’t available taxi at the moment, the system informs the user
+ about the situation communicating him how much users are waiting the availabili
+ty of a taxi and the estimated time of the queue, asking the user if he
+ wants to wait or not.
+\end_layout
+
+\begin_layout Plain Layout
+If one of the previous exceptions is thrown, the user will be informed and
+ then the flow will restart from point 2.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Passenger user requests a reservation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC2] Passenger User 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G5] 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The user must be logged in
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user, from his main page, clicks on “Reserve a ride” button;
+\end_layout
+
+\begin_layout Itemize
+The system shows a page containing a form and a map which the user can use
+ to specify starting and ending locations for his ride;
+\end_layout
+
+\begin_layout Itemize
+The user selects when the reservation has to be scheduled (by specifying
+ date and time) and the starting and ending locations; 
+\end_layout
+
+\begin_layout Itemize
+The user presses “Send” button;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A message is shown telling that the reservation has been scheduled and the
+ user will be redirected to his reservation history page.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+At least one of the provided locations is either invalid or outside the
+ area in which myTaxiService is available;
+\end_layout
+
+\begin_layout Itemize
+The provided date is not valid or the request has been made less than 2
+ hours in advance;
+\end_layout
+
+\begin_layout Plain Layout
+If one of the previous exceptions is thrown, the user will be informed and
+ then the flow will restart from point 2.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Passenger user deletes a reservation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC2] Passenger User
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G9]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user must be logged in;
+\end_layout
+
+\begin_layout Itemize
+The user must have at least one not yet performed reservation in his history;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user clicks on the “Reservation history” button on his home page; The
+ application will show, on top of the page, the list of reservations he
+ has already requested but not yet performed;
+\end_layout
+
+\begin_layout Itemize
+The user can choose to directly click on the “Delete” button beside the
+ reservation (in this case the flow will continues from 6) or to click on
+ the reservation;
+\end_layout
+
+\begin_layout Itemize
+The details of the selected reservation are shown; 
+\end_layout
+
+\begin_layout Itemize
+The user clicks on “Delete” button; 
+\end_layout
+
+\begin_layout Itemize
+A confirmation message is shown, asking the user to confirm or cancel the
+ operation;
+\end_layout
+
+\begin_layout Itemize
+The user clicks on “OK” button;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The reservation is deleted from the system, and the user is redirected to
+ his reservation history page.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The reservation has already been assigned to a driver, which means that
+ it is going to occur in less than 10 minutes, and thus can’t be deleted;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Passenger user receives a ride confirmation notification
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC2] Passenger user 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G4] 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user must be logged in; 
+\end_layout
+
+\begin_layout Itemize
+The user must have requested a ride;
+\end_layout
+
+\begin_layout Itemize
+The ride must have been accepted by a driver;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user is shown a notification sent by the system, through a popup containing
+ the incoming taxicab code and the estimated waiting time, telling that
+ a driver is going to pick him up at the meeting point;
+\end_layout
+
+\begin_layout Itemize
+The user click on “Ok” button;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The popup disappears from the screen and the user is back on whatever page
+ he was before the notification arrived; 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No exceptions.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Driver user receives a ride request notification
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC3] Driver User 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G13] 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The driver user must be logged in; A ride has been requested by a passenger
+ user in the city zone the driver is currently in; 
+\end_layout
+
+\begin_layout Itemize
+The driver user’s status must be on “available” and he must be the first
+ available driver in that city zone’s drivers queue;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The driver user is notified by a popup appearing on his main page;
+\end_layout
+
+\begin_layout Itemize
+The driver has a few seconds to decide if he wants to take care of the notified
+ ride by clicking on “Accept” button, or to decline it by clicking on “Refuse”
+ button;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The notification disappears from the screen and, if the driver has accepted
+ the request, his status is set on “unavailable”; otherwise, it remains
+ on “available”.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The driver user doesn’t provide a choice within the maximum time limit.
+ The system will consider the request as refused by the driver.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Passenger user receives a reservation reminder notification
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC2] Passenger user 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G6] 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user must be logged in; 
+\end_layout
+
+\begin_layout Itemize
+The user must have requested a reservation that is going to occur in 10
+ minutes; 
+\end_layout
+
+\begin_layout Itemize
+The reservation has been assigned to a driver;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user is notified by the system, through a popup containing the incoming
+ taxicab code, that his reservation shall be performed in 10 minutes, and
+ that a driver is going to pick him up at the meeting point; 
+\end_layout
+
+\begin_layout Itemize
+The user clicks on “Ok” button;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The popup disappears from the screen and the user is back on whatever page
+ he was before the notification arrived; 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No exceptions.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Driver user receives a reservation request notification
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC3] Driver user 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G15] 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The driver must be logged in;
+\end_layout
+
+\begin_layout Itemize
+The driver user must be available;
+\end_layout
+
+\begin_layout Itemize
+A scheduled reservation has to be performed now;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The user, from the main page of application, is notified by a popup that
+ appears on the screen;
+\end_layout
+
+\begin_layout Itemize
+The user click on “Ok” button;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The notification disappears from the screen and the status of the driver
+ user changes to unavailable.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ No exceptions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Driver user changes his status
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC3] Driver User 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G12] 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The driver user must be logged in; 
+\end_layout
+
+\begin_layout Itemize
+The driver user mustn’t be performing a ride;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The driver user swipes on the “available/unavailable” switcher button on
+ his main page;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The availability status changes to “available”/”unavailable” 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No exceptions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Driver user completes the current ride
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[AC3] Driver user
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Goal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[G16]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+The driver must be logged in; 
+\end_layout
+
+\begin_layout Itemize
+The driver must be currently performing a ride; 
+\end_layout
+
+\begin_layout Itemize
+The driver user has reached the meeting point with the client but can’t
+ find him, or has just successfully brought him to his destination;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Event Flow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+From his main page the driver user presses “Missing client” if he hasn’t
+ found the user who requested the ride at the meeting point; otherwise he
+ taps on “Complete ride”; 
+\end_layout
+
+\begin_layout Itemize
+The driver user’s status is automatically set on “available”;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output Conditions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The driver user is now able to receive new ride and reservation requests.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Exceptions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No exceptions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
