@@ -1,7 +1,8 @@
 module myTaxiService
 
-//NOTE:
-//	- dobbiamo creare una relazione su Coordinate che dice se è o meno dentro una zona?
+//FACTS da fare:
+// - il contatore accepted/refused dei driver deve corrispondere al numero di notification accettate/rifiutate associate ad una Request associata al driver ?
+//....
 
 //Primitive types
 
@@ -11,7 +12,9 @@ one sig FALSE extends Boolean {}
 
 sig Strings {}
 
-sig Coordinate {}
+sig Coordinate {
+	isInside: lone CityZone
+}
 
 sig Date {}
 
@@ -114,6 +117,16 @@ fact NotValidatedAccountCannotDoNothing{
 	no psgr: PassengerAccount | psgr.validated = FALSE and (#psgr.sends > 0 or #psgr.inWaitingQueue > 0 or #psgr.hasReservationHistory > 0)
 }
 
+//Gli username sono unici
+fact UniqueUsernames{
+	no disj a1, a2 : Account | a1.username = a2.username
+}
+
+//Se un taxi è in una zona, la sua posizione deve appartenere alla zona
+fact TaxiPosition{
+	all t: Taxi, z: CityZone | t.currentlyIn = z => t.currentPosition.isInside = z
+}
+
 //Le reservation in storia devono avere come sender l'account stesso
 fact ReservationHistoryConsistency{
 	no disj psgr1, psgr2: PassengerAccount | psgr1 in psgr2.hasReservationHistory.sender
@@ -124,10 +137,9 @@ fact DriverQueueZone {
 	all d: DriverAccount, z: CityZone | d in z.driverQueue => ( #d.currentlyDriving = 1 and d.currentlyDriving.currentlyIn = z and d.available = TRUE )
 }
 
-//GIUSTO IL SE E SOLO SE ?? MI SA DI NO
 //Se un passeggero è in coda in una zona allora deve esistere una richiesta inviata da lui non ancora completa e a cui non è ancora stato assegnato un driver
 fact PassengerQueueZone{
-	all p: PassengerAccount, z: CityZone | p in z.passengerQueue <=> ( #incompleteRequestedRide[p] = 1 && #incompleteRequestedRide[p].isAssociatedTo = 0)
+	all p: PassengerAccount, z: CityZone | p in z.passengerQueue <=> ( #incompleteRequestedRide[p] = 1 && #incompleteRequestedRide[p].isAssociatedTo = 0 && incompleteRequestedRide[p].startingLocation.isInside = z)
 }
 
 //Può esistere una sola richiesta ride non completata associata ad uno stesso utente
@@ -149,10 +161,6 @@ fact IncompleteDriverRequests{
 fact CompletedRequestDriver{
 	all r: Request | r.completed = TRUE => #r.isAssociatedTo = 1
 }
-
-//FACTS da fare:
-// - il contatore accepted/refused dei driver deve corrispondere al numero di notification accettate/rifiutate associate ad una Request associata al driver ?
-//....
 
 //Functions
 fun requestedRide[p: PassengerAccount] :
