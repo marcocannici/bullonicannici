@@ -1,5 +1,8 @@
 module myTaxiService
 
+//PROBLEMI:
+// - se impongo dei vincoli sui valori della data (ora commentati) dice che il modello è inconsistente (anche senza nessun fact)
+
 //FACTS da fare:
 // - il contatore accepted/refused dei driver deve corrispondere al numero di notification accettate/rifiutate associate ad una Request associata al driver ?
 //....
@@ -16,7 +19,14 @@ sig Coordinate {
 	isInside: lone CityZone
 }
 
-sig Date {}
+sig Date {
+	day: Int,
+	month: Int,
+	year: Int
+}{
+/*	day >= 1 and day <= 31 and
+	month >= 1 and month <= 12*/
+}
 
 //Sigratures
 
@@ -122,14 +132,19 @@ fact UniqueUsernames{
 	no disj a1, a2 : Account | a1.username = a2.username
 }
 
+//Gli ID dei taxi sono unici
+fact UniqueTaxiID{
+	no disj t1, t2: Taxi | t1.taxiCode = t2.taxiCode
+}
+
 //Se un taxi è in una zona, la sua posizione deve appartenere alla zona
 fact TaxiPosition{
-	all t: Taxi, z: CityZone | t.currentlyIn = z => t.currentPosition.isInside = z
+	all t: Taxi, z: CityZone | t.currentlyIn = z <=> t.currentPosition.isInside = z
 }
 
 //Le reservation in storia devono avere come sender l'account stesso
 fact ReservationHistoryConsistency{
-	no disj psgr1, psgr2: PassengerAccount | psgr1 in psgr2.hasReservationHistory.sender
+	all p: PassengerAccount, r: Reservation | r in p.hasReservationHistory => r.sender = p
 }
 
 //Se un driver è in coda in una zona allora deve star guidando un taxi che si trova in quella zona e deve essere disponibile
@@ -160,6 +175,16 @@ fact IncompleteDriverRequests{
 //Tutte le richieste completate devono essere associate ad un driver
 fact CompletedRequestDriver{
 	all r: Request | r.completed = TRUE => #r.isAssociatedTo = 1
+}
+
+// Non esistono richieste riferite ad uno stesso driver che hanno la stessa data
+fact DuplicatedRequestDriver{
+	no d: DriverAccount, disj r1, r2: Request | r1.isAssociatedTo = d and r2.isAssociatedTo = d and r1.appointmentTime.year = r2.appointmentTime.year and r1.appointmentTime.month = r2.appointmentTime.month and r1.appointmentTime.day = r2.appointmentTime.day
+}
+
+//Non esistono richieste riferite ad uno stesso passeggero che hanno la stessa data 
+fact DuplicatedRequestPassenger{
+	no p: PassengerAccount, disj r1, r2: Request | r1.sender = p and r2.sender = p and r1.appointmentTime.year = r2.appointmentTime.year and r1.appointmentTime.month = r2.appointmentTime.month and r1.appointmentTime.day = r2.appointmentTime.day
 }
 
 //Functions

@@ -30,7 +30,17 @@ pred testIncompleteDriverRequests [d: DriverAccount] {
 
 //run testCompletedRequestDriver for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 0 Taxi, 1 CityZone, 3 Coordinate, 1 Strings, 3 Request
 pred testCompletedRequestDriver [d: DriverAccount] {
-	#{r: Request | r.completed = FALSE && #r.isAssociatedTo = 1} = 2 //Falisce perchè impone che un driver abbia 2 richieste non complete associate
+	#{r: Request | r.completed = FALSE && #r.isAssociatedTo = 1} < 2 // se = 2f allisce perchè impone che un driver abbia 2 richieste non complete associate
 }
 
-run testTaxiQueueZone for 10 but 2 DriverAccount, 2 Account, 0 Notification, 2 Taxi, 2 CityZone, 3 Coordinate
+//run testDuplicatedRequestDriver for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 1 Taxi, 1 CityZone, 3 Coordinate, 3 Request, 2 Date
+pred testDuplicatedRequestDriver [d: DriverAccount, r1: Request, r2: Request]{
+	r1 != r2 and r1.isAssociatedTo = d and r2.isAssociatedTo = d and r1.appointmentTime.year = r2.appointmentTime.year and r1.appointmentTime.month = r2.appointmentTime.month
+}
+
+//run testDuplicatedRequestPassenger for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 1 Taxi, 1 CityZone, 3 Coordinate, 3 Request, 2 Date
+pred testDuplicatedRequestPassenger[p: PassengerAccount, r1: Request, r2: Request]{
+	r1 != r2 and r1.sender = p and r2.sender = p and r1.appointmentTime.year = r2.appointmentTime.year and r1.appointmentTime.month = r2.appointmentTime.month
+}
+
+run testDuplicatedRequestPassenger for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 1 Taxi, 1 CityZone, 3 Coordinate, 3 Request, 2 Date
