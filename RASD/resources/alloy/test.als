@@ -25,7 +25,7 @@ pred testPassengerIncompletedRide [p: PassengerAccount] {
 
 //run testIncompleteDriverRequests for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 0 Taxi, 1 CityZone, 3 Coordinate, 1 Strings, 2 Request
 pred testIncompleteDriverRequests [d: DriverAccount] {
-	#d.takesCareOf > 1 and #{r:Request | d in r.isAssociatedTo && r.completed = FALSE} = 1 // se >1 dovrebbe fallire
+	#d.(~isAssociatedT)o > 1 and #{r:Request | d in r.isAssociatedTo && r.completed = FALSE} = 1 // se >1 dovrebbe fallire
 }
 
 //run testCompletedRequestDriver for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 0 Taxi, 1 CityZone, 3 Coordinate, 1 Strings, 3 Request
@@ -35,12 +35,20 @@ pred testCompletedRequestDriver [d: DriverAccount] {
 
 //run testDuplicatedRequestDriver for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 1 Taxi, 1 CityZone, 3 Coordinate, 3 Request, 2 Date
 pred testDuplicatedRequestDriver [d: DriverAccount, r1: Request, r2: Request]{
-	r1 != r2 and r1.isAssociatedTo = d and r2.isAssociatedTo = d and r1.appointmentTime.year = r2.appointmentTime.year and r1.appointmentTime.month = r2.appointmentTime.month
+	r1 != r2 and r1.isAssociatedTo = d and r2.isAssociatedTo = d
+	r1.appointmentTime.year = r2.appointmentTime.year and
+	r1.appointmentTime.month = r2.appointmentTime.month and
+	r1.appointmentTime.day = r2.appointmentTime.day and
+	r1.appointmentTime.hour = r2.appointmentTime.hour
 }
 
 //run testDuplicatedRequestPassenger for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 1 Taxi, 1 CityZone, 3 Coordinate, 3 Request, 2 Date
 pred testDuplicatedRequestPassenger[p: PassengerAccount, r1: Request, r2: Request]{
-	r1 != r2 and r1.sender = p and r2.sender = p and r1.appointmentTime.year = r2.appointmentTime.year and r1.appointmentTime.month = r2.appointmentTime.month
+	r1 != r2 and r1.~sends = p and r2.~sends = p and r1.appointmentTime.year = r2.appointmentTime.year and r1.appointmentTime.month = r2.appointmentTime.month
 }
 
-run testDuplicatedRequestPassenger for 10 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 1 Taxi, 1 CityZone, 3 Coordinate, 3 Request, 2 Date
+pred test{
+	#Account > 1
+}
+
+run test for 2 but 1 PassengerAccount, 1 DriverAccount,  2 Account, 0 Notification, 1 Taxi, 1 CityZone, 2 Coordinate, 2 Request, 2 Date, 2 Strings
