@@ -3,6 +3,11 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{alloy-style}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -86,11 +91,174 @@
 \end_layout
 
 \begin_layout Title
-COPERTINA
+\begin_inset Graphics
+	filename resources/others/polimi_logo.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\end_inset
+
+Politecnico di Milano
+\begin_inset Newline newline
+\end_inset
+
+A.A.
+ 2015-2016
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\end_inset
+
+Software Engineering 2: myTaxiService
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{R}
+\end_layout
+
+\end_inset
+
+equirements 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{A}
+\end_layout
+
+\end_inset
+
+nalysis and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{S}
+\end_layout
+
+\end_inset
+
+pecifications 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{D}
+\end_layout
+
+\end_inset
+
+ocument
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Matteo Bulloni (852676), Marco Cannici (852527)
+\end_layout
+
+\begin_layout Date
+6 November 2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
 \end_inset
 
 
@@ -106,6 +274,22 @@ COPERTINA
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
 
 \end_inset
 
@@ -810,11 +994,30 @@ hypertarget{[D7]}{[D7]}
 
 \end_inset
 
-A driver who accepts to offer a ride to a person asking for it on the side
+ A driver who accepts to offer a ride to a person asking for it on the side
  of the road (so not through myTaxiService application) will immediately
  set his current state on “unavailable”, and will set it back on “available”
  only and immediately after completing the ride.
  
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[D8]}{[D8]}
+\end_layout
+
+\end_inset
+
+ Before the development of the application described in this document, ride
+ and reservation requests could be made only by phone, and the forwarding
+ to taxi drivers was handled by a series of dedicated human operators; no
+ automated system was present.
 \end_layout
 
 \begin_layout Subsection
@@ -981,8 +1184,8 @@ hypertarget{reservation_reminder_notification}{Reservation reminder notification
 \end_inset
 
 : a notification sent to a passenger user who has reserved a ride, 10 minutes
- before the reservation shall occur, to remind the reservation and to tell
- the incoming taxi code.
+ before the reservation shall be performed, to remind the reservation and
+ to tell the incoming taxi code.
 \end_layout
 
 \begin_layout Itemize
@@ -1004,12 +1207,15 @@ hypertarget{reservation_request}{Reservation request}
  is the point where the client wants to be picked up by the taxi, a destination
  for the ride, and a meeting time and date, which has to be at least 2 hours
  later than when the request is sent for it to be accepted.
- This kind of request can be cancelled under certain conditions (see [A..]
-\begin_inset Note Note
+ This kind of request can be cancelled under certain conditions (see 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-link
+
+
+\backslash
+hyperlink{[AS14]}{[AS14]}
 \end_layout
 
 \end_inset
@@ -1115,6 +1321,13 @@ RASDs examples from past years;
 \begin_layout Itemize
 IEEE Recommended Practice for Software Requirements Specifications (Revision
  of IEEE Std 830-1993);
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1272,8 +1485,9 @@ Assumptions
 \end_layout
 
 \begin_layout Standard
-To solve ambiguities in the assignment text, here we provide a list of assumptio
-ns we make in our proposed solution:
+To declare how we solve ambiguities in the assignment text, and in general
+ to state the starting points we considered in designing the application,
+ here we provide a list of assumptions we made in developing our solution:
 \end_layout
 
 \begin_layout Itemize
@@ -1289,11 +1503,24 @@ hypertarget{[AS1]}{[AS1]}
 
 \end_inset
 
- Before the development of the application described in this document, ride
- and reservation requests could be made only by phone, and the forwarding
- to taxi drivers was handled by a series of dedicated human operators; no
- automated system was present.
- 
+ The service provided by the taxis of this company shall not be exclusively
+ due to requests from the application: for instance, if a driver currently
+ in “available” state happens to find a person asking for a ride on the
+ side of the road, he can answer positively and accept him or her as a client
+ (see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[D7]}{[D7]}
+\end_layout
+
+\end_inset
+
+ as a related assumption); 
 \end_layout
 
 \begin_layout Itemize
@@ -1309,25 +1536,11 @@ hypertarget{[AS2]}{[AS2]}
 
 \end_inset
 
- The service provided by the taxis of this company is not exclusively due
- to requests from the application: for instance, if a driver currently in
- “available” state happens to find a person asking for a ride on the side
- of the road, he can answer positively and accept him or her as a client,
- provided that he immediately sets his current state on “unavailable” (as
- stated in 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperlink{[D7]}{[D7]}
-\end_layout
-
-\end_inset
-
-).
+ To guarantee system security and to ensure a fair behavior by the drivers,
+ the driver application of myTaxiService has to be available for use directly
+ and only on the tablet terminals present on each taxi vehicle, on which
+ it will be installed by the company; the application won’t be available
+ for download from any kind of public source.
  
 \end_layout
 
@@ -1344,11 +1557,11 @@ hypertarget{[AS3]}{[AS3]}
 
 \end_inset
 
- To guarantee system security and to ensure a fair behavior by the drivers,
- the driver application of myTaxiService will be available to be used directly
- and only on the embedded terminals present on each taxi vehicle, on which
- it will be installed by the company; the application won’t be available
- for download from any kind of public source.
+ To ensure system security and avoid potential attacks and problems, a policy
+ has to be followed such that accounts for driver users will be allowed
+ to be created directly and only by the system administrator, with each
+ username corresponding to the driver ID of the driver associated to that
+ account.
  
 \end_layout
 
@@ -1365,8 +1578,12 @@ hypertarget{[AS4]}{[AS4]}
 
 \end_inset
 
- If a driver doesn’t accept or refuse a ride request within a certain defined
- time limit, the system will consider it as refused by the driver.
+ The central system has to store data considering the city divided into
+ several city zones, to keep organized and manage the informations about
+ drivers and requests; a queue of available drivers has to be associated
+ to each city zone, and shall be kept updated in real time, to forward requests
+ rapidly.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -1382,10 +1599,12 @@ hypertarget{[AS5]}{[AS5]}
 
 \end_inset
 
- If the driver informs the system that he is available in a certain area
- and then moves to another one, the system is able to detect it in real
- time.
- 
+ The central system has to be developed to guarantee a fair management of
+ taxi queues, and it has to do this by forwarding requests coming from passenger
+ users starting from the first available driver in the queue of the correspondin
+g city zone (i.e.
+ the one who has been on “available” state for the longest time from his
+ last state switch); 
 \end_layout
 
 \begin_layout Itemize
@@ -1401,10 +1620,10 @@ hypertarget{[AS6]}{[AS6]}
 
 \end_inset
 
- If there aren’t available drivers when a passenger requests a ride in a
- certain city zone, the system will inform the passenger about the situation
- and ask him if he wants to wait for a taxi to free up or not.
- 
+ The central system is capable of offering the passenger users waiting for
+ a taxi to come an estimate of the expected waiting time, calculated in
+ real time through Google Maps, which takes into account also traffic situation,
+ and is the same API used as navigation system on taxicabs;
 \end_layout
 
 \begin_layout Itemize
@@ -1420,10 +1639,19 @@ hypertarget{[AS7]}{[AS7]}
 
 \end_inset
 
- In handling reserved rides, the system is able to manage the requests and
- queues in such a way that it is always ensured that a driver is available
- to handle the request 10 minutes before the ride has to be performed.
+ The central system is capable of receiving GPS informations from each taxi
+ of the company, to keep informations about their position updated (see
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+“[3.5.6] Accuracy”
+\end_layout
+
+\end_inset
+
+); 
 \end_layout
 
 \begin_layout Itemize
@@ -1439,10 +1667,10 @@ hypertarget{[AS8]}{[AS8]}
 
 \end_inset
 
- Drivers can’t refuse a reserved ride request; to fulfill the government’s
- transportation policy, implemented in order to provide a reliable reservation
- service, these requests must be accepted by the assigned drivers.
- 
+ In handling reserved ride requests, the system is able to manage the requests
+ and queues in such a way that it is always ensured that a driver is available
+ to handle each reserved ride request 10 minutes before the ride has to
+ be performed; 
 \end_layout
 
 \begin_layout Itemize
@@ -1458,11 +1686,154 @@ hypertarget{[AS9]}{[AS9]}
 
 \end_inset
 
- User registration is required to use any of the functionalities offered
- by myTaxiService passenger application, in order to collect more detailed
- informations about the usage of the service and to protect the system from
- a bad use of the application (e.g.
- ride requests spamming, never showing up after requesting a ride, … ).
+ If a driver user doesn’t either accept or refuse a ride request within
+ a certain defined time limit (15 seconds), the system has to consider it
+ as refused by the driver, and forward it to the next user in the drivers'
+ queue; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AS10]}{[AS10]}
+\end_layout
+
+\end_inset
+
+ Driver users can’t refuse a reserved ride request when they are assigned
+ to it: to fulfill the government’s transportation policy, implemented in
+ order to provide a reliable reservation service, these requests must be
+ accepted by the assigned drivers.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AS11]}{[AS11]}
+\end_layout
+
+\end_inset
+
+ User registration is going to be required to use any of the functionalities
+ offered by myTaxiService passenger application, in order to collect more
+ detailed informations about the usage of the service and to protect the
+ system from dangerous and bad user behaviors (e.g.
+ ride requests spamming, never showing up after requesting a ride, … ),
+ which can be detected and collected if coming from registered users.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AS12]}{[AS12]}
+\end_layout
+
+\end_inset
+
+ Passenger users who have registered their account but haven't confirmed
+ it yet through the confirmation email sent by the system to their email
+ address shall not be able to use any of the application's functionalities,
+ until they complete the account confirmation.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AS13]}{[AS13]}
+\end_layout
+
+\end_inset
+
+ Reservation requests sent by passenger users less than 2 hours in advance
+ with respect to the reservation's pick up time always have to be refused
+ by the system.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AS14]}{[AS14]}
+\end_layout
+
+\end_inset
+
+ Passenger users have to be allowed to delete ride reservations they have
+ made and are yet to be performed, but only until 1 hour before the reservation
+ has to be performed (i.e.
+ when the ride shall actually start).
+ Otherwise, the reservation can't be canceled.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AS15]}{[AS15]}
+\end_layout
+
+\end_inset
+
+ There has to be a passenger users' waiting queue associated to each city
+ zone, in which passenger users who make a ride request when there are no
+ available taxis in their current city zone are put by the system, until
+ a taxi becomes available and handles their request.
+ When this happen, the user put in the queue has to be told he has been
+ put in such a queue and asked if he still wants to confirm the ride request,
+ or if he wants to cancel it.
+ If the user doesn't answer within a limited amount of time (30 seconds),
+ the request has to be considered as canceled.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{[AS16]}{[AS16]}
+\end_layout
+
+\end_inset
+
+ MyTaxyService interface for administrator users has to be developed only
+ for the web application.
+ It is not required to provide the administrator interface and its functionaliti
+es on the mobile application.
  
 \end_layout
 
@@ -1525,13 +1896,61 @@ hyperlink{[G8]}{[G8]}
  from this page the user should be able to request or reserve a ride, and
  to check the list of reservations he/she has already requested.
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename resources/mockups/home_mobile.png
-	width 5cm
+	width 3cm
 
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1556,12 +1975,40 @@ hyperlink{[G5]}{[G5]}
  or by clicking on “from” or “to” icons and then directly on the map, and
  select date and time by selecting the value inside a popup.
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename resources/mockups/res_pupop_web.png
-	width 13cm
+	width 10cm
 
 \end_inset
 
@@ -1571,15 +2018,35 @@ hyperlink{[G5]}{[G5]}
 \begin_layout Standard
 \begin_inset Graphics
 	filename resources/mockups/res_key_mobile.png
-	width 5cm
+	width 3cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename resources/mockups/res_mobile.png
-	width 5cm
+	width 3cm
 
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1603,12 +2070,40 @@ hyperlink{[G3]}{[G3]}
  current location (default choice, provided by his GPS module, if there
  is one on the device he is currently using), or to select a different spot.
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename resources/mockups/ride_web.png
-	width 13cm
+	width 10cm
 
 \end_inset
 
@@ -1618,8 +2113,28 @@ hyperlink{[G3]}{[G3]}
 \begin_layout Standard
 \begin_inset Graphics
 	filename resources/mockups/ride_mobile.png
-	width 5cm
+	width 3cm
 
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1659,12 +2174,40 @@ hyperlink{notification}{Notification}
 
 ” for more details).
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename resources/mockups/not_web.png
-	width 13cm
+	width 10cm
 
 \end_inset
 
@@ -1674,15 +2217,35 @@ hyperlink{notification}{Notification}
 \begin_layout Standard
 \begin_inset Graphics
 	filename resources/mockups/home.png
-	width 5cm
+	width 3cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename resources/mockups/not_mobile.png
-	width 5cm
+	width 3cm
 
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1706,21 +2269,49 @@ hyperlink{[G9]}{[G9]}
  Reservation history: This mockup shows how the user can view the list of
  reservations he has already requested.
  If the reservation hasn’t already been performed, and only until 1 hour
- before the ride should occur, the user can delete it.
+ before the ride should be performed, the user can delete it.
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename resources/mockups/res_history_1.png
-	width 5cm
+	width 3cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename resources/mockups/history_mobile.png
-	width 5cm
+	width 3cm
 
 \end_inset
 
@@ -1730,8 +2321,28 @@ hyperlink{[G9]}{[G9]}
 \begin_layout Standard
 \begin_inset Graphics
 	filename resources/mockups/red_dat.png
-	width 5cm
+	width 3cm
 
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1759,12 +2370,53 @@ hyperlink{[G15]}{[G15]}
  to be able to change his status back to “available” and to receive new
  requests.
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename resources/mockups/driver.png
 	width 10cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
 
 \end_inset
 
@@ -1790,9 +2442,37 @@ hyperlink{[G10]}{[G10]}
  to, and allow him to accept (both kinds) or refuse it (only for the ride
  requests).
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename resources/mockups/drive_not_res.png
 	width 10cm
@@ -1806,6 +2486,19 @@ hyperlink{[G10]}{[G10]}
 \begin_inset Graphics
 	filename resources/mockups/driver_ride_not.png
 	width 10cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
 
 \end_inset
 
@@ -2104,17 +2797,20 @@ If the user confirms, or equally if the system didn’t detect a lack of availab
 
 \begin_layout Itemize
 If the user doesn’t provide an answer until a fixed limited amount of time
- (see 
-\begin_inset Note Note
-status collapsed
+ (30 seconds, as assumed in 
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-link
+
+
+\backslash
+hyperlink{[AS15]}{[AS15]}
 \end_layout
 
 \end_inset
 
-[A..] for details), the request shall be considered as cancelled; 
+), the request shall be considered as cancelled; 
 \end_layout
 
 \end_deeper
@@ -2484,17 +3180,20 @@ hyperlink{[G14]}{[G14]}
 \begin_layout Itemize
 When a ride request is displayed, the application shall ask the driver to
  accept or refuse the assigned ride, giving a fixed limited amount of time
- to answer; 
-\begin_inset Note Note
+ to answer (10 seconds, as specified in 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-link specifica
+
+
+\backslash
+hyperlink{[AS9]}{[AS9]}
 \end_layout
 
 \end_inset
 
-
+); 
 \end_layout
 
 \begin_layout Itemize
@@ -2610,17 +3309,20 @@ hyperlink{[G16]}{[G16]}
 \begin_deeper
 \begin_layout Itemize
 The administrator interface shall be accessible by logging in from myTaxiService
- web application only 
-\begin_inset Note Note
+ web application only (as stated in 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-(linko assumption)
+
+
+\backslash
+hyperlink{[AS16]}{[AS16]}
 \end_layout
 
 \end_inset
 
-, through the usual login form used by passenger users; 
+), through the usual login form used by passenger users; 
 \end_layout
 
 \begin_layout Itemize
@@ -2699,11 +3401,6 @@ Availability
 The system should be available 24 hours a day, 7 days a week.
 \end_layout
 
-\begin_layout Itemize
-The Availability of the system (MTTF/(MTTF+MTTR)) shall thus be >= 99,7%;
- 
-\end_layout
-
 \begin_layout Subsubsection
 Capacity 
 \end_layout
@@ -2775,18 +3472,15 @@ Communication between client and server must be encrypted using HTTPS protocol;
  
 \end_layout
 
-\begin_layout Section
-Scenarios Identifying
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-\end_layout
-
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Scenarios Identifying
 \end_layout
 
 \begin_layout Standard
@@ -3085,6 +3779,13 @@ Bill, one of myTaxiService administrators, is told by his boss that the
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 UML Models
 \end_layout
@@ -3142,7 +3843,7 @@ Guest registers to myTaxiService
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3174,7 +3875,7 @@ hyperlink{[AC1]}{[AC1]}
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3206,7 +3907,7 @@ hyperlink{[G1]}{[G1]}
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3226,7 +3927,7 @@ No conditions
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3273,7 +3974,7 @@ The user confirms his subscription by clicking on the confirmation link,
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3294,7 +3995,7 @@ The guest user will now be able to log into the system.
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3303,7 +4004,7 @@ Exceptions
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Enumerate
@@ -4175,8 +4876,21 @@ Exceptions
 \begin_inset Text
 
 \begin_layout Enumerate
-The reservation has already been assigned to a driver, which means that
- it is going to occur in less than 10 minutes, and thus can’t be deleted
+The user tries to delete a reservation that has to be performed in less
+ than 1 hour (see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{[AS14]}{[AS14]}
+\end_layout
+
+\end_inset
+
+);
 \end_layout
 
 \end_inset
@@ -5278,12 +5992,342 @@ No exceptions
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
 	filename resources/uml/RideComplete.png
 	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Statechart Diagrams 
+\end_layout
+
+\begin_layout Standard
+Here we provide a statechart diagram describing the life cycle of the object
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Ride Request
+\begin_inset Quotes erd
+\end_inset
+
+ presented in the class diagram.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/uml/statechart.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Subsection
+Alloy
+\end_layout
+
+\begin_layout Subsubsection
+Alloy model
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=alloy]{resources/alloy/model_v2.als}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Generated worlds
+\end_layout
+
+\begin_layout Standard
+The following is a general world, created with the predicate “show”, that
+ shows a scenario in which there is a ride request sent by a passenger which
+ is “completed”.
+ The system has sent a notification to the driver DriverAccount1 who has
+ decided to refuse it, so a new notification has been sent to another driver,
+ DriverAccount0, who has accepted the ride, and the request has thus been
+ associated to him.
+ Some relationships have been hidden to allow a better readability.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename resources/alloy/General.png
+	width 13cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following are some significant worlds generated by the Alloy analyzer
+ that highlight some facts that hold in the model.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This world, generated with “showDriverNotification” predicate, shows that
+ if a passenger has sent a request and that request is associated to a driver,
+ the system must have sent a notification to the driver associated to the
+ request and the notification must have been accepted.
+ Since a driver cannot take care of two requests at the same time, the appointme
+nt time of the two requests must be different.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/alloy/DriverNotification.png
+	width 13cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This world, generated with “showPassengerQueueZone” predicate, shows that
+ if a passenger is in the waiting queue of a certain zone, he must have
+ sent a ride request with a starting location that is located inside that
+ zone.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename resources/alloy/PassengerQueueZone.png
+	width 13cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This world, generate with “showDriverQueueZone” predicate, shows that if
+ a driver is inside the drivers’ queue of a certain zone, he must be in
+ “available” status and must be driving a taxi which is located in that
+ city zone.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename resources/alloy/TaxiQueueZone.png
+	width 13cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
 
 \end_inset
 
