@@ -90,15 +90,15 @@ fact RelationsCardinality{
 	all t: Taxi | #t.~currentlyDriving <= 1
 }
 
-//A passenger account that is not yet validated cannot take part of any 
-//relations
+//A passenger account that has not been validated yet
+//cannot take part in any relations
 fact NotValidatedAccountCannotDoNothing{
 	no psgr: PassengerAccount | psgr.validated = FALSE
 		and (#psgr.sends > 0 or #psgr.inWaitingQueue > 0 
 			or #psgr.hasReservationHistory > 0)
 }
 
-//Usernames, mails and taxi ID are unique
+//Usernames, email addresses and taxi IDs are unique
 fact UniqueUsernameEmail{
 	no disj a1, a2 : Account | a1.username = a2.username 
 		|| a1.email = a2.email
@@ -113,10 +113,10 @@ fact TaxiPosition{
 }
 
 //Reservations that are inside the history of a PassengerAccount, 
-//must have the same user as sender
+//must have that same passenger account as sender
 fact ReservationHistoryConsistency{
-	all p: PassengerAccount, r: Reservation | r in p.hasReservationHistory 
-		implies r.(~sends) = p
+	all p: PassengerAccount, r: Reservation | r in 
+p.hasReservationHistory implies r.(~sends) = p
 }
 
 //If a driver is availabe he must be driving a taxi
@@ -126,14 +126,14 @@ fact DriverAvailableIsDriving{
 }
 
 //If a driver is inside the queue of a certain CityZone, he has to be 
-//available and must be driving a taxi that is inside the same CityZone
+//available and must be driving a taxi that is inside that same CityZone
 fact DriverQueueZone {
 	all d: DriverAccount, z: CityZone | d in z.driverQueue implies 
 	( #d.currentlyDriving = 1 and d.currentlyDriving.currentlyIn = z 
 	and d.available = TRUE )
 }
 
-//If a passenger is inside the queue of a certain zone, there must be 
+//If a passenger is in the waiting queue of a certain zone, there must be 
 //a request, whose starting location is inside that CityZone, that is not 
 //yet completed and not associated to any driver
 fact PassengerQueueZone{
@@ -143,8 +143,8 @@ fact PassengerQueueZone{
 		incompleteRequestedRide[p].startingLocation.isInside = z)
 }
 
-//For each passenger user, there can be only one ride request not yet 
-//completed
+//For each passenger user, there can be at most one ride request 
+//not yet completed
 fact PassengerIncompletedRide{
 	all p: PassengerAccount | #incompleteRequestedRide[p] <= 1
 }
@@ -169,7 +169,7 @@ fact CompletedRequestDriver{
 	all r: Request | r.completed = TRUE implies #r.isAssociatedTo = 1
 }
 
-//There cannot be two or more requests associated to a driver at the
+//There cannot be two or more requests associated to a driver with the
 // same appointmentTime
 fact DuplicatedRequestDriver{
 	no d: DriverAccount, disj r1, r2: Request | r1.isAssociatedTo = d and

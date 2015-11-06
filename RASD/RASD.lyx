@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -17,13 +17,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -43,24 +43,15 @@
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -3914,8 +3905,8 @@ Guest registers to myTaxiService
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -4140,8 +4131,8 @@ User logs in
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -4360,8 +4351,8 @@ Passenger user requests a ride
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -4579,8 +4570,8 @@ Passenger user requests a reservation
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -4776,8 +4767,8 @@ Passenger user deletes a reservation
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -4995,8 +4986,8 @@ Passenger user receives a ride confirmation notification
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5171,8 +5162,8 @@ Driver user receives a ride request notification
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5361,8 +5352,8 @@ Passenger user receives a reservation reminder notification
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5538,8 +5529,8 @@ Driver user receives a reservation request notification
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5724,8 +5715,8 @@ Driver user changes his status
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5900,8 +5891,8 @@ Driver user completes the current ride
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -6439,15 +6430,15 @@ Hours of work
 \end_layout
 
 \begin_layout Standard
-The following is the time we spent to redact the document:
+Here is how long it took to redact this document:
 \end_layout
 
 \begin_layout Itemize
-Matteo Bulloni: ~36 hours
+Matteo Bulloni: ~33 hours
 \end_layout
 
 \begin_layout Itemize
-Marco Cannici: ~36 hours
+Marco Cannici: ~33 hours
 \end_layout
 
 \end_body
