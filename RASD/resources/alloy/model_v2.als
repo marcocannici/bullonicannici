@@ -98,7 +98,7 @@ fact NotValidatedAccountCannotDoNothing{
 			or #psgr.hasReservationHistory > 0)
 }
 
-//Usernames, mails and Taxi ID are unique
+//Usernames, mails and taxi ID are unique
 fact UniqueUsernameEmail{
 	no disj a1, a2 : Account | a1.username = a2.username 
 		|| a1.email = a2.email
@@ -108,7 +108,7 @@ fact UniqueUsernameEmail{
 //If a taxi is in a certain CityZone, its position must be inside that
 //CityZone
 fact TaxiPosition{
-	all t: Taxi, z: CityZone | t.currentlyIn = z <=> 
+	all t: Taxi, z: CityZone | t.currentlyIn = z iff 
 		t.currentPosition.isInside = z
 }
 
@@ -137,7 +137,7 @@ fact DriverQueueZone {
 //a request, whose starting location is inside that CityZone, that is not 
 //yet completed and not associated to any driver
 fact PassengerQueueZone{
-	all p: PassengerAccount, z: CityZone | p in z.passengerQueue <=>
+	all p: PassengerAccount, z: CityZone | p in z.passengerQueue iff
  		( #incompleteRequestedRide[p] = 1 and 
 		#incompleteRequestedRide[p].isAssociatedTo = 0 and
 		incompleteRequestedRide[p].startingLocation.isInside = z)
