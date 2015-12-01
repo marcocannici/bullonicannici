@@ -356,32 +356,82 @@ flag: attribute of the Driver objects stored in the Drivers Model, it is
 Abbreviations
 \end_layout
 
-\begin_layout Description
-MVC: Model View Controller
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{MVC}
 \end_layout
 
-\begin_layout Description
-RASD: Requirement Analysis and Specification Document
-\end_layout
-
-\begin_layout Description
-UX
-\begin_inset space ~
 \end_inset
 
-Diagram: User Experience Diagram
+: Model View Controller
 \end_layout
 
-\begin_layout Description
-ER
-\begin_inset space ~
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{RASD}
+\end_layout
+
 \end_inset
 
-Diagram: Entity-Relationship Diagramd DBMS: Database Management System
+: Requirement Analysis and Specification Document
 \end_layout
 
-\begin_layout Description
-FIFO: First In First Out
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{UX Diagram}
+\end_layout
+
+\end_inset
+
+: User Experience Diagram
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+textbf{ER Diagram}
+\end_layout
+
+\end_inset
+
+: Entity-Relationship Diagramd DBMS: Database Management System
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{FIFO}
+\end_layout
+
+\end_inset
+
+: First In First Out
 \end_layout
 
 \begin_layout Subsection
@@ -446,16 +496,25 @@ High level components and their interaction
 \begin_layout Standard
 In the following diagram we present the basic 3-tier structure the system
  has been divided into, with each tier also giving a first insight on his
- internal composition: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+ internal composition:
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Graphics
 	filename Diagrams/TierDiagram.png
 	width 13cm
@@ -463,30 +522,20 @@ status open
 \end_inset
 
 
-\end_layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Tier Diagram
-\end_layout
-
-\end_inset
 
 
-\end_layout
+\backslash
 
-\begin_layout Plain Layout
+\backslash
 
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 As shown by the diagram, the system is divided into 3 logical tiers:
 \end_layout
 
@@ -523,6 +572,7 @@ reference "sec:References"
  for interactions, and very simple.
  Thus follows that leaving this Presentation tier thin is clearly the best
  option to choose to achieve these goals.
+ 
 \end_layout
 
 \begin_layout Description
@@ -567,6 +617,7 @@ reference "sub:Logic-Tier"
 \end_inset
 
  “Component View - Logic Tier”.
+ 
 \end_layout
 
 \begin_layout Description
@@ -3200,6 +3251,7 @@ handleRideRequest( Ride ride ){
 \end_layout
 
 \begin_layout Plain Layout
+
    
 \end_layout
 
@@ -3219,6 +3271,7 @@ handleRideRequest( Ride ride ){
 \end_layout
 
 \begin_layout Plain Layout
+
    
 \end_layout
 
@@ -3566,6 +3619,7 @@ notifyUpdatedQueue( CityZone zone ){
 \end_layout
 
 \begin_layout Plain Layout
+
    
 \end_layout
 
