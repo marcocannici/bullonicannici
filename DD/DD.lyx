@@ -1,0 +1,3899 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Graphics
+	filename ../RASD/resources/others/polimi_logo.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\end_inset
+
+Politecnico di Milano
+\begin_inset Newline newline
+\end_inset
+
+A.A.
+ 2015-2016
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\end_inset
+
+Software Engineering 2: myTaxiService
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{D}
+\end_layout
+
+\end_inset
+
+esign 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{D}
+\end_layout
+
+\end_inset
+
+ocument
+\end_layout
+
+\begin_layout Author
+Matteo Bulloni (852676), Marco Cannici (852527)
+\end_layout
+
+\begin_layout Date
+4 December 2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Subsection
+Purpose
+\end_layout
+
+\begin_layout Standard
+This document is intended to be a detailed design supplement to the already
+ provided RASD, aiming to offer a specific evidence on how myTaxiService
+ application shall be concretely designed and implemented.
+ The focus of this document is placed on the presentation of the architectural
+ structure of the system, which dives from its high-level anatomy to the
+ detailed descriptions of the single components.
+ The document also aims to provide an insight on which specific patterns,
+ algorithms and architectural styles were chosen in designing the system,
+ and why.
+ 
+\end_layout
+
+\begin_layout Subsection
+Scope
+\end_layout
+
+\begin_layout Standard
+In describing the architectural structure of myTaxiService application,
+ we will offer a perspective on the design of the whole system, thus including
+ both the front and back-end of the application.
+ The documentation provided will therefore start with the definition of
+ the n-tiered structure in which the system has been chosen to be divided
+ into, and then cover an analysis of the structure of all the system’s tiers,
+ dealing with each in the way that was thought to be the most appropriate
+ to describe that specific part of the system.
+\end_layout
+
+\begin_layout Subsection
+Definitions, acronyms, abbreviations
+\end_layout
+
+\begin_layout Subsubsection
+Definitions
+\end_layout
+
+\begin_layout Description
+Availability
+\begin_inset space ~
+\end_inset
+
+Status: represents the current status of a logged in driver user: “available”
+ to be forwarded and handle new requests, or “unavailable” if already busy
+ or just not currently able to deal with new ride or reservation requests.
+\end_layout
+
+\begin_layout Description
+Availability
+\begin_inset space ~
+\end_inset
+
+Timestamp: attribute of the Driver objects stored in the Drivers Model,
+ it represents the timestamp of the last status switch of that driver user
+ from “unavailable” to “available”.
+ It is written by the system itself every time a driver changes his availability
+ status to “available”, and it is used to deal in a clever way with the
+ possibility of an available driver moving from one city zone to another
+ (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:driver-changes-zone"
+
+\end_inset
+
+ for a detailed explanation of this issue).
+\end_layout
+
+\begin_layout Description
+Busyness
+\begin_inset space ~
+\end_inset
+
+flag: attribute of the Driver objects stored in the Drivers Model, it is
+ a boolean value which can be set on “busy” (true) or “not busy” (false).
+ This flag is set on “busy” whenever a driver user is forwarded a ride or
+ reservation request from the system, and it remains like that for all the
+ time the driver is dealing with answering the request, deciding if to accept
+ or refuse it (when allowed).
+ When the driver answers (or if the time to answer runs out), the flag is
+ immediately set back on “not busy”, meaning that the driver could be ready
+ to handle new requests (if his status is still on “available”).
+ This attribute is used to avoid forwarding multiple requests to a single
+ driver, ensuring that any available driver who is forwarded a request has
+ to answer that one before possibly being able to be forwarded a new one.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Abbreviations
+\end_layout
+
+\begin_layout Description
+MVC: Model View Controller
+\end_layout
+
+\begin_layout Description
+RASD: Requirement Analysis and Specification Document
+\end_layout
+
+\begin_layout Description
+UX
+\begin_inset space ~
+\end_inset
+
+Diagram: User Experience Diagram
+\end_layout
+
+\begin_layout Description
+ER
+\begin_inset space ~
+\end_inset
+
+Diagram: Entity-Relationship Diagramd DBMS: Database Management System
+\end_layout
+
+\begin_layout Description
+FIFO: First In First Out
+\end_layout
+
+\begin_layout Subsection
+Reference Documents
+\end_layout
+
+\begin_layout Standard
+This document refers to:
+\end_layout
+
+\begin_layout Itemize
+The previous ‘Requirement Analysis and Specification Document’ delivered
+ document
+\end_layout
+
+\begin_layout Itemize
+The provided pattern ‘Structure for the design document’
+\end_layout
+
+\begin_layout Itemize
+Lecture slides
+\end_layout
+
+\begin_layout Subsection
+Document Structure
+\end_layout
+
+\begin_layout Standard
+AAA
+\end_layout
+
+\begin_layout Section
+Architectural Design
+\end_layout
+
+\begin_layout Subsection
+Overview
+\end_layout
+
+\begin_layout Standard
+In this part of the document we are going to present the architectural design
+ choices we have made towards the development of myTaxiService application.
+ We are going to explain first in how many logical tiers we divided the
+ system’s architecture in and why, showing how these tiers are intended
+ to be deployed among physical devices, and then to break each tier up to
+ offer an insight on the single different components that make those tiers
+ up.
+ We will thus explain how and why these various components interface and
+ interact with each other, pointing out specifically which styles and patterns
+ we chose to adopt to build the whole system up in this way, and why we
+ did so.
+ We are then going to provide some detailed examples on how the system behaves
+ at runtime in accomplishing the tasks it has to face, presenting appropriate
+ diagrams that aim to show the sequence of actions performed by the different
+ system components in handling the tasks.
+\end_layout
+
+\begin_layout Subsection
+High level components and their interaction 
+\end_layout
+
+\begin_layout Standard
+In the following diagram we present the basic 3-tier structure the system
+ has been divided into, with each tier also giving a first insight on his
+ internal composition: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Diagrams/TierDiagram.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tier Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown by the diagram, the system is divided into 3 logical tiers:
+\end_layout
+
+\begin_layout Description
+Presentation
+\begin_inset space ~
+\end_inset
+
+tier
+\begin_inset space ~
+\end_inset
+
+(Client): it is basically the client’s tier, for each different kind of
+ client the system has to deal with (web browser or the two different mobile
+ applications).
+ For all the three kinds of client, this tier has been designed to be very
+ thin, leaving all the computations in charge to the Logic tier; it includes
+ in fact just the application’s user interface, with the basic input modules
+ and functions better shown in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:References"
+
+\end_inset
+
+.
+ The choice of making this tier very thin comes mainly from the perspective
+ on how and in which situations myTaxiService application is thought to
+ be used on average, from both passenger and driver users: they need to
+ request or tell something, they need to receive an answer, and they need
+ to do it fast, immediately, in a very simple way.
+ This is why the application - and therefore the logical tier - they use
+ has indeed to be reliable, very quick to respond and to provide feedback
+ for interactions, and very simple.
+ Thus follows that leaving this Presentation tier thin is clearly the best
+ option to choose to achieve these goals.
+\end_layout
+
+\begin_layout Description
+Logic
+\begin_inset space ~
+\end_inset
+
+tier
+\begin_inset space ~
+\end_inset
+
+(Server): the Logic tier includes all the elements of the system’s server,
+ excluding the central database it relies on.
+ It interfaces with the clients that are using myTaxiService app from web
+ browser through a web server, which performs the function of generating
+ and retrieving the requested web pages to the clients, asking the actual
+ server to compute and provide the needed data.
+ The clients using the mobile app (both the driver and passenger ones) instead,
+ directly interface with the server, invoking some of the Client Manager’s
+ exposed functions to send requests to the server.
+ The Logic tier is the one that takes care of all the data computation:
+ as can be seen from the diagram it is divided into several components,
+ acting together in the organization and computation of the data, and relying
+ on a central database (located in the data tier) accessed through a DBMS.
+ At the same time however, a relatively small portion of dynamic (i.e.
+ frequently accessed) data is stored and kept available in a RAM-like memory
+ inside the server itself.
+ Since myTaxiService will initially be available only in one city, the Logic
+ tier has been thought to be deployed on a unique server farm, still powerful
+ enough to ensure reliability and constant availability of an amount of
+ computational power sufficient to face a huge number of simultaneous requests.
+ In case of possible future extensions of myTaxiService services to other
+ cities, it will be considered to organize the different city’s servers
+ into a cloud-like system, to ensure a better management of the available
+ computational power.
+ For a detailed description of the different server components please refer
+ to section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Logic-Tier"
+
+\end_inset
+
+ “Component View - Logic Tier”.
+\end_layout
+
+\begin_layout Description
+Data
+\begin_inset space ~
+\end_inset
+
+tier
+\begin_inset space ~
+\end_inset
+
+(Database): this tier includes the central database in which all the persistent
+ data of the system are stored, like user accounts, taxicabs informations,
+ reservations, completed ride requests and so on.
+ It can be accessed through a DBMS, that handles queries and data taking
+ care of security issues and permissions checking.
+ Please refer to section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Data-Tier"
+
+\end_inset
+
+ “Component View - Data Tier” for an ER diagram about myTaxiService’s central
+ database.
+ 
+\end_layout
+
+\begin_layout Standard
+Here below we present a very simple sequence diagram that provides an intuitive
+ explanation of how the interaction between the 3 tiers happens at high
+ level (specifically in the case of a client using myTaxiService app from
+ web browser, but it’s the same for mobile apps, just without the Web Server
+ step):
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/HighComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Component View
+\end_layout
+
+\begin_layout Standard
+In this section we are going to decompose the high level structural elements
+ we presented in the previous section, to present in a more detailed way
+ the actual structure of the different tiers composing the whole system.
+ Hence, we are going to explain how each tier’s components work, and how
+ they interface and interact with each towards the fulfilling of the application
+’s goals.
+ Keep in mind that, since this section is mainly focused on giving a representat
+ion of the static structural aspects of the system components, more precise
+ and readable informations about the flow of interactions between the different
+ components in handling the system’s tasks will be given in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Runtime-view"
+
+\end_inset
+
+ “Runtime View”, where some meaningful sequence diagrams will be presented
+ to give an insight on the flow of events inside the system in the most
+ common working scenarios.
+ Keep also present that more specific informations about the interfaces
+ the components expose to each other will be given in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Component-Interfaces"
+
+\end_inset
+
+ “Component Interfaces”, and that the mapping of components’ functions into
+ the corresponding fulfilled functional requirements, among the ones expressed
+ in the RASD, will be presented in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Requirements-Traceability"
+
+\end_inset
+
+ “Requirements Traceability
+\end_layout
+
+\begin_layout Subsubsection
+Logic Tier
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Logic-Tier"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.1 Components Overview
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here we present a diagram that aims to provide an overview of the structure
+ of the system’s logic tier, i.e.
+ the system’s server, showing his components and their interactions.
+ Below the diagram, a brief explanation of the server’s behavior is given,
+ while further on is given a detailed description of all the single components.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/DiagrammaComponenti.png
+	width 13cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.1.1 Clarifications on “Drivers Model”
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To immediately clarify, the Drivers Model isn’t really a “component” of
+ our server, given that it doesn’t actively perform any action (the name
+ in fact refers to the MVC pattern: it’s not a controller, it’s part of
+ the model).
+ However, it has been included in this diagram and described in the next
+ pages as like the actual components because of its fundamental role it
+ plays in the system.
+ It is in fact the local representation of the currently operating drivers,
+ which some components keep updated according to what the drivers are currently
+ doing, while some others react, as observers, when some change is detected
+ in the driver objects due to those updates.
+ Given that not many informations about the driver users are actually needed
+ in performing the server’s routine tasks, that these informations have
+ to be accessed and modified very frequently and that the number of active
+ drivers in each moment is quite manageable, it has been chosen to keep
+ this data structure available at a higher and more quickly accessible level
+ with respect to the system’s central database, which instead contains all
+ the informations of all the users in a more detailed way, as displayed
+ in the brief class diagram provided in the RASD and later in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Deployment-view"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Deployment View
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.1.2 General Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The server tier of the application is structured as shown in the diagram
+ above.
+ The interactions with the clients all occur through the Client Manager,
+ which manages the mapping of the exposed component interfaces between outside
+ and inside the server itself, and filters any contents coming from the
+ clients, supported by the Client Input Validator, to ensure that only safe
+ and well structured data reach the inner components.
+ Of these inner components, we have the Account Manager responsible of dealing
+ with any request concerning user accounts’ attributes and login/logout
+ operations (and thus involving interactions with the central database through
+ the DBMS), and of creating and destroying objects in the Drivers Model.
+ The Driver Manager will then keep their position and status updated, receiving
+ informations from each driver’s application, and will also store any ride
+ a driver reports as completed in the central database.
+ The Queue Manager is responsible for all the operations concerning the
+ driver queues associated to each city zone, from keeping them constantly
+ updated, strongly relying on the observer pattern applied to the Drivers
+ Model, to retrieving pointers to the next available drivers when requested
+ by the Request Manager.
+ This Request Manager is the core component of the server, since it manages
+ and coordinates all the processing of incoming ride and reservation request:
+ it takes care of organizing them in proper queues, of handling parallelism
+ and busy situations in which there aren’t available drivers, of finding
+ a driver to take care of each request asking the Queue Manager, of ensuring
+ that drivers are forwarded and associated the requests they are assigned
+ to and users are notified quickly about any update of the situation thanks
+ to the Notification Manager.
+ Thus, the Request Manager is indeed the core of the application’s server,
+ coordinating the other main inner components.
+ Last, but not least, there’s also a Map Manager, that interacts with Google
+ Maps’ API, and mainly serves the function of computing the estimated waiting
+ time to be communicated to passenger users when a taxicab is heading to
+ pick them up.
+ Furthermore, the Map Manager stores informations about myTaxiService’s
+ availability boundaries (since the application shall only serve clients
+ within the city’s boundaries) and city zones’ boundaries, helping the other
+ components when they need to convert addresses to GPS coordinates or vice
+ versa, and to map GPS coordinates into the corresponding city zone.
+ Given this general perspective on the system’s composition and behavior,
+ here follows the detailed description of each component.
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.2 Specific Components Descriptions
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.2.1 Drivers Model
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle" tabularwidth="12.5cm">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Drivers Model
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Store informations about currently operating (logged in) driver users, in
+ a RAM-like memory
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Keep one instance of “Driver” object for each currently logged in driver
+ user, each containing the following informations about the driver:
+\end_layout
+
+\begin_layout Itemize
+Driver ID
+\end_layout
+
+\begin_layout Itemize
+Taxicab ID
+\end_layout
+
+\begin_layout Itemize
+Current location (city zone and coordinates)
+\end_layout
+
+\begin_layout Itemize
+Current ride
+\end_layout
+
+\begin_layout Itemize
+Availability Status
+\end_layout
+
+\begin_layout Itemize
+Availability timestamp (
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+see glossario?
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Busyness flag (
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+see glossario?
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(in a passive way of course) User Manager, Driver Manager, Queue Manager,
+ Notification Manager 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.3 Client Input Validator 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Client Manager
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actually interface the clients with the server
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Provides a series of interfaces for the different kinds of clients (passenger
+ application, both web and mobile, driver mobile application) exposing the
+ functions and services that can be used by that certain category of clients,
+ mapping them into the actual methods of the different server components
+ in charge to provide those services
+\end_layout
+
+\begin_layout Itemize
+Handles the communication from server to clients, retrieving the informations
+ asked by clients and provided by the server components, and taking charge
+ of delivering notifications and retrieving answers, forwarding them to
+ the proper server component
+\end_layout
+
+\begin_layout Itemize
+Checks every client’s request and provided data through the Client Input
+ Validator, verifying their correctness and harmlessness before forwarding
+ them to the server’s internal components 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Clients, Client Input Validator, Account Manager, Request Manager, Notification
+ Manager
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.4 Client Input Validator 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Client Input Validator
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Check the validity of the inputs provided by clients in any situation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Checks consistency and validity of user registration informations 
+\end_layout
+
+\begin_layout Itemize
+Checks consistency and validity of any account information editing performed
+ by users or admins 
+\end_layout
+
+\begin_layout Itemize
+Checks consistency and validity of ride and reservation requests informations
+ (valid date and time, valid location, …)
+\end_layout
+
+\begin_layout Itemize
+Checks consistency and validity of reservation deletion attempts done by
+ passenger users 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+User Manager, Request Manager, Notification Manager 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.5 Account Manager 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Account Manager 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handle user accounts registrations, logins and logouts and users’ information
+ retrieval and update 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Handles user registration requests, interacting with the DBMS 
+\end_layout
+
+\begin_layout Itemize
+Handles login and logout requests from clients, interacting with the DBMS
+\end_layout
+
+\begin_layout Itemize
+Updates the local Drivers Model creating an instance of “driver user” object
+ when a driver user logs in, and removing it when he logs out
+\end_layout
+
+\begin_layout Itemize
+Handles requests to view and operate on personal reservation history coming
+ from passenger users
+\end_layout
+
+\begin_layout Itemize
+Handles requests to view and edit any account informations 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Client Input Validator, DBMS, Drivers Model 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.6 Driver Manager 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Driver Manager
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Keep updated the Drivers Model updating location and state of driver users
+ as they change
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Periodically checks and updates the location of all the currently available
+ drivers, using informations coming from the GPS modules present on taxicabs
+ and elaborating them through the Map Manager
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(link)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When a driver object is set on “busy”, immediately retrieves and updates
+ his location, to allow a more precise waiting time estimation Keeps updated
+ each driver’s availability status in the model, also writing the Availability
+ Timestamp when a driver’s status is switched on “available”
+\end_layout
+
+\begin_layout Itemize
+Whenever a driver reports he has completed a ride, retrieves the pointer
+ to the ride from the Drivers Model, updates the ride’s state (depending
+ on if the driver communicated “ride terminated” or “missing client”) and
+ takes care of storing it into the central database, associated to the driver
+ that performed it.
+ Then, empties the Current Ride field of the driver in the Drivers Model
+ and sets back its status on “available”, writing the Availability Timestamp.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Driver Application Clients, Drivers Model, DBMS
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.7 Queue Manager 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Queue Manager
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Keep updated the taxi queues of the different city zones, and retrieve available
+ taxis when requested
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Keeps an available drivers queue for each city zone, in which only currently
+ available drivers who are currently in that zone are present
+\end_layout
+
+\begin_layout Itemize
+Retrieves the first available driver from the target zone’s queue when requested
+ by the Request Manager, setting it on “busy” and removing it from the queue
+\end_layout
+
+\begin_layout Itemize
+Insert drivers at the bottom of the corresponding city zone’s queue when
+ they become both “available” and “not busy” (when one of the two values
+ changes, checks also the other one)
+\end_layout
+
+\begin_layout Itemize
+Removes drivers who switch to “unavailable” from the queue they were currently
+ in
+\end_layout
+
+\begin_layout Itemize
+Moves drivers who move from one city zone to another (while being on “available”
+ status) from that zone’s queue to the new one, inserting them not at the
+ bottom, but basing on their Availability Timestamp 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Request Manager, Drivers Model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.8 Request Manager 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="12.5cm">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Request Manager
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handle incoming ride and reservation requests
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Keeps a queue for the incoming ride requests, processed as a FIFO
+\end_layout
+
+\begin_layout Itemize
+Keeps a reservation requests queue, ordered from the closest to the farthest
+ to be completed
+\end_layout
+
+\begin_layout Itemize
+Keeps a reservation waiting queue and a ride waiting queue for each city
+ zone, in which requests are placed when there aren’t available drivers
+ in the zone the request comes from, so that they are re-processed as soon
+ as a new driver becomes available in that zone (queues are monitored using
+ an observer pattern).
+ In case of both reservation and ride requests queuing for available drivers
+ in the same city zone, the reservation requests queue has to be emptied
+ first 
+\end_layout
+
+\begin_layout Itemize
+Processes ride requests in parallel (creating a thread for each one in the
+ queue); for each request, asks the Queue Manager for an available driver
+ and forwards him the request through the Notification Manager, repeating
+ the process until a driver accepts the request;
+\end_layout
+
+\begin_layout Itemize
+Processes reservation requests, first storing them when they are accepted,
+ and then using a scheduler: the scheduler checks every hour which reservations
+ have to be performed from 60 to 120 minutes from now, and creates a thread
+ for each one of them, that wakes up 10 minutes before the reservation time,
+ asking the Queue Manager to retrieve an available driver to forward the
+ request to.
+ While asking for drivers, reservation request threads are given higher
+ priority with respect to ride requests in retrieving an available driver.
+ Moreover, they ask for available drivers also in contiguous city zones
+ if they can’t find one in the zone the request is coming from.
+ This is done to ensure that reservation requests are always processed successfu
+lly and fastly, and virtually never put in waiting queues
+\end_layout
+
+\begin_layout Itemize
+After a ride or reservation request is accepted by a driver, sends through
+ the Notification Manager a confirmation to the user who had made the request,
+ telling the incoming taxi code and the estimated waiting time (calculated
+ through the Map Manager) for ride requests, and a reservation reminder
+ with the incoming taxi code for reservation requests 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Queue Manager, Notification Manager, Map Manager, DBMS 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.9 Map Manager
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Map-Manager"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="12.5cm">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Map Manager
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interact with Google Maps’ API in order to operate with locations, coordinates
+ and estimate waiting times
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Called by the Request Manager, interfaces with Google Maps’ API to calculate
+ the approximate waiting time for a passenger waiting for his taxi, providing
+ the driver’s current location as a starting point and the ride’s starting
+ point as destination point, and returning the travel time suggested by
+ the API 
+\end_layout
+
+\begin_layout Itemize
+Called by the Client Input Validator, verifies the integrity and allowed
+ or unallowed placement of the given address or coordinate, operating the
+ needed conversions using Google Maps’ API
+\end_layout
+
+\begin_layout Itemize
+Stores informations about the virtual boundaries of the city zones and of
+ the area in which myTaxiService can be used 
+\end_layout
+
+\begin_layout Itemize
+Called by Driver Manager and Request Manager, maps a given GPS coordinate
+ into the corresponding city zone, or a given string address into a GPS
+ coordinate 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.3.1.10 Notification Manager
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Notification Manager
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Purpose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sending notifications 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(glossario)
+\end_layout
+
+\end_inset
+
+ to users and forward proper informations to the other components 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tasks Performed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Called by the Request Manager, creates threads to send notifications to
+ driver users about ride requests, and waits for their answers.
+ In case of acceptance, sets that driver’s status in the Drivers Model on
+ “unavailable”, and then sets him as “not busy”; in case of refusal, just
+ sets the driver on “not busy”.
+ In other words, it takes care of telling the system when a driver is no
+ more in the task of answering a ride request, telling if he accepted it
+ and is going to take care of it or if he refused it and thus has to be
+ put back at the bottom of some city zone’s queue by the Queue Manager
+\end_layout
+
+\begin_layout Itemize
+Called by the Request Manager, sends to a driver user a notification that
+ he has been assigned to some reservation, updating the Drivers Model to
+ set his status on “unavailable” and putting him back to “not busy”
+\end_layout
+
+\begin_layout Itemize
+Called by the Request Manager, sends to passenger users ride confirmation
+ notifications, reservation reminder notifications and queued request notificati
+ons 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(glossario tutte)
+\end_layout
+
+\end_inset
+
+, waiting in this last case for the user to answer, and forwarding the answer
+ to the Request Manager 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interacts With
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Client Manager, Request Manager, Drivers Model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Data Tier
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Data-Tier"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Data tier of our system is composed by the DBMS and the database.
+ The behavior of the DBMS is standard, it just interfaces the components
+ of the Logic tier with the database, allowing correct creation, manipulation
+ and querying of the data.
+ To describe how the data are supposed to be organized in the database,
+ we propose an ER diagram describing the most meaningful entities that are
+ going to be stored in it:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Diagrams/ERDiagram.png
+	width 12cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+The entities are basically the same that were in the brief class diagram
+ presented in the RASD of course; but differently from there, the Taxi and
+ CityZone entities are not involved in any relation with other entities.
+ This is because in the central database we store tables representing associatio
+ns between entities only if they are kind of permanent: since a driver may
+ drive a different taxicab every day, and since each driver is constantly
+ moving from one city zone to another, it doesn’t make sense to keep track
+ of these temporary associations in the central database.
+ It would be a useless waste of time to keep the tables updated every time
+ that, for example, a driver moves from one city zone to another.
+ So, as already described in the Logic Tier paragraph of this section, to
+ keep track of these dynamic Driver-Taxicab-CityZone associations we use
+ instead a series of Driver objects of the Driver Model, which are stored
+ directly on the server and refer only to currently logged in driver users.
+ Therefore, these temporary relations are kept updated on those Driver objects
+ only, since they are needed by the server to properly perform his tasks,
+ while in the central database we just store CityZones and Taxis as independent
+ data, to be read or written if needed, but much less frequently.
+\end_layout
+
+\begin_layout Subsection
+Deployment view
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Deployment-view"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here we present a deployment diagram of the system, showing how the different
+ logical tiers are supposed to be distributed among physical devices, and
+ also providing some further information about communication protocols that
+ are going to be used among these devices.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/DeploymentDiagram.png
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Runtime view
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Runtime-view"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this section we provide a series of sequence diagrams showing how the
+ system handles the most common tasks it has to face at runtime, which allow
+ to understand in detail how the interaction between the different tiers
+ (and especially of the server’s components) occurs.
+\end_layout
+
+\begin_layout Subsubsection
+Ride request handling
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following diagram shows how ride requests are handled in the most common
+ case, i.e.
+ we don’t consider the case in which the ride request is queued because
+ there was no available driver in that city zone, since it would be quite
+ complex to represent in a unique sequence diagram; however, how that possibilit
+y is handled will be shown in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Algorithm-Design"
+
+\end_inset
+
+ “Algorithm Design”.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/RideRequest.png
+	width 13cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Diagrams/BusyNotifyObservers.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Reservation request handling
+\end_layout
+
+\begin_layout Paragraph
+2.5.2.1 Reservation request acceptance
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/ReservastionRequest.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2.5.2.2 Scheduled reservation handling
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/ReservationHandling.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Ride completion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/CompleteRequest.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Driver’s status change
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/DriverChangeStatus.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Available driver changing his position
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/DriverPosition.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Component Interfaces
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Component-Interfaces"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this section we present the interfaces that are exposed by each of the
+ server components, containing the functions that can be invoked by other
+ components.
+ The Client Manager exposes two different kinds of interface: one gathering
+ the functions exposed internally, which can thus be invoked by the other
+ server components, and the other one which is the one publicly exposed
+ to the clients, so that they can send requests asking to perform the actions
+ they need.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Client Manager interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/ClientManagerComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Client Input Validator interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/ClientInputValidatorComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Account Manager interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/AccountComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Driver Manager interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/DriverManagerComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Queue Manager interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/QueueComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Request Manager interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/RequestComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Map Manager Interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/MapComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Notification Manager interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/NotificationComponent.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Selected architectural styles and patterns
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Selected-architectural-styles"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Client / Server style
+\end_layout
+
+\begin_layout Standard
+In designing the high components of our system, we have decided to connect
+ them using the client/server style.
+ This style is used to connect the web application with the Web Server and
+ the mobile applications directly with the Application Server.
+ The same architectural style has been used to connect the other high components
+ of the system: the Web Server with the Application Server, in order to
+ forward the requests and retrieve the responses, and the Application Server
+ with the Database in order to store the persistent informations every time
+ it is needed.
+ A detailed description on how the components are connected to each other
+ is provided in sections 2.2 and 2.4.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+toglierei; in generale ho messo reference per indicare sezioni più avanti,
+ non più indietro 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Model View Controller Pattern
+\end_layout
+
+\begin_layout Standard
+In designing both mobile and web application we have decided to use the
+ MVC (Model View Controller) pattern.
+ The client will only have to render the View, allowing the user to interact
+ with the system and showing informations provided by the Controller.
+ The server acts as the Controller, receiving the requests from the clients
+ and processing them, eventually updating the Model, and forwarding the
+ response to the client.
+ All the logic of the application is embedded in the server, so the client
+ (thin client) will not perform any computation related to the functioning
+ of the service, allowing myTaxiService to be available also on devices
+ that don’t have high computational power.
+ We have decided to use this pattern in order to isolate each component
+ of the system in his own independent domain, which makes the system much
+ easier to maintain and debug.
+ The service can be updated and modified without necessarily requiring changes
+ to the end-user application.
+\end_layout
+
+\begin_layout Subsubsection
+Observer Pattern
+\end_layout
+
+\begin_layout Standard
+To handle interactions among the internal components of the server, and
+ in particular to easily spread any update that involves a change in the
+ Drivers Model, we have decided to heavily rely on the Observer Pattern.
+ In this way, it is easier to keep separate the roles and responsibilities
+ of each component of the system, and to allow a correct application of
+ the MVC pattern principles.
+ To give an example, the Driver Manager component will only deal with keeping
+ updated in the Drivers Model the position and the availability status of
+ each driver, without having to directly notify the other components that
+ something has been changed; being observers of the Driver objects in fact,
+ they will automatically be notified about the update, and react consequently.
+ In the same way the Notification Manager component, after receiving by
+ the driver the response to a proposed ride request, will only have to update
+ the “busyness flag” of the driver without having to directly communicate
+ it to other components.
+ In general, in all the cases in which the Drivers Model gets updated, it
+ will be the objects of the model itself to notify the Queue Manager (and
+ possibly other components) about the change, and then the Queue Manager
+ will react to the notified change keeping updated and consistent the drivers
+ queue of each city zone, for example by moving the driver from a zone to
+ another if the value of his ‘CityZone’ field has been changed, or adding
+ or removing drivers from queues depending on their availability and busyness
+ status.
+ A detailed description on how the Queue Manager reacts to those events
+ is provided in the following section Design Algorithm, while the interaction
+ between each component and how the Queue Manager is notified by the model
+ is described in the section 2.5 Runtime View.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+come sopra; mi sembra anche abbastanza off topic, cioè mettendo questi link
+ stai facendo sembrare che la sezione sul pattern observer è ridotta a una
+ spiegazione generale del funzionamento queue manager; dunque toglierei
+ io 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Algorithm Design
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Algorithm-Design"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this section we are going to present the most meaningful algorithms that
+ are used by some of the server components to handle the most tricky and
+ nontrivial tasks involved in performing his duties.
+ The algorithms will be presented in the form of pieces of java-like code,
+ properly commented, to be easily understood and at the same time being
+ quite precise, to leave no room for doubts on their behavior.
+ Be aware that, in their actual implementations, the algorithms presented
+ in this section will be implemented in a thread-safe way, while here this
+ aspect of the implementation is not explicitly taken into account.
+\end_layout
+
+\begin_layout Subsection
+Drivers Queues Management
+\end_layout
+
+\begin_layout Standard
+In this subsection we show pieces of code representing the algorithms used
+ to manage the queue of drivers associated to each city zone.
+ All the functions shown here belong to the Queue Manager component, which
+ is the one that handles the task of managing those queues.
+ To understand how they work, keep present that The Queue Manager component
+ observes the Drivers Model using an Observer pattern (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Selected-architectural-styles"
+
+\end_inset
+
+ for more detailed informations) and gets notified every time either the
+ 'availability' or 'busyness' status of a driver is modified, and whenever
+ the driver moves from a city zone to another.
+ So, in general, the following algorithms show how the Queue Manager reacts
+ when a Driver object of the Drivers Model notifies that one of his fields
+ has been changed.
+ Be also aware that, in the Queue Manager, the drivers queue of each city
+ zone is supposed to be stored in a data structure that allows to be accessed
+ also in arbitrary positions, so not only by pushing at the bottom and popping
+ from the top of the queue; this is done to avoid time wasting in some specific
+ situations, that will be explained further on.
+\end_layout
+
+\begin_layout Subsubsection
+The driver has changed his ‘availability’ status
+\end_layout
+
+\begin_layout Standard
+This function is called by the Drivers Model every time the availability
+ status of a driver changes.
+ If the driver becomes “available”, he has to be inserted in the queue of
+ the city zone he is currently in; otherwise, if he has just switched to
+ “unavailable”, he has to be removed from that queue .
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+notifyChangedStatus( Driver driver ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Retrieves the queue in which the driver is currently in
+\end_layout
+
+\begin_layout Plain Layout
+
+   cityZoneQueue = getQueueFromCityZone( driver.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 1: the driver has changed his status from unavailable to available.
+\end_layout
+
+\begin_layout Plain Layout
+
+   //He has to be put at the end of the queue of the city zone he is currently
+ in
+\end_layout
+
+\begin_layout Plain Layout
+
+   if ( driver.getAvailable() == true) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      cityZoneQueue.add( driver );
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 2: the driver has changed his status to unavailable.
+\end_layout
+
+\begin_layout Plain Layout
+
+   //He has to be removed from the queue of the city zone in which he is
+ currently in
+\end_layout
+
+\begin_layout Plain Layout
+
+   else{
+\end_layout
+
+\begin_layout Plain Layout
+
+      cityZoneQueue.remove( driver );
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+The driver has changed his ‘busyness’ status
+\end_layout
+
+\begin_layout Standard
+This function is called when the ‘busyness flag’ of a Driver is set on ‘false’.
+ This means that the driver has just finished answering to a proposed ride
+ request and so, if his status is still on “available” (which in fact means
+ that he has refused the request), he has to be inserted back in the queue
+ of the city zone he is currently in, from which he was popped out (and
+ set on “busy”) when he was forwarded the request.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+notifyNotBusy( Driver driver ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   if( driver.getAvailable() = true && driver.getBusy() == false ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Retrieves the queue of the zone the driver is currently in
+\end_layout
+
+\begin_layout Plain Layout
+
+      cityZoneQueue = getQueueFromCityZone( driver.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Adds the driver at the end of the queue
+\end_layout
+
+\begin_layout Plain Layout
+
+      cityZoneQueue.add( driver );
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+The driver has moved from a city zone to another 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:driver-changes-zone"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This function is called by the Drivers Model every time in which, while
+ updating the position of a driver, it detects that his current city zone
+ has changed.
+ The algorithm is designed to move the driver from the old city zone’s queue
+ to the new one, but only if he is currently “available”, because otherwise
+ the driver won’t be present in any of the drivers queues, since they store
+ only currently available drivers.
+ Furthermore, to avoid a driver who had been “available” for a long time
+ (and was now in the top positions of his zone’s queue) to be put at the
+ bottom of the new queue just because he moved to another zone, and thus
+ to make him start back waiting to climb the queue for no reason, the algorithm
+ is designed to insert him in the new city zone’s queue not at the bottom,
+ but according to his “availability timestamp”, which tells us when was
+ the last time he switched his status on “available”; in this way we avoid
+ time wasting, inserting the driver in the queue as he had always been in
+ that city zone since his last status switch to “available”.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+notifyChangedZone( Driver driver, CityZone previousZone ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   if( driver.getAvailabe() == true ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Removes the driver from the queue of the previous city zone
+\end_layout
+
+\begin_layout Plain Layout
+
+      previousQueue = getQueueFromCityZone( previousZone );
+\end_layout
+
+\begin_layout Plain Layout
+
+      previousQueue.remove( driver );
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      newQueue = getQueueFromCityZone( driver.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Finds the position ‘i’ where the driver has to be placed according
+ to the availability timestamp of the drivers already inside the queue,
+ starting from the top of the queue
+\end_layout
+
+\begin_layout Plain Layout
+
+      int i = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+      while( i < newQueue.size() && newQueue.get(i).getAvailabilityTimestamp()
+ < driver.getAvailabilityTimestamp() ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+         i++;
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Adds the driver at the position ‘i’ inside the queue
+\end_layout
+
+\begin_layout Plain Layout
+
+      newQueue.add( i, driver );
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Requests Management
+\end_layout
+
+\begin_layout Standard
+In this subsection we show the algorithms used by the Request Manager component
+ to handle ride and reservation requests, working together with the Notification
+ Manager to forward those requests and their responses to the drivers and
+ passengers involved.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Ride requests management
+\end_layout
+
+\begin_layout Standard
+This function is called every time a new ride request is received by the
+ system’s server.
+ The algorithm is designed to forward the request to the available drivers
+ of the city zone the request is coming from, starting from the one on the
+ top of the queue, until one accepts it.
+ When this happens, the passenger’s waiting time is estimated and a notification
+ containing also the taxicab ID is sent to him.
+ Otherwise, if there are no available drivers in the city zone where the
+ request comes from, the request is enqueued and waits to be reprocessed
+ as soon as a driver becomes available (in case of queues however, higher
+ priority is given to reprocess enqueued reservations, if there are any
+ (more details in subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Enqueued-requests-handling"
+
+\end_inset
+
+)).
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+handleRideRequest( Ride ride ){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   Driver driver;
+\end_layout
+
+\begin_layout Plain Layout
+
+   boolean driverResponse = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   while( driverResponse == false ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Retrieves the first available driver in the given zone 
+\end_layout
+
+\begin_layout Plain Layout
+
+      driver = QueueManager.getFirstAvailableDriver( ride.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+      //If there are no available drivers, the function will return null
+\end_layout
+
+\begin_layout Plain Layout
+
+      if( driver == null )
+\end_layout
+
+\begin_layout Plain Layout
+
+         break;
+\end_layout
+
+\begin_layout Plain Layout
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Sends to the driver the request and waits for his response
+\end_layout
+
+\begin_layout Plain Layout
+
+      driverResponse = NotificationManager.sendRideRequestToDriver( driver,
+ ride );
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 1: no available drivers were found
+\end_layout
+
+\begin_layout Plain Layout
+
+   if( driverResponse == false ){
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Enqueues the request in a waiting queue so that when the Request
+ Manager is notified that a new driver has become available the request
+ will be reprocessed
+\end_layout
+
+\begin_layout Plain Layout
+
+      addQueuedRideRequest( ride, ride.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 2: a driver has accepted the request
+\end_layout
+
+\begin_layout Plain Layout
+
+   else{
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Notifies the passenger
+\end_layout
+
+\begin_layout Plain Layout
+
+      int waitingTime = MapManager.estimateWaitingTime( driver.getPosition(),
+ ride.getStartingPoint() );
+\end_layout
+
+\begin_layout Plain Layout
+
+      NotificationManager.acceptedRideRequestToPassenger(ride, waitingTime);
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Reservation requests management
+\end_layout
+
+\begin_layout Standard
+This function is called on every reservation 10 minutes before that reserved
+ ride has to be performed.
+ The algorithm sends the request to the first available driver in the queue
+ of the city zone where the ride should start from, and, if there are no
+ available drivers there, to the first available driver in any of the adjacent
+ zones.
+ If still no available driver has been found, the reservation is enqueued
+ and it will be reprocessed as soon as a driver becomes available (see subsectio
+n 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Enqueued-requests-handling"
+
+\end_inset
+
+).
+ However, keep present that this is very unlikely to happen.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+handleReservationRequest( Reservation res ){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   Driver driver;
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Retrieves the first available driver in the given zone
+\end_layout
+
+\begin_layout Plain Layout
+
+   driver = QueueManager.getFirstAvailableDriver( res.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 1.a: there are no available drivers in that zone (the function
+ returns null)
+\end_layout
+
+\begin_layout Plain Layout
+
+   if( driver == null ){
+\end_layout
+
+\begin_layout Plain Layout
+
+      adjacentZones = MapManager.getAdjacentZones( res.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      for( int i = 0; driver == null && i < adjacentZones.size(); i++ ){
+\end_layout
+
+\begin_layout Plain Layout
+
+         driver = QueueManager.getFirstAvailableDriver( adjacentZones.get(i)
+ );
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 1.b: after checking adjacent zones, there are still no available
+ drivers
+\end_layout
+
+\begin_layout Plain Layout
+
+   if( driver == null ){
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Enqueues the request in a waiting queue so that when the RequestManager
+ is notified that a new driver has become available the request will be
+ reprocessed
+\end_layout
+
+\begin_layout Plain Layout
+
+      addQueuedReservationRequest( res, res.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 2: An available driver has been found
+\end_layout
+
+\begin_layout Plain Layout
+
+   if( driver != null ){
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Sends to the driver the request
+\end_layout
+
+\begin_layout Plain Layout
+
+      NotificationManager.sendReservationRequestToDriver(driver, res); 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Notifies the passenger
+\end_layout
+
+\begin_layout Plain Layout
+
+      int waitingTime = MapManager.estimateWaitingTime( driver.getPosition(),
+ res.getStartingPoint() );
+\end_layout
+
+\begin_layout Plain Layout
+
+      NotificationManager.remindReservationToPassenger(res, waitingTime)
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Enqueued requests handling
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Enqueued-requests-handling"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This function is executed whenever a new driver becomes available in a certain
+ city zone.
+ Its role is to check and handle possible enqueued reserved rides first,
+ or rides then, which refer to that city zone, before the new available
+ driver is forwarded any other request.
+ The algorithm checks, starting from the city zone in which the driver has
+ become available and then checking the adjacent zones, if there is any
+ enqueued reserved ride waiting for a driver to be available in those zones;
+ if there is, it will forward the request to the this newly available driver.
+ If there isn’t any enqueued reservation, the algorithm will do the same
+ for enqueued ride requests, but only if they refer exactly to the city
+ zone where this new driver has just become available.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+notifyUpdatedQueue( CityZone zone ){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   boolean driverAssigned = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+   boolean driverResponse = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+   adjacentZones = MapManager.getAdjacentZones( res.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Preparing our city zones set, adding the zone where the driver has
+ become available to the set containing also its adjacent ones 
+\end_layout
+
+\begin_layout Plain Layout
+
+   adjacentZones.add(0, zone);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //retrieving the newly available driver Driver
+\end_layout
+
+\begin_layout Plain Layout
+
+   driver = QueueManager.getFirstAvailableDriver( zone ); 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 1: check for enqueued reserved rides in the set of zones
+\end_layout
+
+\begin_layout Plain Layout
+
+   for( int i = 0; driverAssigned == false && i < adjacentZones.size(); i++
+ ){
+\end_layout
+
+\begin_layout Plain Layout
+
+      //If there is at least one queued reservation waiting for a driver
+ to be available
+\end_layout
+
+\begin_layout Plain Layout
+
+      if( getQueuedReservations( adjacentZones(i) ).size() > 0 ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+         driverAssigned = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+         Reservation res = getQueuedReservations( adjacentZones(i) ).getFirst();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+         //Forwards to the driver the request
+\end_layout
+
+\begin_layout Plain Layout
+
+         NotificationManager.sendReservationRequestToDriver(driver, res);
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+         //Notifies the passenger
+\end_layout
+
+\begin_layout Plain Layout
+
+         int waitingTime = MapManager.estimateWaitingTime( driver.getPosition(),
+ res.getStartingPoint() );
+\end_layout
+
+\begin_layout Plain Layout
+
+         NotificationManager.remindReservationToPassenger(res, waitingTime);
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+   //Case 2: check for enqueued ride requests in the central zone only
+\end_layout
+
+\begin_layout Plain Layout
+
+   //If there is at least one queued ride waiting a driver to be available
+\end_layout
+
+\begin_layout Plain Layout
+
+   if( driverAssigned == false && getQueuedRides( zone ).size() > 0 ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      Ride ride = getQueuedRides( zone ).getFirst(); 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Sends to the driver the request and waits for his response;
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Same as for the usual ride request processing(this below would be
+ a call to that same function, here we just duplicated the code to guarantee
+ a better understanding) 
+\end_layout
+
+\begin_layout Plain Layout
+
+      driverResponse = NotificationManager.sendRideRequestToDriver( driver,
+ ride );
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Case 1: the driver has refused the request
+\end_layout
+
+\begin_layout Plain Layout
+
+      if( driverResponse == false ){
+\end_layout
+
+\begin_layout Plain Layout
+
+         //Enqueues the request in a waiting queue so that when the Request
+ Manager is notified that a new driver has become available the request
+ will be reprocessed
+\end_layout
+
+\begin_layout Plain Layout
+
+         addQueuedRideRequest( ride, ride.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+      //Case 2: the driver has accepted the request
+\end_layout
+
+\begin_layout Plain Layout
+
+      else{
+\end_layout
+
+\begin_layout Plain Layout
+
+         //Notifies the passenger
+\end_layout
+
+\begin_layout Plain Layout
+
+         int waitingTime = MapManager.estimateWaitingTime( driver.getPosition(),
+ ride.getStartingPoint() );
+\end_layout
+
+\begin_layout Plain Layout
+
+         NotificationManager.acceptedRideRequestToPassenger(ride, waitingTime);
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+User Interface Design
+\end_layout
+
+\begin_layout Standard
+In this section we present some User Experience diagrams that show which
+ screens should be shown to the user and what kind of information the user
+ should provide in order to achieve a specific task.
+ Please refer to the RASD document for a more detailed specification on
+ how the more relevant screens presented in the following diagrams should
+ look like.
+\end_layout
+
+\begin_layout Subsection
+Passenger user application interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/PassengerUXDiagram.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Driver user application interface
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagrams/DriverUXDiagram.png
+	width 13cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Requirements Traceability 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Requirements-Traceability"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+\end_layout
+
+\begin_layout Section
+References
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:References"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Softwares and tools used
+\end_layout
+
+\begin_layout Standard
+Google Docs (docs.google.com): to redact the document Lyx (lyx.org): to format
+ the document StarUML (staruml.io): to create Class Diagrams, Sequence Diagrams
+ and UX Diagrams Draw.io (draw.io): to create ER diagram and Tier diagram
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Subsection
+Hours of work
+\end_layout
+
+\begin_layout Standard
+Here is how long it took to redact this document:
+\end_layout
+
+\begin_layout Itemize
+Matteo Bulloni: ~ #### hours
+\end_layout
+
+\begin_layout Itemize
+Marco Cannici: ~ #### hours 
+\end_layout
+
+\end_body
+\end_document
