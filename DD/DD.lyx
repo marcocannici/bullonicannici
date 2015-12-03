@@ -459,7 +459,23 @@ textbf{ER Diagram}
 
 \end_inset
 
-: Entity-Relationship Diagramd DBMS: Database Management System
+: Entity-Relationship Diagramd
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{DBMS}
+\end_layout
+
+\end_inset
+
+: Database Management System
 \end_layout
 
 \begin_layout Itemize
@@ -1286,7 +1302,7 @@ Interacts With
 \end_layout
 
 \begin_layout Paragraph
-2.3.1.3 Client Input Validator 
+2.3.1.3 Client Manager 
 \begin_inset ERT
 status open
 
