@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -38,15 +38,24 @@
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -293,27 +302,59 @@ Definitions
 \end_layout
 
 \begin_layout Description
-Availability
-\begin_inset space ~
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protected
+\backslash
+hypertarget{availability-status}{Availability Status}
+\end_layout
+
 \end_inset
 
-Status: represents the current status of a logged in driver user: “available”
+: represents the current status of a logged in driver user: “available”
  to be forwarded and handle new requests, or “unavailable” if already busy
  or just not currently able to deal with new ride or reservation requests.
 \end_layout
 
 \begin_layout Description
-Availability
-\begin_inset space ~
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protected
+\backslash
+hypertarget{availability-timestamp}{Availability Timestamp}
+\end_layout
+
 \end_inset
 
-Timestamp: attribute of the Driver objects stored in the Drivers Model,
- it represents the timestamp of the last status switch of that driver user
- from “unavailable” to “available”.
- It is written by the system itself every time a driver changes his availability
- status to “available”, and it is used to deal in a clever way with the
- possibility of an available driver moving from one city zone to another
- (see section 
+: attribute of the Driver objects stored in the Drivers Model, it represents
+ the timestamp of the last status switch of that driver user from “unavailable”
+ to “available”.
+ It is written by the system itself every time a driver changes his 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{availability-status}{availability status}
+\end_layout
+
+\end_inset
+
+ to “available”, and it is used to deal in a clever way with the possibility
+ of an available driver moving from one city zone to another (see section
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:driver-changes-zone"
@@ -324,12 +365,22 @@ reference "sub:driver-changes-zone"
 \end_layout
 
 \begin_layout Description
-Busyness
-\begin_inset space ~
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protected
+\backslash
+hypertarget{busyness-flag}{Busyness flag}
+\end_layout
+
 \end_inset
 
-flag: attribute of the Driver objects stored in the Drivers Model, it is
- a boolean value which can be set on “busy” (true) or “not busy” (false).
+: attribute of the Driver objects stored in the Drivers Model, it is a boolean
+ value which can be set on “busy” (true) or “not busy” (false).
  This flag is set on “busy” whenever a driver user is forwarded a ride or
  reservation request from the system, and it remains like that for all the
  time the driver is dealing with answering the request, deciding if to accept
@@ -832,6 +883,7 @@ reference "sec:Requirements-Traceability"
 \end_layout
 
 \begin_layout Subsubsection
+\noindent
 Logic Tier
 \begin_inset CommandInset label
 LatexCommand label
@@ -843,6 +895,7 @@ name "sub:Logic-Tier"
 \end_layout
 
 \begin_layout Paragraph
+\noindent
 2.3.1.1 Components Overview
 \begin_inset ERT
 status open
@@ -853,7 +906,7 @@ status open
 \backslash
 
 \backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -862,6 +915,7 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
 Here we present a diagram that aims to provide an overview of the structure
  of the system’s logic tier, i.e.
  the system’s server, showing his components and their interactions.
@@ -916,7 +970,7 @@ status open
 \backslash
 
 \backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -973,7 +1027,7 @@ status open
 \backslash
 
 \backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -1022,25 +1076,14 @@ The server tier of the application is structured as shown in the diagram
  versa, and to map GPS coordinates into the corresponding city zone.
  Given this general perspective on the system’s composition and behavior,
  here follows the detailed description of each component.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
 2.3.1.2 Specific Components Descriptions
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph
@@ -1054,11 +1097,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -1069,15 +1108,29 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle" tabularwidth="12.5cm">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle" tabularwidth="12.5cm">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Drivers Model
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{drivers-model}{Drivers Model}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1148,35 +1201,51 @@ Current ride
 \end_layout
 
 \begin_layout Itemize
-Availability Status
-\end_layout
-
-\begin_layout Itemize
-Availability timestamp (
-\begin_inset Note Note
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-see glossario?
+
+
+\backslash
+hyperlink{availability-status}{Availability Status}
 \end_layout
 
 \end_inset
 
-)
+
 \end_layout
 
 \begin_layout Itemize
-Busyness flag (
-\begin_inset Note Note
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-see glossario?
+
+
+\backslash
+hyperlink{availability-timestamp}{Availability timestamp}
 \end_layout
 
 \end_inset
 
-)
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{busyness-flag}{Busyness flag}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1187,6 +1256,8 @@ see glossario?
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\backslash
 Interacts With
 \end_layout
 
@@ -1196,7 +1267,7 @@ Interacts With
 \begin_inset Text
 
 \begin_layout Plain Layout
-(in a passive way of course) User Manager, Driver Manager, Queue Manager,
+(in a passive way of course) Account Manager, Driver Manager, Queue Manager,
  Notification Manager 
 \end_layout
 
@@ -1205,6 +1276,10 @@ Interacts With
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1221,11 +1296,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -1236,15 +1307,29 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Client Manager
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{client-manager}{Client Manager}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1308,9 +1393,21 @@ Handles the communication from server to clients, retrieving the informations
 \end_layout
 
 \begin_layout Itemize
-Checks every client’s request and provided data through the Client Input
- Validator, verifying their correctness and harmlessness before forwarding
- them to the server’s internal components 
+Checks every client’s request and provided data through the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{client-input-validator}{Client Input Validator}
+\end_layout
+
+\end_inset
+
+, verifying their correctness and harmlessness before forwarding them to
+ the server’s internal components 
 \end_layout
 
 \end_inset
@@ -1342,6 +1439,10 @@ Clients, Client Input Validator, Account Manager, Request Manager, Notification
 \end_inset
 
 
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -1355,11 +1456,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -1370,15 +1467,29 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Client Input Validator
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{client-input-validator}{Client Input Validator}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1462,7 +1573,7 @@ Interacts With
 \begin_inset Text
 
 \begin_layout Plain Layout
-User Manager, Request Manager, Notification Manager 
+Account Manager, Request Manager, Notification Manager 
 \end_layout
 
 \end_inset
@@ -1486,11 +1597,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -1501,15 +1608,29 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Account Manager 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{account-manager}{Account Manager}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1608,6 +1729,10 @@ Client Input Validator, DBMS, Drivers Model
 \end_inset
 
 
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -1621,11 +1746,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -1636,15 +1757,29 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Driver Manager
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{driver-manager}{Driver Manager}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1696,12 +1831,15 @@ Tasks Performed
 \begin_layout Itemize
 Periodically checks and updates the location of all the currently available
  drivers, using informations coming from the GPS modules present on taxicabs
- and elaborating them through the Map Manager
-\begin_inset Note Note
+ and elaborating them through the 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-(link)
+
+
+\backslash
+hyperlink{map-manager}{Map Manager}
 \end_layout
 
 \end_inset
@@ -1712,18 +1850,80 @@ status open
 \begin_layout Itemize
 When a driver object is set on “busy”, immediately retrieves and updates
  his location, to allow a more precise waiting time estimation Keeps updated
- each driver’s availability status in the model, also writing the Availability
- Timestamp when a driver’s status is switched on “available”
+ each driver’s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{availability-status}{availability status}
+\end_layout
+
+\end_inset
+
+ in the model, also writing the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{availability-timestamp}{Availability Timestamp}
+\end_layout
+
+\end_inset
+
+ when a driver’s status is switched on “available”
 \end_layout
 
 \begin_layout Itemize
 Whenever a driver reports he has completed a ride, retrieves the pointer
- to the ride from the Drivers Model, updates the ride’s state (depending
- on if the driver communicated “ride terminated” or “missing client”) and
- takes care of storing it into the central database, associated to the driver
- that performed it.
- Then, empties the Current Ride field of the driver in the Drivers Model
- and sets back its status on “available”, writing the Availability Timestamp.
+ to the ride from the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{drivers-model}{Drivers Model}
+\end_layout
+
+\end_inset
+
+, updates the ride’s state (depending on if the driver communicated “ride
+ terminated” or “missing client”) and takes care of storing it into the
+ central database, associated to the driver that performed it.
+ Then, empties the Current Ride field of the driver in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{drivers-model}{Drivers Model}
+\end_layout
+
+\end_inset
+
+ and sets back its status on “available”, writing the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{availability-timestamp}{Availability Timestamp}
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -1755,6 +1955,10 @@ Driver Application Clients, Drivers Model, DBMS
 \end_inset
 
 
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -1768,11 +1972,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -1783,15 +1983,29 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Queue Manager
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{queue-manager}{Queue Manager}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1864,7 +2078,20 @@ Removes drivers who switch to “unavailable” from the queue they were current
 \begin_layout Itemize
 Moves drivers who move from one city zone to another (while being on “available”
  status) from that zone’s queue to the new one, inserting them not at the
- bottom, but basing on their Availability Timestamp 
+ bottom, but basing on their 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{availability-timestamp}{Availability Timestamp}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1895,6 +2122,10 @@ Request Manager, Drivers Model
 \end_inset
 
 
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -1908,11 +2139,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -1921,17 +2148,32 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="12.5cm">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Request Manager
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{request-manager}{Request Manager}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1967,7 +2209,7 @@ Handle incoming ride and reservation requests
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1976,7 +2218,7 @@ Tasks Performed
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Itemize
@@ -2021,6 +2263,49 @@ Processes reservation requests, first storing them when they are accepted,
 lly and fastly, and virtually never put in waiting queues
 \end_layout
 
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+indent
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="9cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
 \begin_layout Itemize
 After a ride or reservation request is accepted by a driver, sends through
  the Notification Manager a confirmation to the user who had made the request,
@@ -2037,7 +2322,26 @@ After a ride or reservation request is accepted by a driver, sends through
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
 Interacts With
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2077,11 +2381,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -2092,15 +2392,29 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="12.5cm">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Map Manager
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{map-manager}{Map Manager}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2202,6 +2516,10 @@ Interacts With
 \end_inset
 
 
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -2215,11 +2533,7 @@ status open
 \backslash
 
 \backslash
-
-\backslash
-
-\backslash
-
+[0.3cm]
 \end_layout
 
 \end_inset
@@ -2230,15 +2544,29 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Notification Manager
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+hypertarget{notification-manager}{Notification Manager}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2322,7 +2650,7 @@ ons
 status open
 
 \begin_layout Plain Layout
-(glossario tutte)
+(glossario tutte) cosa vuol dire????
 \end_layout
 
 \end_inset
@@ -2517,6 +2845,7 @@ reference "sec:Algorithm-Design"
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Graphics
 	filename Diagrams/RideRequest.png
 	width 13cm
@@ -2541,7 +2870,7 @@ status open
 
 \begin_inset Graphics
 	filename Diagrams/BusyNotifyObservers.png
-	width 13cm
+	width 9cm
 
 \end_inset
 
@@ -2572,6 +2901,7 @@ status open
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Graphics
 	filename Diagrams/ReservastionRequest.png
 	width 13cm
@@ -2864,14 +3194,39 @@ To handle interactions among the internal components of the server, and
  of each component of the system, and to allow a correct application of
  the MVC pattern principles.
  To give an example, the Driver Manager component will only deal with keeping
- updated in the Drivers Model the position and the availability status of
- each driver, without having to directly notify the other components that
- something has been changed; being observers of the Driver objects in fact,
- they will automatically be notified about the update, and react consequently.
+ updated in the Drivers Model the position and the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{availability-status}{availability status}
+\end_layout
+
+\end_inset
+
+ of each driver, without having to directly notify the other components
+ that something has been changed; being observers of the Driver objects
+ in fact, they will automatically be notified about the update, and react
+ consequently.
  In the same way the Notification Manager component, after receiving by
  the driver the response to a proposed ride request, will only have to update
- the “busyness flag” of the driver without having to directly communicate
- it to other components.
+ the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{busyness-flag}{"busyness flag"}
+\end_layout
+
+\end_inset
+
+ of the driver without having to directly communicate it to other components.
  In general, in all the cases in which the Drivers Model gets updated, it
  will be the objects of the model itself to notify the Queue Manager (and
  possibly other components) about the change, and then the Queue Manager
@@ -2941,8 +3296,20 @@ The driver has changed his ‘availability’ status
 \end_layout
 
 \begin_layout Standard
-This function is called by the Drivers Model every time the availability
- status of a driver changes.
+This function is called by the Drivers Model every time the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{availability-status}{availability status}
+\end_layout
+
+\end_inset
+
+ of a driver changes.
  If the driver becomes “available”, he has to be inserted in the queue of
  the city zone he is currently in; otherwise, if he has just switched to
  “unavailable”, he has to be removed from that queue .
@@ -3044,7 +3411,20 @@ The driver has changed his ‘busyness’ status
 \end_layout
 
 \begin_layout Standard
-This function is called when the ‘busyness flag’ of a Driver is set on ‘false’.
+This function is called when the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{busyness-flag}{'busyness flag'}
+\end_layout
+
+\end_inset
+
+ of a Driver is set on ‘false’.
  This means that the driver has just finished answering to a proposed ride
  request and so, if his status is still on “available” (which in fact means
  that he has refused the request), he has to be inserted back in the queue
@@ -3135,10 +3515,23 @@ This function is called by the Drivers Model every time in which, while
  bottom of the new queue just because he moved to another zone, and thus
  to make him start back waiting to climb the queue for no reason, the algorithm
  is designed to insert him in the new city zone’s queue not at the bottom,
- but according to his “availability timestamp”, which tells us when was
- the last time he switched his status on “available”; in this way we avoid
- time wasting, inserting the driver in the queue as he had always been in
- that city zone since his last status switch to “available”.
+ but according to his 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{availability-timestamp}{"availability timestamp"}
+\end_layout
+
+\end_inset
+
+, which tells us when was the last time he switched his status on “available”;
+ in this way we avoid time wasting, inserting the driver in the queue as
+ he had always been in that city zone since his last status switch to “available
+”.
 \end_layout
 
 \begin_layout Standard
@@ -3921,6 +4314,10 @@ notifyUpdatedQueue( CityZone zone ){
 }
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newpage pagebreak
 \end_inset
 
 
