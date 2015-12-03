@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -17,13 +17,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -43,15 +43,24 @@
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -209,6 +218,21 @@ status open
 \end_layout
 
 \begin_layout Author
+version 2.0
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
 Matteo Bulloni (852676), Marco Cannici (852527)
 \end_layout
 
@@ -1283,6 +1307,10 @@ Abbreviations
 
 \begin_layout Itemize
 [Gn]: n-goal 
+\end_layout
+
+\begin_layout Itemize
+[FRn]: n-functional requirement
 \end_layout
 
 \begin_layout Itemize
@@ -2671,16 +2699,18 @@ hyperlink{[G1]}{[G1]}
 
 \begin_deeper
 \begin_layout Itemize
-The application shall provide a registration functionality on its main page;
+[FR 1.1] The application shall provide a registration functionality on its
+ main page;
 \end_layout
 
 \begin_layout Itemize
-The registration process shall request the guest to insert a username, a
- password and an email address; 
+[FR 1.2] The registration process shall request the guest to insert a username,
+ a password and an email address; 
 \end_layout
 
 \begin_layout Itemize
-The system shall check the validity of such provided informations (see 
+[FR 1.3] The system shall check the validity of such provided informations
+ (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Security"
@@ -2693,9 +2723,9 @@ reference "sub:Security"
 \end_layout
 
 \begin_layout Itemize
-If the provided informations are valid, the system shall generate and send
- a registration confirmation email to the user, to be used to effectively
- activate the new account; 
+[FR 1.4] If the provided informations are valid, the system shall generate
+ and send a registration confirmation email to the user, to be used to effective
+ly activate the new account; 
 \end_layout
 
 \end_deeper
@@ -2735,25 +2765,26 @@ hyperlink{[G2]}{[G2]}
 
 \begin_deeper
 \begin_layout Itemize
-The application shall provide a login functionality for passenger users
- on its main page, allowing to login by typing username and password; 
+[FR 2.1] The application shall provide a login functionality for passenger
+ users on its main page, allowing to login by typing username and password;
+ 
 \end_layout
 
 \begin_layout Itemize
-After successfully completing the login, the user shall be displayed his
- home page; 
+[FR 2.3] After successfully completing the login, the user shall be displayed
+ his home page; 
 \end_layout
 
 \begin_layout Itemize
-The application shall provide a logout functionality on the user’s home
- page, accessible from the menu that opens by clicking on the “user account”
- visual icon (top right of the user’s home page); 
+[FR 2.4] The application shall provide a logout functionality on the user’s
+ home page, accessible from the menu that opens by clicking on the “user
+ account” visual icon (top right of the user’s home page); 
 \end_layout
 
 \begin_layout Itemize
-On the mobile application for passenger users, the user shall not have to
- perform the login again after the first time: the application shall keep
- him logged in later on, even after being closed.
+[FR 2.5] On the mobile application for passenger users, the user shall not
+ have to perform the login again after the first time: the application shall
+ keep him logged in later on, even after being closed.
  This unless the user actually performs a logout;
 \end_layout
 
@@ -2777,31 +2808,31 @@ hyperlink{[G3]}{[G3]}
 
 \begin_deeper
 \begin_layout Itemize
-The user shall be able to access the “ride request” screen interface from
- his home page; 
+[FR 3.1] The user shall be able to access the “ride request” screen interface
+ from his home page; 
 \end_layout
 
 \begin_layout Itemize
-In the “ride request” screen, the application shall allow the user to send
- a ride request, specifying the position where he wants to be picked up
- by typing it into a box or selecting it on the city’s map; 
+[FR 3.2] In the “ride request” screen, the application shall allow the user
+ to send a ride request, specifying the position where he wants to be picked
+ up by typing it into a box or selecting it on the city’s map; 
 \end_layout
 
 \begin_layout Itemize
-The user’s position when requesting a ride shall be set by default as the
- one provided by his GPS module, if there is one on the device he is currently
- using; 
+[FR 3.3] The user’s position when requesting a ride shall be set by default
+ as the one provided by his GPS module, if there is one on the device he
+ is currently using; 
 \end_layout
 
 \begin_layout Itemize
-The system shall check that the provided position is valid (an existing
+[FR 3.4] The system shall check that the provided position is valid (an existing
  address or coordinate if typed in by hand) and inside the area in which
  the system is available, and ask to select it again if it is not; 
 \end_layout
 
 \begin_layout Itemize
-The system shall prevent the user to send multiple ride requests: if the
- user has already requested a ride in the short past, that functionality
+[FR 3.5] The system shall prevent the user to send multiple ride requests:
+ if the user has already requested a ride in the short past, that functionality
  shall be disabled until the current request is answered and completed;
  
 \end_layout
@@ -2826,8 +2857,8 @@ hyperlink{[G4]}{[G4]}
 
 \begin_deeper
 \begin_layout Itemize
-After sending a ride request, in case of a lack of available taxis, the
- system shall immediately notify the user he has been put into a waiting
+[FR 4.1] After sending a ride request, in case of a lack of available taxis,
+ the system shall immediately notify the user he has been put into a waiting
  queue, showing a notification with the estimated waiting time for a taxi
  to free up; thus the user shall be asked to further confirm the request
  if he can wait a little, or to cancel it; 
@@ -2835,14 +2866,14 @@ After sending a ride request, in case of a lack of available taxis, the
 
 \begin_deeper
 \begin_layout Itemize
-If the user confirms, or equally if the system didn’t detect a lack of available
- taxis at the beginning, he shall be told to wait until a new notification
- comes; 
+[FR 4.1.1] If the user confirms, or equally if the system didn’t detect a
+ lack of available taxis at the beginning, he shall be told to wait until
+ a new notification comes; 
 \end_layout
 
 \begin_layout Itemize
-If the user doesn’t provide an answer until a fixed limited amount of time
- (30 seconds, as assumed in 
+[FR 4.1.2] If the user doesn’t provide an answer until a fixed limited amount
+ of time (30 seconds, as assumed in 
 \begin_inset ERT
 status open
 
@@ -2860,17 +2891,17 @@ hyperlink{[AS15]}{[AS15]}
 
 \end_deeper
 \begin_layout Itemize
-As soon as the sent request is accepted by a driver, the user shall receive
- and be shown a popup notification confirming that the request has been
- accepted, and showing the incoming taxi code and estimated waiting time;
- 
+[FR 4.2] As soon as the sent request is accepted by a driver, the user shall
+ receive and be shown a popup notification confirming that the request has
+ been accepted, and showing the incoming taxi code and estimated waiting
+ time; 
 \end_layout
 
 \begin_layout Itemize
-On the mobile application, the notifications described above shall be shown
- as popup windows on the phone’s screen even if the application is closed
- when they are received (only if the user had already logged in through
- the application of course);
+[FR 4.3] On the mobile application, the notifications described above shall
+ be shown as popup windows on the phone’s screen even if the application
+ is closed when they are received (only if the user had already logged in
+ through the application of course);
 \end_layout
 
 \end_deeper
@@ -2893,14 +2924,15 @@ hyperlink{[G5]}{[G5]}
 
 \begin_deeper
 \begin_layout Itemize
-The user shall be able to access the “ride reservation” screen interface
+[FR 5.1] The user shall be able to access the “ride reservation” screen interface
  from his home page; 
 \end_layout
 
 \begin_layout Itemize
-In the “ride reservation” screen, the application shall allow the user to
- send a ride reservation request, asking him to specify the origin and destinati
-on of the ride (to be specified in the same way as described above for 
+[FR 5.2] In the “ride reservation” screen, the application shall allow the
+ user to send a ride reservation request, asking him to specify the origin
+ and destination of the ride (to be specified in the same way as described
+ above for 
 \begin_inset ERT
 status open
 
@@ -2917,15 +2949,15 @@ hyperlink{[G3]}{[G3]}
 \end_layout
 
 \begin_layout Itemize
-Time and date shall be selected from a popup box allowing to select consistent
- inputs only (i.e.
+[FR 5.3] Time and date shall be selected from a popup box allowing to select
+ consistent inputs only (i.e.
  not a date in the past or on a not existing day); 
 \end_layout
 
 \begin_layout Itemize
-The system shall check that the provided origin and destination locations
- are valid and inside the area in which the system is available, and ask
- to select them again if they are not; 
+[FR 5.4] The system shall check that the provided origin and destination
+ locations are valid and inside the area in which the system is available,
+ and ask to select them again if they are not; 
 \end_layout
 
 \end_deeper
@@ -2948,8 +2980,8 @@ hyperlink{[G6]}{[G6]}
 
 \begin_deeper
 \begin_layout Itemize
-A popup notification shall be shown right after the reservation request
- is sent, telling if it has been accepted or not; 
+[FR 6.1] A popup notification shall be shown right after the reservation
+ request is sent, telling if it has been accepted or not; 
 \end_layout
 
 \end_deeper
@@ -2972,10 +3004,10 @@ hyperlink{[G7]}{[G7]}
 
 \begin_deeper
 \begin_layout Itemize
-Ten minutes before a reserved ride has to be performed, the user shall receive
- and be shown a reminder notification if he is logged into the web or mobile
- application in that moment (the mobile app always keeps the user logged
- in, as described in the last requirement of 
+[FR 7.1] Ten minutes before a reserved ride has to be performed, the user
+ shall receive and be shown a reminder notification if he is logged into
+ the web or mobile application in that moment (the mobile app always keeps
+ the user logged in, as described in the last requirement of 
 \begin_inset ERT
 status open
 
@@ -2992,10 +3024,10 @@ hyperlink{[G2]}{[G2]}
 \end_layout
 
 \begin_layout Itemize
-On the mobile application, this reservation reminder notification above
- shall be shown as popup window on the phone’s screen even if the application
- is closed when it is received (only if the user had already logged in through
- the application of course); 
+[FR 7.2] On the mobile application, this reservation reminder notification
+ above shall be shown as popup window on the phone’s screen even if the
+ application is closed when it is received (only if the user had already
+ logged in through the application of course); 
 \end_layout
 
 \end_deeper
@@ -3017,36 +3049,36 @@ hyperlink{[G8]}{[G8]}
 
 \begin_deeper
 \begin_layout Itemize
-The user shall be able to view his ride reservation history on a dedicated
- screen, accessible from his home page; 
+[FR 8.1] The user shall be able to view his ride reservation history on a
+ dedicated screen, accessible from his home page; 
 \end_layout
 
 \begin_layout Itemize
-The history shall display all the reservations made by the user and accepted
- by the system that will be performed in the future, and the ones that have
- been completed in the last month; 
+[FR 8.2] The history shall display all the reservations made by the user
+ and accepted by the system that will be performed in the future, and the
+ ones that have been completed in the last month; 
 \end_layout
 
 \begin_layout Itemize
-The history shall be displayed divided into already performed and not yet
- performed rides: 
+[FR 8.3] The history shall be displayed divided into already performed and
+ not yet performed rides: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Not yet performed reservations shall be displayed from the closest to happen
- to the farthest; 
+[FR 8.3.1] Not yet performed reservations shall be displayed from the closest
+ to happen to the farthest; 
 \end_layout
 
 \begin_layout Itemize
-Already performed rides shall be displayed from the last one performed to
- the oldest one; 
+[FR 8.3.2] Already performed rides shall be displayed from the last one performed
+ to the oldest one; 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-By clicking on a not yet performed reservation, all the ride details shall
- be shown; 
+[FR 8.4] By clicking on a not yet performed reservation, all the ride details
+ shall be shown; 
 \end_layout
 
 \end_deeper
@@ -3069,9 +3101,9 @@ hyperlink{[G9]}{[G9]}
 
 \begin_deeper
 \begin_layout Itemize
-Besides each not yet performed reservation there shall be a “delete” button
- (appears by sliding with the finger from right to left on the reservation
- in the mobile application), which allows to delete that reservation (asking
+[FR 9.1] Besides each not yet performed reservation there shall be a “delete”
+ button (appears by sliding with the finger from right to left on the reservatio
+n in the mobile application), which allows to delete that reservation (asking
  further confirmation before completing the cancellation); this functionality
  shall be available only until 1 hour before the reserved ride has to be
  performed; 
@@ -3097,14 +3129,15 @@ hyperlink{[G10]}{[G10]}
 
 \begin_deeper
 \begin_layout Itemize
-The user shall be able to view his profile informations; this shall be done
- by opening the “user account” menu through the visual icon on the top right
- of his home page and by selecting “view profile”; 
+[FR 10.1] The user shall be able to view his profile informations; this shall
+ be done by opening the “user account” menu through the visual icon on the
+ top right of his home page and by selecting “view profile”; 
 \end_layout
 
 \begin_layout Itemize
-On the “view profile” screen, the user shall be able to modify his password
- and e-mail address (provided that he provides new valid ones); 
+[FR 10.2] On the “view profile” screen, the user shall be able to modify
+ his password and e-mail address (provided that he provides new valid ones);
+ 
 \end_layout
 
 \end_deeper
@@ -3144,8 +3177,8 @@ hyperlink{[G11]}{[G11]}
 
 \begin_deeper
 \begin_layout Itemize
-The application shall allow the driver user to log into the system from
- the main page, by inserting its driver ID and password; 
+[FR 11.1] The application shall allow the driver user to log into the system
+ from the main page, by inserting its driver ID and password; 
 \end_layout
 
 \end_deeper
@@ -3168,14 +3201,14 @@ hyperlink{[G12]}{[G12]}
 
 \begin_deeper
 \begin_layout Itemize
-On the user’s home page, the application shall allow the driver to inform
- the system when he is in “available” or “unavailable” state, by simply
- sliding with a finger on a switch between the two states; 
+[FR 12.1] On the user’s home page, the application shall allow the driver
+ to inform the system when he is in “available” or “unavailable” state,
+ by simply sliding with a finger on a switch between the two states; 
 \end_layout
 
 \begin_layout Itemize
-The switch shall be set on “unavailable” by default right after the user
- has logged in; 
+[FR 12.2] The switch shall be set on “unavailable” by default right after
+ the user has logged in; 
 \end_layout
 
 \end_deeper
@@ -3198,9 +3231,9 @@ hyperlink{[G13]}{[G13]}
 
 \begin_deeper
 \begin_layout Itemize
-The application shall notify the driver that the system has assigned him
- a ride or a reservation through a popup window, showing the ride’s starting
- point; 
+[FR 13.1] The application shall notify the driver that the system has assigned
+ him a ride or a reservation through a popup window, showing the ride’s
+ starting point; 
 \end_layout
 
 \end_deeper
@@ -3223,9 +3256,9 @@ hyperlink{[G14]}{[G14]}
 
 \begin_deeper
 \begin_layout Itemize
-When a ride request is displayed, the application shall ask the driver to
- accept or refuse the assigned ride, giving a fixed limited amount of time
- to answer (10 seconds, as specified in 
+[FR 14.1] When a ride request is displayed, the application shall ask the
+ driver to accept or refuse the assigned ride, giving a fixed limited amount
+ of time to answer (10 seconds, as specified in 
 \begin_inset ERT
 status open
 
@@ -3242,15 +3275,16 @@ hyperlink{[AS9]}{[AS9]}
 \end_layout
 
 \begin_layout Itemize
-If the driver accepts the request, his state shall automatically be set
- on “unavailable”, the screen shall switch to the taxi’s navigation system
- application and his destination shall be displayed; 
+[FR 14.2] If the driver accepts the request, his state shall automatically
+ be set on “unavailable”, the screen shall switch to the taxi’s navigation
+ system application and his destination shall be displayed; 
 \end_layout
 
 \begin_layout Itemize
-If the driver refuses the request or doesn’t provide an answer within the
- given time, the system shall consider the request as refused and close
- the popup window, keeping the driver’s state on “available”; 
+[FR 14.3] If the driver refuses the request or doesn’t provide an answer
+ within the given time, the system shall consider the request as refused
+ and close the popup window, keeping the driver’s state on “available”;
+ 
 \end_layout
 
 \end_deeper
@@ -3273,15 +3307,15 @@ hyperlink{[G15]}{[G15]}
 
 \begin_deeper
 \begin_layout Itemize
-When a reserved ride request is assigned to the driver by the system, a
- popup window shall be shown 10 minutes in advance, showing the reservation
+[FR 15.1] When a reserved ride request is assigned to the driver by the system,
+ a popup window shall be shown 10 minutes in advance, showing the reservation
  details; 
 \end_layout
 
 \begin_layout Itemize
-Since this request can’t be refused, after the driver accepts it the screen
- shall switch to the navigation system application, and the origin and destinati
-on of the ride shall be displayed on the map;
+[FR 15.2] Since this request can’t be refused, after the driver accepts it
+ the screen shall switch to the navigation system application, and the origin
+ and destination of the ride shall be displayed on the map;
 \end_layout
 
 \end_deeper
@@ -3304,15 +3338,15 @@ hyperlink{[G16]}{[G16]}
 
 \begin_deeper
 \begin_layout Itemize
-When a ride or reserved ride request is accepted by the driver user, the
- “terminate ride” and “missing client” buttons shall become available on
- his application’s main page; 
+[FR 16.1] When a ride or reserved ride request is accepted by the driver
+ user, the “terminate ride” and “missing client” buttons shall become available
+ on his application’s main page; 
 \end_layout
 
 \begin_layout Itemize
-After tapping on one of the buttons (used to end a ride), the application
- shall communicate to the system that the current ride has ended, and the
- user’s status shall be automatically set back to “available”; 
+[FR 16.2] After tapping on one of the buttons (used to end a ride), the applicati
+on shall communicate to the system that the current ride has ended, and
+ the user’s status shall be automatically set back to “available”; 
 \end_layout
 
 \end_deeper
@@ -3342,7 +3376,7 @@ status open
 
 
 \backslash
-hyperlink{[G16]}{[G16]}
+hyperlink{[G17]}{[G17]}
 \end_layout
 
 \end_inset
@@ -3353,8 +3387,8 @@ hyperlink{[G16]}{[G16]}
 
 \begin_deeper
 \begin_layout Itemize
-The administrator interface shall be accessible by logging in from myTaxiService
- web application only (as stated in 
+[FR 17.1] The administrator interface shall be accessible by logging in from
+ myTaxiService web application only (as stated in 
 \begin_inset ERT
 status open
 
@@ -3371,29 +3405,29 @@ hyperlink{[AS16]}{[AS16]}
 \end_layout
 
 \begin_layout Itemize
-The administrator interface shall allow him to create new passenger users
- providing a valid username, password and email;
+[FR 17.2] The administrator interface shall allow him to create new passenger
+ users providing a valid username, password and email;
 \end_layout
 
 \begin_layout Itemize
-The interface shall allow him to create new administrator users providing
- a valid username and a password; 
+[FR 17.3] The interface shall allow him to create new administrator users
+ providing a valid username and a password; 
 \end_layout
 
 \begin_layout Itemize
-The interface shall allow him to create new driver users providing a valid
- driver ID as a username and a password; 
+[FR 17.4] The interface shall allow him to create new driver users providing
+ a valid driver ID as a username and a password; 
 \end_layout
 
 \begin_layout Itemize
-The interface shall allow him to formulate queries searching for existing
- users, displaying the results in a “query result” screen; 
+[FR 17.5] The interface shall allow him to formulate queries searching for
+ existing users, displaying the results in a “query result” screen; 
 \end_layout
 
 \begin_layout Itemize
-The interface of the “query result” screen shall allow him to delete any
- user (either admin, driver or passenger) and to edit any user’s information;
- 
+[FR 17.6] The interface of the “query result” screen shall allow him to delete
+ any user (either admin, driver or passenger) and to edit any user’s information
+; 
 \end_layout
 
 \end_deeper
@@ -3905,8 +3939,8 @@ Guest registers to myTaxiService
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -4131,8 +4165,8 @@ User logs in
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -4351,8 +4385,8 @@ Passenger user requests a ride
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -4570,8 +4604,8 @@ Passenger user requests a reservation
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -4767,8 +4801,8 @@ Passenger user deletes a reservation
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -4986,8 +5020,8 @@ Passenger user receives a ride confirmation notification
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5162,8 +5196,8 @@ Driver user receives a ride request notification
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5352,8 +5386,8 @@ Passenger user receives a reservation reminder notification
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5529,8 +5563,8 @@ Driver user receives a reservation request notification
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5715,8 +5749,8 @@ Driver user changes his status
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
@@ -5891,8 +5925,8 @@ Driver user completes the current ride
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="10cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
