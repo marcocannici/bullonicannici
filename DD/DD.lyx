@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -38,24 +38,15 @@
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -410,6 +401,8 @@ status open
 
 \begin_layout Plain Layout
 
+
+\backslash
 textbf{ER Diagram}
 \end_layout
 
@@ -460,7 +453,85 @@ Document Structure
 \end_layout
 
 \begin_layout Standard
-AAA
+The document will be divided into the following main sections:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Architectural Design}
+\end_layout
+
+\end_inset
+
+: here we will present the n-tier division of the system and their deployment
+ among physical devices.
+ We will then give an insight on the single components of each tier, showing
+ how they interface and interact, providing also examples and diagrams to
+ better understand the components’ behavior at runtime.
+ Finally, we will discuss and explain the architectural styles and patterns
+ chosen in designing the system; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Algorithm Design}
+\end_layout
+
+\end_inset
+
+: in this section we will present the most meaningful and less trivial algorithm
+s that are used by the system to perform some of its duties, to clarify
+ in detail how the single components behave in handling those specific tasks;
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{User Interface Design}
+\end_layout
+
+\end_inset
+
+: here we will provide a further insight on how the user interface of the
+ application is designed, for both client and driver users of myTaxiService
+ app, presenting UX diagrams that go along with the user interface mockups
+ already presented in the RASD; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Requirements Traceability}
+\end_layout
+
+\end_inset
+
+: in this part of the document we will show how the functional requirements
+ presented in the RASD are satisfied by the system, mapping each system
+ component with the specific requirements it is supposed to fulfill;
 \end_layout
 
 \begin_layout Section
@@ -536,7 +607,7 @@ status open
 
 \end_inset
 
-As shown by the diagram, the system is divided into 3 logical tiers:
+As shown by the diagram, the system is divided into 4 logical tiers:
 \end_layout
 
 \begin_layout Description
@@ -576,18 +647,38 @@ reference "sec:References"
 \end_layout
 
 \begin_layout Description
+Web
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
 Logic
 \begin_inset space ~
 \end_inset
 
-tier
+tiers
 \begin_inset space ~
 \end_inset
 
-(Server): the Logic tier includes all the elements of the system’s server,
+(Web
+\begin_inset space ~
+\end_inset
+
+Server
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Server): the Logic tier includes all the elements of the system’s server,
  excluding the central database it relies on.
  It interfaces with the clients that are using myTaxiService app from web
- browser through a web server, which performs the function of generating
+ browser through a Web Server, which performs the function of generating
  and retrieving the requested web pages to the clients, asking the actual
  server to compute and provide the needed data.
  The clients using the mobile app (both the driver and passenger ones) instead,
@@ -648,7 +739,7 @@ reference "sub:Data-Tier"
 
 \begin_layout Standard
 Here below we present a very simple sequence diagram that provides an intuitive
- explanation of how the interaction between the 3 tiers happens at high
+ explanation of how the interaction between the 4 tiers happens at high
  level (specifically in the case of a client using myTaxiService app from
  web browser, but it’s the same for mobile apps, just without the Web Server
  step):
@@ -978,8 +1069,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle" tabularwidth="12.5cm">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle" tabularwidth="12.5cm">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -1145,8 +1236,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -1279,8 +1370,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -1410,8 +1501,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -1545,8 +1636,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -1692,8 +1783,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -1832,8 +1923,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="12.5cm">
@@ -2001,8 +2092,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="12.5cm">
@@ -2139,8 +2230,8 @@ status open
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="9cm">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -2358,9 +2449,7 @@ name "sub:Deployment-view"
 
 \begin_layout Standard
 Here we present a deployment diagram of the system, showing how the different
- logical tiers are supposed to be distributed among physical devices, and
- also providing some further information about communication protocols that
- are going to be used among these devices.
+ logical tiers are supposed to be distributed among physical devices.
  
 \end_layout
 
@@ -2709,33 +2798,35 @@ name "sub:Selected-architectural-styles"
 
 \end_layout
 
+\begin_layout Standard
+Here we present a description of the most meaningful architectural styles
+ and patterns we selected in designing the system, providing an explanation
+ about why we chose such styles or patterns.
+ Keep present that we are not going to list every single low level software
+ pattern (like singleton, factory, ...) that shall be used to implement the
+ application: those are patterns that would obviously be used in any good
+ software development environment, and therefore their description is not
+ relevant in achieving the purpose of this document; so they won't be mentioned
+ here, exception made for the ones that we consider particularly meaningful
+ in understanding some design choices that have been made.
+\end_layout
+
 \begin_layout Subsubsection
 Client / Server style
 \end_layout
 
 \begin_layout Standard
 In designing the high components of our system, we have decided to connect
- them using the client/server style.
- This style is used to connect the web application with the Web Server and
- the mobile applications directly with the Application Server.
+ them using the client/server style, as it comes obvious by thinking at
+ the intrinsic purpose of myTaxiService application.
+ This style has been used to connect the web application with the Web Server
+ and the mobile applications directly with the Application Server.
  The same architectural style has been used to connect the other high components
  of the system: the Web Server with the Application Server, in order to
  forward the requests and retrieve the responses, and the Application Server
  with the Database in order to store the persistent informations every time
  it is needed.
- A detailed description on how the components are connected to each other
- is provided in sections 2.2 and 2.4.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-toglierei; in generale ho messo reference per indicare sezioni più avanti,
- non più indietro 
-\end_layout
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -2789,24 +2880,7 @@ To handle interactions among the internal components of the server, and
  another if the value of his ‘CityZone’ field has been changed, or adding
  or removing drivers from queues depending on their availability and busyness
  status.
- A detailed description on how the Queue Manager reacts to those events
- is provided in the following section Design Algorithm, while the interaction
- between each component and how the Queue Manager is notified by the model
- is described in the section 2.5 Runtime View.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-come sopra; mi sembra anche abbastanza off topic, cioè mettendo questi link
- stai facendo sembrare che la sezione sul pattern observer è ridotta a una
- spiegazione generale del funzionamento queue manager; dunque toglierei
- io 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -2876,7 +2950,7 @@ This function is called by the Drivers Model every time the availability
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+lstparams "basicstyle={\scriptsize},breaklines=true,language=Java,showstringspaces=false"
 inline false
 status open
 
@@ -2980,7 +3054,7 @@ This function is called when the ‘busyness flag’ of a Driver is set on ‘fa
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+lstparams "basicstyle={\scriptsize},breaklines=true,language=Java,showstringspaces=false"
 inline false
 status open
 
@@ -3069,7 +3143,7 @@ This function is called by the Drivers Model every time in which, while
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+lstparams "basicstyle={\scriptsize},breaklines=true,language=Java,showstringspaces=false"
 inline false
 status open
 
@@ -3208,7 +3282,7 @@ reference "sub:Enqueued-requests-handling"
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+lstparams "basicstyle={\scriptsize},breaklines=true,language=Java,showstringspaces=false"
 inline false
 status open
 
@@ -3394,7 +3468,7 @@ reference "sub:Enqueued-requests-handling"
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+lstparams "basicstyle={\scriptsize},breaklines=true,language=Java,showstringspaces=false"
 inline false
 status open
 
@@ -3586,7 +3660,7 @@ This function is executed whenever a new driver becomes available in a certain
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
+lstparams "basicstyle={\scriptsize},breaklines=true,language=Java,showstringspaces=false"
 inline false
 status open
 
@@ -3858,11 +3932,12 @@ User Interface Design
 
 \begin_layout Standard
 In this section we present some User Experience diagrams that show which
- screens should be shown to the user and what kind of information the user
- should provide in order to achieve a specific task.
- Please refer to the RASD document for a more detailed specification on
- how the more relevant screens presented in the following diagrams should
- look like.
+ screens myTaxiService application should present to the user, and what
+ kind of informations the user should provide in order to perform tasks
+ on each of such screens.
+ Please refer to the RASD document for a series of actual mockups of the
+ most relevant screens of both driver and passenger applications.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -3923,10 +3998,21 @@ name "sec:References"
 Softwares and tools used
 \end_layout
 
-\begin_layout Standard
-Google Docs (docs.google.com): to redact the document Lyx (lyx.org): to format
- the document StarUML (staruml.io): to create Class Diagrams, Sequence Diagrams
- and UX Diagrams Draw.io (draw.io): to create ER diagram and Tier diagram
+\begin_layout Itemize
+Google Docs (docs.google.com): to redact the document 
+\end_layout
+
+\begin_layout Itemize
+Lyx (lyx.org): to format the document 
+\end_layout
+
+\begin_layout Itemize
+StarUML (staruml.io): to create Class Diagrams, Sequence Diagrams and UX
+ Diagrams 
+\end_layout
+
+\begin_layout Itemize
+Draw.io (draw.io): to create ER diagram and Tier diagram
 \end_layout
 
 \begin_layout Section
