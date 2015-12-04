@@ -4742,7 +4742,8 @@ DBMS: DBMS
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Tabular
 <lyxtabular version="3" rows="24" columns="12">
 <features tabularvalignment="middle">
@@ -7691,7 +7692,8 @@ X
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="12">
 <features tabularvalignment="middle">
