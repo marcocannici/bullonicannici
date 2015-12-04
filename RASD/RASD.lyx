@@ -7,6 +7,7 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{listings}
 \usepackage{alloy-style}
+\usepackage{soul}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -2859,9 +2860,32 @@ hyperlink{[G4]}{[G4]}
 \begin_layout Itemize
 [FR 4.1] After sending a ride request, in case of a lack of available taxis,
  the system shall immediately notify the user he has been put into a waiting
- queue, showing a notification with the estimated waiting time for a taxi
- to free up; thus the user shall be asked to further confirm the request
- if he can wait a little, or to cancel it; 
+ queue, showing a notification with the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+st{
+\end_layout
+
+\end_inset
+
+estimated waiting time for a taxi to free up
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+; thus the user shall be asked to further confirm the request if he can
+ wait a little, or to cancel it; 
 \end_layout
 
 \begin_deeper

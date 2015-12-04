@@ -3333,7 +3333,7 @@ hyperlink{availability-status}{availability status}
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "basicstyle={\scriptsize},breaklines=true,language=Java,showstringspaces=false"
+lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,showstringspaces=false"
 inline false
 status open
 
@@ -3494,7 +3494,7 @@ notifyNotBusy( Driver driver ) {
 
 \begin_layout Plain Layout
 
-	} 
+   } 
 \end_layout
 
 \begin_layout Plain Layout
@@ -3790,14 +3790,54 @@ handleRideRequest( Ride ride ){
 
 \begin_layout Plain Layout
 
-      //Enqueues the request in a waiting queue so that when the Request
+      //Retrieves the number of passengers waiting a taxi to be available
+\end_layout
+
+\begin_layout Plain Layout
+
+      int waitingPsgrs = getWaitingPassengerCount();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+     //Asks the passenger if he wants to wait until a new taxi becomes available
+, communicating the number of passenger already in queue
+\end_layout
+
+\begin_layout Plain Layout
+
+      psgrResponse = NotificationManager.queuedRequestToPassenger(ride.getPassenge
+r(), waitingPsgrs);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      if( psgrResponse == true ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      	//Enqueues the request in a waiting queue so that when the Request
  Manager is notified that a new driver has become available the request
  will be reprocessed
 \end_layout
 
 \begin_layout Plain Layout
 
-      addQueuedRideRequest( ride, ride.getZone() );
+      	addQueuedRideRequest( ride, ride.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
 \end_layout
 
 \begin_layout Plain Layout
@@ -4274,14 +4314,55 @@ notifyUpdatedQueue( CityZone zone ){
 
 \begin_layout Plain Layout
 
-         //Enqueues the request in a waiting queue so that when the Request
+         //Retrieves the number of passengers waiting a taxi to be available
+\end_layout
+
+\begin_layout Plain Layout
+
+         int waitingPsgrs = getWaitingPassengerCount();
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+        //Asks the passenger if he wants to wait until a new taxi becomes
+ available, communicating the number of passenger already in queue
+\end_layout
+
+\begin_layout Plain Layout
+
+         psgrResponse = NotificationManager.queuedRequestToPassenger(ride.getPasse
+nger(), waitingPsgrs);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+         if( psgrResponse == true ) {
+\end_layout
+
+\begin_layout Plain Layout
+
+          //Enqueues the request in a waiting queue so that when the Request
  Manager is notified that a new driver has become available the request
  will be reprocessed
 \end_layout
 
 \begin_layout Plain Layout
 
-         addQueuedRideRequest( ride, ride.getZone() );
+      	 addQueuedRideRequest( ride, ride.getZone() );
+\end_layout
+
+\begin_layout Plain Layout
+
+         }
 \end_layout
 
 \begin_layout Plain Layout
