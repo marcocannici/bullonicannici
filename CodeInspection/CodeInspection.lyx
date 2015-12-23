@@ -1,0 +1,4371 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{listings} % Package for listings
+\usepackage{color}
+\usepackage{refcount}[2006/02/20]
+
+\definecolor{javablue}{RGB}{42,0.0,255} % for strings
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+% Syntax highlighting for Java similar to Eclipse
+\lstset{
+language=Java,
+basicstyle=\scriptsize\ttfamily,
+frame=single,
+aboveskip=1em,
+backgroundcolor=\color{white},   % choose the background color	
+breaklines=true,                 % automatic line breaking
+postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+breakindent=0em,
+captionpos=b,                    % sets the caption-position to bottom	
+keywordstyle=\color{javapurple}\bfseries, %keyword style
+stringstyle=\color{javablue}, % string literal style
+commentstyle=\color{javagreen}, % comment style
+morecomment=[s][\color{javadocblue}]{/**}{*/}, % javadoc style
+numbers=left,
+numberstyle=\tiny\color{black},
+stepnumber=1,
+numbersep=10pt,
+tabsize=2
+%showspaces=false,
+%showstringspaces=false
+}
+
+\makeatletter
+\newcommand*{\lstlinelink}[2]{%
+  \refused{#1}%
+  \edef\lstlinelink@tmp{\getrefbykeydefault{#1}{anchor}{}}%
+  \ifx\lstlinelink@tmp\@empty
+    #2%
+  \else
+    \edef\lstlinelink@target{%
+      \expandafter\lstlinelink@parse\lstlinelink@tmp\@nil
+      #2%
+    }%
+    \hyperlink{\lstlinelink@target}{\textbf{#2}}%
+  \fi
+}
+\def\lstlinelink@parse#1.#2\@nil{lstnumber.#2.}%
+\makeatother
+
+\newcommand{\includecode}[2]{
+\lstinputlisting[linerange=#1-#2, firstnumber=#1]{code/CurrentTransaction.java}
+}
+\newcommand{\includecodelabel}[3]{
+\lstinputlisting[linerange=#1-#2, firstnumber=#1, label=#3]{code/CurrentTransaction.java}
+}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Graphics
+	filename ../RASD/resources/others/polimi_logo.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\end_inset
+
+Politecnico di Milano
+\begin_inset Newline newline
+\end_inset
+
+A.A.
+ 2015-2016
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\end_inset
+
+Software Engineering 2
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+Code Inspection
+\end_layout
+
+\begin_layout Author
+Matteo Bulloni (852676), Marco Cannici (852527)
+\end_layout
+
+\begin_layout Date
+5 January 2016
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Assigned class
+\end_layout
+
+\begin_layout Standard
+The class assigned to us is called “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+CurrentTransaction
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+” (namespace: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+path{
+\end_layout
+
+\end_inset
+
+com.sun.jts.CosTransactions.CurrentTransaction
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+) which is located in the following path relative to the root of GlassFish
+ project: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+path{
+\end_layout
+
+\end_inset
+
+appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CurrentTrans
+action.java
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The methods of the “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+CurrentTransaction
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+” class assigned to us are the following:
+\end_layout
+
+\begin_layout Itemize
+Name: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+endAborted
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+( boolean [ ] aborted , boolean endAssociation )
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Start Line: 374
+\end_layout
+
+\begin_layout Itemize
+Name: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+sendingReply
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+( int id , PropagationContextHolder holder )
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Start Line: 1035
+\end_layout
+
+\begin_layout Section
+Functional Role
+\end_layout
+
+\begin_layout Subsection
+JTS Transaction Service
+\end_layout
+
+\begin_layout Subsection
+CurrentTransaction class
+\end_layout
+
+\begin_layout Standard
+The “CurrentTransaction” class is a static class that does not implement
+ any interface and is used to keep track of the associations between transaction
+s and threads.
+\end_layout
+
+\begin_layout Standard
+The following is the JavaDoc of the class:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{81}{89}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For each thread the class keeps track of the transactions with which it
+ is associated to, the list of suspended transactions (which are transactions
+ that have been suspended because a new request has been received while
+ they were running) and the list of RegisteredStatics objects that will
+ be informed of any changes in the associations of the thread with the transacti
+ons.
+ The class exposes methods to modify the current association of the thread
+ and the list of suspended transactions and to retrieve the list of transactions
+ associated to the current thread.
+ It also exposes methods to notify the Control object that a reply or a
+ request has been (or is about to be) either received or sended.
+\end_layout
+
+\begin_layout Subsection
+endAborted method
+\end_layout
+
+\begin_layout Standard
+This is a private method of the class “CurrentTransaction”, it is called
+ by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+release()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+sendingReply()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+sendingRequest()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ methods to ensure that the Control object associated with the current thread
+ does not represent a transaction that has already been aborted, eventually
+ terminating the current association and replacing it with an active one.
+\end_layout
+
+\begin_layout Standard
+The following are the JavaDoc and the declaration of the method: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{353}{374}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The method checks if the transaction associated with the current thread
+ has already been aborted (communicating it to the caller through the output
+ parameter “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+aborted
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+”) by checking his status.
+ In that case, and if the method has been called with “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+endAssociation
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+” argument set to true the method replaces the association to the current
+ thread with the first ancestor that has not been aborted by calling 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+popAborted()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ ‘s Control method, resuming it.
+ The method also deals with informing all the registered StaticResource
+ objects that a new thread association has been established.
+\end_layout
+
+\begin_layout Subsection
+sendingReply method
+\end_layout
+
+\begin_layout Standard
+This is a public method of the “CurrentTransaction” class and it is called
+ to inform the Coordinator of the current transaction that an imminent reply
+ is about to be performed and so the association between the transaction
+ and the current thread should be ended.
+\end_layout
+
+\begin_layout Standard
+The following are the JavaDoc and the declaration of the method: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{1021}{1037}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The method is responsible to check that the current transaction is actually
+ still active and there are no pending computation that must be terminated.
+ To accomplish the first task the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+endAborted()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ method is called to check if the transaction has already been aborted,
+ and if so a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+TRANSACTION_ROLLBACK
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ exception is raised communicating that the transaction is already completed
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+CompletionStatus.COMPLETED_YES
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+).
+ For what concern the second task, the method checks the Coordinator by
+ calling his “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+replyAction
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+” method which returns an identifier of his current state:
+\end_layout
+
+\begin_layout Itemize
+If there are still subtransactions that have not been completed yet (the
+ value 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+CoordinatorImpl.activeChildren
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ has been returned) an 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+INVALID_TRANSACTION
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ exception is raised communicating the error code “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+MinorCode.UnfinishedSubtransactions
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+”
+\end_layout
+
+\begin_layout Itemize
+If the transaction is still associated to a thread different from the current
+ one or there are outgoing requests of the Coordinator that have not been
+ completed yet an 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+INVALID_TRANSACTION
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ exception is raised communicating the error code “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+MinorCode.DeferredActivities
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+”
+\end_layout
+
+\begin_layout Standard
+Finally, the method deals with terminating the association with the transaction
+ and the current thread keeping consistent the list of transactions associated
+ with the current thread, and resuming the last transaction, associated
+ with the current thread, that had been suspended by calling “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+endCurrent()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+” method.
+\end_layout
+
+\begin_layout Section
+Code Inspection
+\end_layout
+
+\begin_layout Subsection
+Class Analysis
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+All class names, interface names, method names, class variables, method
+ variables, and constants used should have meaningful names and do what
+ the name suggests.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{enumi}{5}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+method names:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 1302: “endAll()” method is not implemented
+\end_layout
+
+\begin_layout Itemize
+line 1358: “shutdown()” method is not implemented
+\end_layout
+
+\begin_layout Itemize
+line 1371: “dump()” method is not implemented
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+method variables:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 750: the argument “id” of the method “sendingRequest” is never been
+ used inside the function so it could be removed
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{750}{752}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[6.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Class variables, also called attributes, are mixed case, but might begin
+ with an underscore (‘_’) followed by a lowercase first letter.
+ All the remaining words in the variable name have their first letter capitalize
+d.
+ Examples: _windowHeight, timeSeriesData.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 111: the variable “m_tid” doesn’t respect the naming convention because
+ the underscore could only appear at the beginning of the name
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{111}{111}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[23.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that the javadoc is complete (i.e., it covers all classes and files
+ part of the set of classes assigned to you)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+For the following public and friendly methods and class variables is not
+ provided a javadoc documentation:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 346: “isTxAssociated()” public method
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{346}{346}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 102 “statsOn()” friendly method
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{102}{102}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 119 “_logger”: firendly class variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{119}{119}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following are methods for which it is reported a javadoc documentation
+ but the meaning of some arguments or thrown exception is not clarified:
+\end_layout
+
+\begin_layout Itemize
+line 374: the meaning of the argument “endAssociation” is not provided in
+ the documentation
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{353}{374}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 493: It is not specified when the method “getCurrent” could raise the
+ exception TRANSACTION_ROLLEDBACK
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{480}{494}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 1199: the meaning of the argument “timeout” is not provided in the
+ documentation 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{1192}{1199}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[25.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+The class or interface declarations shall be in the following order:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+descrizione troppo lunga, come fare?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The following class variables should be declared before the private ones
+ because they are friendly (as described in the point 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\backslash
+hyperlink{28_class}{28.}}
+\end_layout
+
+\end_inset
+
+ these variables could be declared private because they are used only inside
+ this class)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 102: “statsOn” friendly variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{101}{102}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 119: “_logger” friendly variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{116}{119}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[26.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Methods are grouped by functionality rather than by scope or accessibility.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ricontrolla
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+riga 493 getCurrent(): forse meglio se messa all'inizio tra getter/setter
+\end_layout
+
+\begin_layout Itemize
+riga 521 getCurrentCoordinator(): forse meglio se messa all'inizio tra getter/se
+tter
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[27.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that the code is free of duplicates, long methods, big classes, breaking
+ encapsulation, as well as if coupling and cohesion are adequate.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO ...................
+\end_layout
+
+\begin_layout Itemize
+SonarQube:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+duplicated line OK
+\end_layout
+
+\begin_layout Itemize
+long methods OK ( < 100 lines )
+\end_layout
+
+\begin_layout Itemize
+class complexty OK ( < 200 ciclomatic complexity )
+\end_layout
+
+\begin_layout Itemize
+breaking encapsulation TODO ................
+ 
+\end_layout
+
+\begin_layout Itemize
+coupling / cohesion OK (< 20 class dependancies )
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[28.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{28_class}{}
+\end_layout
+
+\end_inset
+
+Check that variables and class members are of the correct type.
+ Check that they have the right visibility (public/private/protected).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The following class variables could be declared private because they are
+ only used inside the current class:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 102: “statsOn” friendly variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{102}{102}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 119: “_logger” friendly variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{119}{119}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Method analysis: “endAborted” 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecodelabel{353}{447}{endaborted_lst}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+da fare: 15,16
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[8.]
+\end_layout
+
+\end_inset
+
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{8_endaborted}{}
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Three or four spaces are used for indentation and done so consistently
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Blocks of four spaces are used for indentation along the method (even if
+ multiple times in the form of tab characters instead of spaces (see point
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\backslash
+hyperlink{9_endaborted}{9.}}
+\end_layout
+
+\end_inset
+
+ below)), but many times the indentation rules are not applied correctly:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{392}
+\end_layout
+
+\end_inset
+
+ not correctly indented
+\end_layout
+
+\begin_layout Itemize
+Content of if() block fromline 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{396}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{434}
+\end_layout
+
+\end_inset
+
+ not correctly indented
+\end_layout
+
+\begin_layout Itemize
+Content of synchronized() block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{397}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{433}
+\end_layout
+
+\end_inset
+
+ and its closing bracket at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{433}
+\end_layout
+
+\end_inset
+
+ not correctly indented 
+\end_layout
+
+\begin_layout Itemize
+Content of if() block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{398}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{401}
+\end_layout
+
+\end_inset
+
+ not correctly indented 
+\end_layout
+
+\begin_layout Itemize
+Content of if() block at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{408}
+\end_layout
+
+\end_inset
+
+ not correctly indented 
+\end_layout
+
+\begin_layout Itemize
+Content of if() block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{418}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{425}
+\end_layout
+
+\end_inset
+
+ not correctly indented 
+\end_layout
+
+\begin_layout Itemize
+Content of if() block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{420}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{424}
+\end_layout
+
+\end_inset
+
+ not correctly indented 
+\end_layout
+
+\begin_layout Itemize
+Content of if() block at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{431}
+\end_layout
+
+\end_inset
+
+ not correctly indented Lines 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{442}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{443}
+\end_layout
+
+\end_inset
+
+ not correctly indented
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[9.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{9_endaborted}{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+No tabs are used to indent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Starting from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{398}
+\end_layout
+
+\end_inset
+
+ until line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{444}
+\end_layout
+
+\end_inset
+
+, lines 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{435}
+\end_layout
+
+\end_inset
+
+-6-7 excluded, each line that is not a blank line is indented using tabs
+ instead of spaces.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[10.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Consistent bracing style is used, either the preferred “Allman” style (first
+ brace goes underneath the opening block) or the “Kernighan and Ritchie”
+ style (first brace is on the same line of the instruction that opens the
+ new block)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The author has used the “Kernighan and Ritchie” bracing style along all
+ the method, except for the if() block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{438}
+\end_layout
+
+\end_inset
+
+ to line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{444}
+\end_layout
+
+\end_inset
+
+, where he used the “Allman” style.
+ This lack of consistency should be avoided.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[11.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+All if, while, do-while, try-catch, and for statements that have only one
+ statement to execute are surrounded by curly braces
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+if() block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{388}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{393}
+\end_layout
+
+\end_inset
+
+ not surrounded by curly braces
+\end_layout
+
+\begin_layout Itemize
+if() block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{408}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{409}
+\end_layout
+
+\end_inset
+
+ not surrounded by curly braces
+\end_layout
+
+\begin_layout Itemize
+if() block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{431}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{432}
+\end_layout
+
+\end_inset
+
+ not surrounded by curly braces
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[13.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Where practical, line length does not exceed 80 characters
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+All the lines of code of the method do not exceed 80 characters; however,
+ some lines of either Javadoc or comments do:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Javadoc: line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{353}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Comments: lines 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{376}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{384}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{385}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{404}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{405}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{411}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{427}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The peak is at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{411}
+\end_layout
+
+\end_inset
+
+, which is 90 characters long.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[17.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+A new statement is aligned with the beginning of the expression at the same
+ level as the previous line
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+As already mentioned in point 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\backslash
+hyperlink{8_endaborted}{8.}}
+\end_layout
+
+\end_inset
+
+ together with other indentation errors, there are some lines of subsequent
+ instructions that should be aligned since they are at the same level, but
+ are not:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lines 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{399}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{400}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lines 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{421}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{422}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{423}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lines 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{441}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{442}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{443}
+\end_layout
+
+\end_inset
+
+: lines 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{442}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{443}
+\end_layout
+
+\end_inset
+
+ should be aligned with the open bracket at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{441}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+occhio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Method analysis: “sendingReply” 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecodelabel{1021}{1190}{sendingreply_lst}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[5.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Method names should be verbs, with the first letter of each addition word
+ capitalized.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1048}
+\end_layout
+
+\end_inset
+
+: the called method “create_any()” should be renamed in “createAny()”
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1049}
+\end_layout
+
+\end_inset
+
+: the called method “insert_boolean()” should be renamed in “insertBoolean()”
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1105}
+\end_layout
+
+\end_inset
+
+: the called method “get_localCoordinator()” should be renamed in “getLocalCoord
+inator()”
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1107}
+\end_layout
+
+\end_inset
+
+: the called method “get_coordinator()” should be renamed in “getCoordinator()”
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1108}
+\end_layout
+
+\end_inset
+
+: the called method “servant()” should be renamed in “getServant()”
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1131}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1161}
+\end_layout
+
+\end_inset
+
+: the called method “rollback_only()” should be renamed
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[8.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Three or four spaces are used for indentation and done so consistently
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1167}
+\end_layout
+
+\end_inset
+
+ not correctly indented (2 more spaces)
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1188}
+\end_layout
+
+\end_inset
+
+ not correctly indented (2 more spaces)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[13.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Where practical, line length does not exceed 80 characters.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Some lines of the javadoc documentation of this method exceed 80 characters
+\end_layout
+
+\begin_layout Itemize
+Some lines of the following comment blocks exceed 80 characters length:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1040}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1044}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+comment at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1059}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+comment at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1069}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+comment at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1075}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1114}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1116}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+block from line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1146}
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1147}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+comment at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1185}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[14.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+When line length must exceed 80 characters, it does NOT exceed 120 characters.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1090}
+\end_layout
+
+\end_inset
+
+: line length is 129 characters
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1095}
+\end_layout
+
+\end_inset
+
+: line length is 125 characters
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[17.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+A new statement is aligned with the beginning of the expression at the same
+ level as the previous line.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1036}
+\end_layout
+
+\end_inset
+
+: the argument “holder” should be indented at the same level of the argument
+ “id”
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1137}
+\end_layout
+
+\end_inset
+
+: the argument “CompletionStatus.COMPLETED_YES” should be indented at the
+ same level of the previous argument
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1159}
+\end_layout
+
+\end_inset
+
+: “current.isOutgoing()” should be indented at a lower level
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1167}
+\end_layout
+
+\end_inset
+
+: the argument “CompletionStatus.COMPLETED_YES” should be indented at the
+ same level of the previous argument
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[19.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Commented out code contains a reason for being commented out and a date
+ it can be removed from the source file if determined it is no longer needed.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1056}
+\end_layout
+
+\end_inset
+
+: It is not specified a date after which the commented code can be deleted
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1111}
+\end_layout
+
+\end_inset
+
+: It is not specified neither the reason nor the date
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1121}
+\end_layout
+
+\end_inset
+
+: It is not specified neither the reason nor the date
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[29.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that variables are declared in the proper scope
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1102}
+\end_layout
+
+\end_inset
+
+: “coordRef” declaration should be moved inside the else block at line 1106
+ because the variable is used only there.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[33.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Declarations appear at the beginning of blocks (A block is any code surrounded
+ by curly braces “{“ and “}” ).
+ The exception is a variable can be declared in a ‘for’ loop.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1061}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1062}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1072}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1073}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1084}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1101}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1119}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1120}
+\end_layout
+
+\end_inset
+
+: declarations should be moved at the beginning of the function (line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1038}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1136}
+\end_layout
+
+\end_inset
+
+: the declaration of the exception should be moved at the beginning of the
+ if() block at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1130}
+\end_layout
+
+\end_inset
+
+.
+ The exception could be also immediately thrown instead of assigning it
+ to a temporary variable.
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1166}
+\end_layout
+
+\end_inset
+
+: the declaration of the exception should be moved at the beginning of the
+ if() block at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1160}
+\end_layout
+
+\end_inset
+
+.
+ The exception could be also immediately thrown instead of assigning it
+ to a temporary variable.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[40.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that all objects (including Strings) are compared with "equals" and
+ not with "=="
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1089}
+\end_layout
+
+\end_inset
+
+: “!=” is used instead of !equals()
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[42.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that error messages are comprehensive and provide guidance as to how
+ to correct the problem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+At lines 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1094}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1125}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1133}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1163}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1177}
+\end_layout
+
+\end_inset
+
+and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1180}
+\end_layout
+
+\end_inset
+
+ it is not provided an explanation for the logged exception
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[44.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that the implementation avoids “brutish programming”
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1065}
+\end_layout
+
+\end_inset
+
+: The constructor of TRANSACTION_ROLLEDBACK should be called using the constant
+ “Undefined” declared in MinorCode class instead of “0”
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[51.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that the code is free of any implicit type conversions
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1062}
+\end_layout
+
+\end_inset
+
+: The called function “endAborted()” uses a one-element array to pass the
+ boolean argument by reference.
+ It should be better to use the object type Boolean in order to avoid indexes
+ from going out-of-bounds
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+da spostare in sezione endAborted
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1123}
+\end_layout
+
+\end_inset
+
+: The called function “replyAction()” uses a one-element array to pass the
+ integer argument by reference.
+ It should be better to use the object type Integer in order to avoid indexes
+ from going out-of-bounds
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[52.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that the relevant exceptions are caught
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1124}
+\end_layout
+
+\end_inset
+
+: it should be catched a “SystemException” instead of “Throwable”
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1131}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1161}
+\end_layout
+
+\end_inset
+
+: it should be catched an “Inactive” exception instead of “Throwable”
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Subsection
+Reference documents
+\end_layout
+
+\begin_layout Itemize
+Transaction Service Specification
+\begin_inset Newline newline
+\end_inset
+
+Version: 1.4
+\begin_inset Newline newline
+\end_inset
+
+Author: OMB - Object Management Group
+\begin_inset Newline newline
+\end_inset
+
+Link: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{
+\end_layout
+
+\end_inset
+
+http://www.omg.org/spec/TRANS/1.4/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Java™ Transaction Service (JTS) Specification
+\begin_inset Newline newline
+\end_inset
+
+Version: 1.0
+\begin_inset Newline newline
+\end_inset
+
+Author: Sun Microsystems Inc
+\begin_inset Newline newline
+\end_inset
+
+Link: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{
+\end_layout
+
+\end_inset
+
+http://download.oracle.com/otndocs/jcp/7309-jts-1.0-spec-oth-JSpec/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Hours of work
+\end_layout
+
+\begin_layout Standard
+Here is how long it took to redact this document:
+\end_layout
+
+\begin_layout Itemize
+Matteo Bulloni: ~ #### hours
+\end_layout
+
+\begin_layout Itemize
+Marco Cannici: ~ #### hours 
+\end_layout
+
+\end_body
+\end_document
