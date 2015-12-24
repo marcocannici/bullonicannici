@@ -147,6 +147,17 @@ status open
 
 \begin_layout Plain Layout
 
+[1.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 
 \backslash
 textbf{
@@ -164,19 +175,6 @@ status open
 \begin_layout Plain Layout
 
 }
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-setcounter{enumi}{5}
 \end_layout
 
 \end_inset
@@ -598,137 +596,6 @@ includecode{116}{119}
 
 \end_layout
 
-\end_deeper
-\begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[26.]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{
-\end_layout
-
-\end_inset
-
-Methods are grouped by functionality rather than by scope or accessibility.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ricontrolla
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-riga 493 getCurrent(): forse meglio se messa all'inizio tra getter/setter
-\end_layout
-
-\begin_layout Itemize
-riga 521 getCurrentCoordinator(): forse meglio se messa all'inizio tra getter/se
-tter
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[27.]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{
-\end_layout
-
-\end_inset
-
-Check that the code is free of duplicates, long methods, big classes, breaking
- encapsulation, as well as if coupling and cohesion are adequate.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-TODO ...................
-\end_layout
-
-\begin_layout Itemize
-SonarQube:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-duplicated line OK
-\end_layout
-
-\begin_layout Itemize
-long methods OK ( < 100 lines )
-\end_layout
-
-\begin_layout Itemize
-class complexty OK ( < 200 ciclomatic complexity )
-\end_layout
-
-\begin_layout Itemize
-breaking encapsulation TODO ................
- 
-\end_layout
-
-\begin_layout Itemize
-coupling / cohesion OK (< 20 class dependancies )
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Enumerate
 \begin_inset ERT

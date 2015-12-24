@@ -58,6 +58,9 @@ tabsize=2
 \newcommand{\includecode}[2]{
 \lstinputlisting[linerange=#1-#2, firstnumber=#1]{code/CurrentTransaction.java}
 }
+\newcommand{\includecodecaption}[3]{
+\lstinputlisting[linerange=#1-#2, firstnumber=#1, caption=#3]{code/CurrentTransaction.java}
+}
 \newcommand{\includecodelabel}[3]{
 \lstinputlisting[linerange=#1-#2, firstnumber=#1, label=#3]{code/CurrentTransaction.java}
 }
@@ -145,6 +148,122 @@ Functional Role
 JTS Transaction Service
 \end_layout
 
+\begin_layout Standard
+The class 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+CurrentTransaction
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ assigned to us is part of the Java™ Transaction Service (JTS) implementation
+ by Oracle.
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+Java™ Transaction Service (JTS) Specification
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "java-transaction-service"
+
+\end_inset
+
+ says:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quotation}
+\end_layout
+
+\end_inset
+
+JTS specifies the implementation of a transaction manager which supports
+ the JTA (Java Transaction API) specification at the high-level and implements
+ the Java mapping of the OMG Object Transaction Service (OTS) 1.1 Specification
+ at the low-level.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quotation}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Object Transaction Service is a paradigm that allows distributed access
+ to resorces and computation (remote method calls).
+\begin_inset CommandInset citation
+LatexCommand cite
+key "transaction-service-OMB"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 CurrentTransaction class
 \end_layout
@@ -187,15 +306,264 @@ ons.
  associated to the current thread.
  It also exposes methods to notify the Control object that a reply or a
  request has been (or is about to be) either received or sended.
+ The Control object associated to each transaction allows access to a Terminator
+ object (which provides methods for commit or rollback) and a Coordinator
+ object (which involves Resource objects in a transaction when they are
+ registered
+\begin_inset CommandInset citation
+LatexCommand cite
+key "transaction-service-OMB"
+
+\end_inset
+
+).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following is a class diagram showing the main classes with which CurrentTran
+saction class interact with:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename resources/CurrentTransaction_dependencies.pdf
+	width 10cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 endAborted method
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:endAborted-method"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-This is a private method of the class “CurrentTransaction”, it is called
- by 
+This is a private method of the class “CurrentTransaction”, it is used to
+ ensure that the Control object associated with the current thread does
+ not represent a transaction that has already been aborted, eventually terminati
+ng the current association and replacing it with an active one.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following are the JavaDoc and the declaration of the method: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{353}{374}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The method checks if the transaction associated with the current thread
+ has already been aborted (communicating it to the caller through the boolean
+ output parameter “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+aborted
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+”) by checking his status.
+ In that case, and if the method has been called with “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+endAssociation
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+” argument set to true, the method replaces the association to the current
+ thread with the first ancestor that has not been aborted by calling 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+popAborted()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ ‘s Control method, resuming it.
+ The method also deals with informing all the registered StaticResource
+ objects that the old thread association has been terminated and a new one
+ has been established.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename resources/endAborted_callingMethods.pdf
+	width 7cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This method is used by the public and friendly methods 
 \begin_inset ERT
 status open
 
@@ -267,13 +635,9 @@ status open
 
 \end_inset
 
- methods to ensure that the Control object associated with the current thread
- does not represent a transaction that has already been aborted, eventually
- terminating the current association and replacing it with an active one.
-\end_layout
-
-\begin_layout Standard
-The following are the JavaDoc and the declaration of the method: 
+ of CurrentTransaction class.
+ To show how the method is actually used, we report the code snippets where
+ it is called of the methods listed above:
 \end_layout
 
 \begin_layout Standard
@@ -284,7 +648,7 @@ status open
 
 
 \backslash
-includecode{353}{374}
+includecodecaption{776}{784}{sendingRequest() calls endAboted()}
 \end_layout
 
 \end_inset
@@ -293,9 +657,6 @@ includecode{353}{374}
 \end_layout
 
 \begin_layout Standard
-The method checks if the transaction associated with the current thread
- has already been aborted (communicating it to the caller through the output
- parameter “
 \begin_inset ERT
 status open
 
@@ -303,24 +664,15 @@ status open
 
 
 \backslash
-textbf{
+includecodecaption{1059}{1067}{sendingReply() callsendAborted()}
 \end_layout
 
 \end_inset
 
-aborted
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-}
 \end_layout
 
-\end_inset
-
-”) by checking his status.
- In that case, and if the method has been called with “
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -328,24 +680,17 @@ status open
 
 
 \backslash
-textbf{
+includecodecaption{1256}{1262}{release() calls endAborted()}
 \end_layout
 
 \end_inset
 
-endAssociation
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-}
 \end_layout
 
-\end_inset
-
-” argument set to true the method replaces the association to the current
- thread with the first ancestor that has not been aborted by calling 
+\begin_layout Standard
+Whenever it is expected that the current thread is associated with an active
+ transaction (not aborted) the method 
 \begin_inset ERT
 status open
 
@@ -358,7 +703,7 @@ textit{
 
 \end_inset
 
-popAborted()
+endAborted()
 \begin_inset ERT
 status open
 
@@ -369,9 +714,33 @@ status open
 
 \end_inset
 
- ‘s Control method, resuming it.
- The method also deals with informing all the registered StaticResource
- objects that a new thread association has been established.
+ is invoked to check it by looking at the output parameter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+outBoolean
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+ If the transaction has already been aborted the methods return, eventually
+ by reasing an exception to communicate the unexpected behaviour.
 \end_layout
 
 \begin_layout Subsection
@@ -440,8 +809,15 @@ status open
 \begin_inset Quotes erd
 \end_inset
 
- method is called to check if the transaction has already been aborted,
- and if so a 
+ method (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:endAborted-method"
+
+\end_inset
+
+ for a more detailed explanation) is called to check if the transaction
+ has already been aborted, and if so a 
 \begin_inset ERT
 status open
 
@@ -490,9 +866,7 @@ status open
 
 \end_inset
 
-).
- For what concern the second task, the method checks the Coordinator by
- calling his “
+) and the Coordinator is set is rollback only mode bu callid 
 \begin_inset ERT
 status open
 
@@ -505,7 +879,7 @@ textit{
 
 \end_inset
 
-replyAction
+rollback_only()
 \begin_inset ERT
 status open
 
@@ -516,7 +890,33 @@ status open
 
 \end_inset
 
-” method which returns an identifier of his current state:
+ method.
+ For what concern the second task, the method requests the status of the
+ Coordinator by calling his 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+replyAction()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ method:
 \end_layout
 
 \begin_layout Itemize
@@ -652,9 +1052,9 @@ status open
 
 \begin_layout Standard
 Finally, the method deals with terminating the association with the transaction
- and the current thread keeping consistent the list of transactions associated
- with the current thread, and resuming the last transaction, associated
- with the current thread, that had been suspended by calling “
+ keeping consistent the list of transactions associated with the current
+ thread, and resuming the last transaction that had been suspended by calling
+ “
 \begin_inset ERT
 status open
 
@@ -679,6 +1079,587 @@ status open
 \end_inset
 
 ” method.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename resources/sendingReply_callChain.pdf
+	width 9cm
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+sendingReply()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ method is called whenever the methods 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+send_reply()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+send_exception()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+send_other()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+InterceptorImpl
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ class are invoked passing throgh 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+processServerSendPoint()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+sending_reply()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ calls, as shown in the class diagram above.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A detailed explanation of what Interceptors are and when 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+send_reply()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+send_exception()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+send_other()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ are called is provided in 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+Transaction Service Specification
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "transaction-service-OMB"
+
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+CORBA Request Portable Interceptors: A Performance Analysis
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "corba-portable-interceptors"
+
+\end_inset
+
+ documents.
+ We report below the most significant parts:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quotation}
+\end_layout
+
+\end_inset
+
+Portable Request Interceptors (PIs) are a mechanism allowing to modify the
+ ORB or the application behaviour upon the event of sending or receiving
+ a message (e.g.
+ a request, a reply or an exception) without impacting either on the ORB
+ code or on the application one.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quotation}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quotation}
+\end_layout
+
+\end_inset
+
+The Transaction Service and the ORB must cooperate to realize certain Transactio
+n Service function.
+ This cooperation is realized on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+client invocation path
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ and through the transaction interceptor.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quotation}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quotation}
+\end_layout
+
+\end_inset
+
+Request Interceptors are classified in client request interceptors and server
+ request interceptors.
+ The former are installed in client-side ORBs and can intercept outgoing
+ requests and contexts as well as incoming replies and exceptions.
+ Conversely, the latter are installed in server-side ORBs and can intercept
+ incoming requests and contexts as well as outgoing replies and exceptions.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Server request interceptors are activated either upon receiving a request
+ (by implementing the receive_request(), receive_poll() or receive_request_servi
+ce_contexts()) or upon the sending of a reply or of an exception (by implementin
+g the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+send_reply()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+send_exception()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+send_other()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ methods).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quotation}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

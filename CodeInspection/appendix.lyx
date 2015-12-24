@@ -91,7 +91,7 @@ tabsize=2
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
-\pdf_pdfborder false
+\pdf_pdfborder true
 \pdf_colorlinks false
 \pdf_backref false
 \pdf_pdfusetitle true
@@ -142,90 +142,6 @@ Appendix
 \end_layout
 
 \begin_layout Subsection
-Reference documents
-\end_layout
-
-\begin_layout Itemize
-Transaction Service Specification
-\begin_inset Newline newline
-\end_inset
-
-Version: 1.4
-\begin_inset Newline newline
-\end_inset
-
-Author: OMB - Object Management Group
-\begin_inset Newline newline
-\end_inset
-
-Link: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{
-\end_layout
-
-\end_inset
-
-http://www.omg.org/spec/TRANS/1.4/
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Java™ Transaction Service (JTS) Specification
-\begin_inset Newline newline
-\end_inset
-
-Version: 1.0
-\begin_inset Newline newline
-\end_inset
-
-Author: Sun Microsystems Inc
-\begin_inset Newline newline
-\end_inset
-
-Link: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-url{
-\end_layout
-
-\end_inset
-
-http://download.oracle.com/otndocs/jcp/7309-jts-1.0-spec-oth-JSpec/
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
 Hours of work
 \end_layout
 
@@ -238,7 +154,108 @@ Matteo Bulloni: ~ #### hours
 \end_layout
 
 \begin_layout Itemize
-Marco Cannici: ~ #### hours 
+Marco Cannici: ~ 12 hours 
+\end_layout
+
+\begin_layout Subsection
+Softwares and tools used
+\end_layout
+
+\begin_layout Itemize
+Google Docs: to redact the document 
+\begin_inset Newline newline
+\end_inset
+
+Link: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{
+\end_layout
+
+\end_inset
+
+http://docs.google.com
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lyx: to format the document 
+\begin_inset Newline newline
+\end_inset
+
+Link: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{
+\end_layout
+
+\end_inset
+
+http://lyx.org
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Architexa plugin for Eclipse: to analyse the class dependencies and generate
+ the class diagrams
+\begin_inset Newline newline
+\end_inset
+
+Link: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{
+\end_layout
+
+\end_inset
+
+https://marketplace.eclipse.org/content/architexa-eclipse-42
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

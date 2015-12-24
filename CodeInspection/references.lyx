@@ -58,9 +58,6 @@ tabsize=2
 \newcommand{\includecode}[2]{
 \lstinputlisting[linerange=#1-#2, firstnumber=#1]{code/CurrentTransaction.java}
 }
-\newcommand{\includecodecaption}[3]{
-\lstinputlisting[linerange=#1-#2, firstnumber=#1, caption=#3]{code/CurrentTransaction.java}
-}
 \newcommand{\includecodelabel}[3]{
 \lstinputlisting[linerange=#1-#2, firstnumber=#1, label=#3]{code/CurrentTransaction.java}
 }
@@ -140,17 +137,14 @@ tabsize=2
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "firstpage.lyx"
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "transaction-service-OMB"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -158,22 +152,35 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+textit{
+\end_layout
+
+\end_inset
+
+Transaction Service Specification
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
+\begin_inset Newline newline
 \end_inset
 
+Version: 1.4
+\begin_inset Newline newline
+\end_inset
 
-\end_layout
+Author: OMB - Object Management Group
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
+Link: 
 \begin_inset ERT
 status open
 
@@ -181,7 +188,18 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+url{
+\end_layout
+
+\end_inset
+
+http://www.omg.org/spec/TRANS/1.4/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -189,23 +207,14 @@ thispagestyle{empty}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "java-transaction-service"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -213,7 +222,54 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+textit{
+\end_layout
+
+\end_inset
+
+Java™ Transaction Service (JTS) Specification
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Version: 1.0
+\begin_inset Newline newline
+\end_inset
+
+Author: Sun Microsystems Inc
+\begin_inset Newline newline
+\end_inset
+
+Link: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{
+\end_layout
+
+\end_inset
+
+http://download.oracle.com/otndocs/jcp/7309-jts-1.0-spec-oth-JSpec/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -221,48 +277,70 @@ thispagestyle{empty}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "corba-portable-interceptors"
+
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "intro.lyx"
-
 \end_inset
 
+CORBA Request Portable Interceptors: A Performance Analysis
+\begin_inset ERT
+status open
 
-\begin_inset CommandInset include
-LatexCommand include
-filename "functionalRole.lyx"
+\begin_layout Plain Layout
 
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "inspection.lyx"
-
-\end_inset
-
-
+}
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "appendix.lyx"
-
 \end_inset
 
 
-\begin_inset CommandInset include
-LatexCommand include
-filename "references.lyx"
+\begin_inset Newline newline
+\end_inset
+
+Authors: C.
+ Marchetti, L.
+ Verde and R.
+ Baldoni - Dipartimento di Informatica e Sistemistica, Universita “La Sapienza”
+ di Roma
+\begin_inset Newline newline
+\end_inset
+
+Link: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{
+\end_layout
+
+\end_inset
+
+http://midlab.diag.uniroma1.it/articoli/doa01.pdf
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
 
 \end_inset
 
