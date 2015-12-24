@@ -137,17 +137,12 @@ tabsize=2
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "firstpage.lyx"
-
-\end_inset
-
-
+\begin_layout Section
+Assigned class
 \end_layout
 
 \begin_layout Standard
+The class assigned to us is called “
 \begin_inset ERT
 status open
 
@@ -155,22 +150,23 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+textbf{
 \end_layout
 
 \end_inset
 
+CurrentTransaction
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+}
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+” (namespace: 
 \begin_inset ERT
 status open
 
@@ -178,31 +174,24 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+path{
 \end_layout
 
 \end_inset
 
+com.sun.jts.CosTransactions.CurrentTransaction
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+}
 \end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+) which is located in the following path relative to the root of GlassFish
+ project: 
 \begin_inset ERT
 status open
 
@@ -210,53 +199,168 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+path{
+\end_layout
+
+\end_inset
+
+appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CurrentTrans
+action.java
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "intro.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "functionalRole.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "inspection.lyx"
-
+\begin_inset Newline newline
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "appendix.lyx"
+The methods of the “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+CurrentTransaction
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+” class assigned to us are the following:
+\end_layout
+
+\begin_layout Itemize
+Name: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
 
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+endAborted
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+( boolean [ ] aborted , boolean endAssociation )
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Start Line: 374
+\end_layout
+
+\begin_layout Itemize
+Name: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+sendingReply
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+( int id , PropagationContextHolder holder )
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Start Line: 1035
 \end_layout
 
 \end_body

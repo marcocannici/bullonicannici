@@ -1,0 +1,839 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{listings} % Package for listings
+\usepackage{color}
+\usepackage{refcount}[2006/02/20]
+
+\definecolor{javablue}{RGB}{42,0.0,255} % for strings
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+% Syntax highlighting for Java similar to Eclipse
+\lstset{
+language=Java,
+basicstyle=\scriptsize\ttfamily,
+frame=single,
+aboveskip=1em,
+backgroundcolor=\color{white},   % choose the background color	
+breaklines=true,                 % automatic line breaking
+postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+breakindent=0em,
+captionpos=b,                    % sets the caption-position to bottom	
+keywordstyle=\color{javapurple}\bfseries, %keyword style
+stringstyle=\color{javablue}, % string literal style
+commentstyle=\color{javagreen}, % comment style
+morecomment=[s][\color{javadocblue}]{/**}{*/}, % javadoc style
+numbers=left,
+numberstyle=\tiny\color{black},
+stepnumber=1,
+numbersep=10pt,
+tabsize=2
+%showspaces=false,
+%showstringspaces=false
+}
+
+\makeatletter
+\newcommand*{\lstlinelink}[2]{%
+  \refused{#1}%
+  \edef\lstlinelink@tmp{\getrefbykeydefault{#1}{anchor}{}}%
+  \ifx\lstlinelink@tmp\@empty
+    #2%
+  \else
+    \edef\lstlinelink@target{%
+      \expandafter\lstlinelink@parse\lstlinelink@tmp\@nil
+      #2%
+    }%
+    \hyperlink{\lstlinelink@target}{\textbf{#2}}%
+  \fi
+}
+\def\lstlinelink@parse#1.#2\@nil{lstnumber.#2.}%
+\makeatother
+
+\newcommand{\includecode}[2]{
+\lstinputlisting[linerange=#1-#2, firstnumber=#1]{code/CurrentTransaction.java}
+}
+\newcommand{\includecodelabel}[3]{
+\lstinputlisting[linerange=#1-#2, firstnumber=#1, label=#3]{code/CurrentTransaction.java}
+}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+Class Analysis
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+All class names, interface names, method names, class variables, method
+ variables, and constants used should have meaningful names and do what
+ the name suggests.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{enumi}{5}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+method names:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 1302: “endAll()” method is not implemented
+\end_layout
+
+\begin_layout Itemize
+line 1358: “shutdown()” method is not implemented
+\end_layout
+
+\begin_layout Itemize
+line 1371: “dump()” method is not implemented
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+method variables:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 750: the argument “id” of the method “sendingRequest” is never been
+ used inside the function so it could be removed
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{750}{752}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[6.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Class variables, also called attributes, are mixed case, but might begin
+ with an underscore (‘_’) followed by a lowercase first letter.
+ All the remaining words in the variable name have their first letter capitalize
+d.
+ Examples: _windowHeight, timeSeriesData.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 111: the variable “m_tid” doesn’t respect the naming convention because
+ the underscore could only appear at the beginning of the name
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{111}{111}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[23.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that the javadoc is complete (i.e., it covers all classes and files
+ part of the set of classes assigned to you)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+For the following public and friendly methods and class variables is not
+ provided a javadoc documentation:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 346: “isTxAssociated()” public method
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{346}{346}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 102 “statsOn()” friendly method
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{102}{102}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 119 “_logger”: firendly class variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{119}{119}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following are methods for which it is reported a javadoc documentation
+ but the meaning of some arguments or thrown exception is not clarified:
+\end_layout
+
+\begin_layout Itemize
+line 374: the meaning of the argument “endAssociation” is not provided in
+ the documentation
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{353}{374}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 493: It is not specified when the method “getCurrent” could raise the
+ exception TRANSACTION_ROLLEDBACK
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{480}{494}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 1199: the meaning of the argument “timeout” is not provided in the
+ documentation 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{1192}{1199}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[25.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+The class or interface declarations shall be in the following order:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+descrizione troppo lunga, come fare?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The following class variables should be declared before the private ones
+ because they are friendly (as described in the point 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\backslash
+hyperlink{28_class}{28.}}
+\end_layout
+
+\end_inset
+
+ these variables could be declared private because they are used only inside
+ this class)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 102: “statsOn” friendly variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{101}{102}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 119: “_logger” friendly variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{116}{119}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[26.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Methods are grouped by functionality rather than by scope or accessibility.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ricontrolla
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+riga 493 getCurrent(): forse meglio se messa all'inizio tra getter/setter
+\end_layout
+
+\begin_layout Itemize
+riga 521 getCurrentCoordinator(): forse meglio se messa all'inizio tra getter/se
+tter
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[27.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that the code is free of duplicates, long methods, big classes, breaking
+ encapsulation, as well as if coupling and cohesion are adequate.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+TODO ...................
+\end_layout
+
+\begin_layout Itemize
+SonarQube:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+duplicated line OK
+\end_layout
+
+\begin_layout Itemize
+long methods OK ( < 100 lines )
+\end_layout
+
+\begin_layout Itemize
+class complexty OK ( < 200 ciclomatic complexity )
+\end_layout
+
+\begin_layout Itemize
+breaking encapsulation TODO ................
+ 
+\end_layout
+
+\begin_layout Itemize
+coupling / cohesion OK (< 20 class dependancies )
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[28.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypertarget{28_class}{}
+\end_layout
+
+\end_inset
+
+Check that variables and class members are of the correct type.
+ Check that they have the right visibility (public/private/protected).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The following class variables could be declared private because they are
+ only used inside the current class:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+line 102: “statsOn” friendly variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{102}{102}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+line 119: “_logger” friendly variable
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includecode{119}{119}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

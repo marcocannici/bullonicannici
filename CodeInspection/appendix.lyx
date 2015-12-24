@@ -91,7 +91,7 @@ tabsize=2
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
-\pdf_pdfborder true
+\pdf_pdfborder false
 \pdf_colorlinks false
 \pdf_backref false
 \pdf_pdfusetitle true
@@ -137,17 +137,28 @@ tabsize=2
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "firstpage.lyx"
-
-\end_inset
-
-
+\begin_layout Section
+Appendix
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
+Reference documents
+\end_layout
+
+\begin_layout Itemize
+Transaction Service Specification
+\begin_inset Newline newline
+\end_inset
+
+Version: 1.4
+\begin_inset Newline newline
+\end_inset
+
+Author: OMB - Object Management Group
+\begin_inset Newline newline
+\end_inset
+
+Link: 
 \begin_inset ERT
 status open
 
@@ -155,7 +166,18 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+url{
+\end_layout
+
+\end_inset
+
+http://www.omg.org/spec/TRANS/1.4/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -163,14 +185,20 @@ thispagestyle{empty}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
+\begin_layout Itemize
+Java™ Transaction Service (JTS) Specification
+\begin_inset Newline newline
 \end_inset
 
+Version: 1.0
+\begin_inset Newline newline
+\end_inset
 
-\end_layout
+Author: Sun Microsystems Inc
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
+Link: 
 \begin_inset ERT
 status open
 
@@ -178,39 +206,18 @@ status open
 
 
 \backslash
-thispagestyle{empty}
+url{
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+http://download.oracle.com/otndocs/jcp/7309-jts-1.0-spec-oth-JSpec/
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-thispagestyle{empty}
+}
 \end_layout
 
 \end_inset
@@ -218,45 +225,20 @@ thispagestyle{empty}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
+\begin_layout Subsection
+Hours of work
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "intro.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "functionalRole.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "inspection.lyx"
-
-\end_inset
-
-
+Here is how long it took to redact this document:
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "appendix.lyx"
+\begin_layout Itemize
+Matteo Bulloni: ~ #### hours
+\end_layout
 
-\end_inset
-
-
+\begin_layout Itemize
+Marco Cannici: ~ #### hours 
 \end_layout
 
 \end_body
