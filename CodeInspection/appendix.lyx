@@ -226,8 +226,8 @@ status open
 \end_layout
 
 \begin_layout Itemize
-Architexa plugin for Eclipse: to analyse the class dependencies and generate
- the class diagrams
+Architexa plugin for Eclipse: to analyse class dependencies and generate
+ class diagrams
 \begin_inset Newline newline
 \end_inset
 
