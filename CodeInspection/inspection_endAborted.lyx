@@ -454,7 +454,11 @@ lstlinelink{endaborted_lst}{431}
 
 \end_inset
 
- not correctly indented Lines 
+ not correctly indented
+\end_layout
+
+\begin_layout Itemize
+Lines 
 \begin_inset ERT
 status open
 
