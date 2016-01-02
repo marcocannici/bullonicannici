@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -71,13 +71,13 @@ tabsize=2
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,24 +97,15 @@ tabsize=2
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -207,8 +198,8 @@ method variables:
 
 \begin_deeper
 \begin_layout Itemize
-line 750: the argument “id” of the method “sendingRequest” is never been
- used inside the function so it could be removed
+line 750: the argument “id” of the method “sendingRequest” is never being
+ used inside the function, so it could be removed
 \begin_inset Newline newline
 \end_inset
 
@@ -275,7 +266,7 @@ status open
 \begin_deeper
 \begin_layout Itemize
 line 111: the variable “m_tid” doesn’t respect the naming convention because
- the underscore could only appear at the beginning of the name
+ the underscore should only appear at the beginning of the name
 \begin_inset Newline newline
 \end_inset
 
@@ -505,22 +496,15 @@ textbf{
 \end_inset
 
 The class or interface declarations shall be in the following order:
+ [...]
+\lang english
+
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
 }
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-descrizione troppo lunga, come fare?
 \end_layout
 
 \end_inset
@@ -534,7 +518,7 @@ descrizione troppo lunga, come fare?
 \end_inset
 
 The following class variables should be declared before the private ones
- because they are friendly (as described in the point 
+ because they are friendly (and moreover, as described in the point 
 \begin_inset ERT
 status open
 
@@ -549,7 +533,7 @@ hyperlink{28_class}{28.}}
 
 \end_inset
 
- these variables could be declared private because they are used only inside
+, these variables could be declared private because they are used only inside
  this class)
 \end_layout
 

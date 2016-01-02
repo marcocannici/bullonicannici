@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -71,13 +71,13 @@ tabsize=2
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,24 +97,15 @@ tabsize=2
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -150,19 +141,6 @@ status open
 
 \backslash
 includecodelabel{353}{447}{endaborted_lst}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-da fare: 15,16
 \end_layout
 
 \end_inset
@@ -976,6 +954,67 @@ status open
 
 \begin_layout Plain Layout
 
+[15.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Line break occurs after a comma or an operator.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The method declaration itself, at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{373}
+\end_layout
+
+\end_inset
+
+, violates this rule: the line break there is in fact placed between the
+ return type and the name of the method, and thus not after either a comma
+ or an operator.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 [17.]
 \end_layout
 
@@ -1188,18 +1227,334 @@ lstlinelink{endaborted_lst}{441}
 \end_inset
 
 
-\begin_inset Note Note
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-occhio
+
+[40.]
 \end_layout
 
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
 \end_layout
 
-\end_deeper
+\end_inset
+
+Check that all objects (including Strings) are compared with "equals" and
+ not with "=="
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The comparison between the two objects at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{390}
+\end_layout
+
+\end_inset
+
+ doesn't follow this criterion, since it's done with operator 
+\begin_inset Quotes eld
+\end_inset
+
+!=
+\begin_inset Quotes erd
+\end_inset
+
+ instead of 
+\begin_inset Quotes eld
+\end_inset
+
+!(equals(obj1,obj2))
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[42.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that error messages are comprehensive and provide guidance as to how
+ to correct the problem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The error message wrapped in the 
+\begin_inset Quotes eld
+\end_inset
+
+try...catch
+\begin_inset Quotes erd
+\end_inset
+
+ block that starts at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{389}
+\end_layout
+
+\end_inset
+
+ doesn't explain anything at all about the problem related with that exception.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[50.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check throw-­‐catch expressions, and check that the error condition is actually
+ legitimate 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The 
+\begin_inset Quotes eld
+\end_inset
+
+try...catch
+\begin_inset Quotes erd
+\end_inset
+
+ block that starts at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{389}
+\end_layout
+
+\end_inset
+
+ doesn't seem to be useful, since the 
+\begin_inset Quotes eld
+\end_inset
+
+try
+\begin_inset Quotes erd
+\end_inset
+
+ block just includes an assignment of the result of a comparison between
+ to objects to a boolean variable: since one of the two objects compared
+ is a static final attribute and the other is the returned variable of a
+ getter method that doesn't throw any exception, and always seems to just
+ return an object correctly, it can't be explained which exception was meant
+ to be caught here and why.
+ This 
+\begin_inset Quotes eld
+\end_inset
+
+try...catch
+\begin_inset Quotes erd
+\end_inset
+
+ block thus appears to be meaningless, since no exception is expected to
+ be thrown by those variable assignment and method call operations.
+ Moreover, the lack of a specific declaration of the type of exception that
+ was expected to be caught - the exception is just declared of 
+\begin_inset Quotes eld
+\end_inset
+
+Throwable
+\begin_inset Quotes erd
+\end_inset
+
+ type, which should be avoided - fails to provide any possible insight on
+ this issue.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[53.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+Check that the appropriate action are taken for each catch block 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Referring to the explanations provided in point 10.
+ of this list, it's actually impossible to understand if a proper action
+ is taken in the 
+\begin_inset Quotes eld
+\end_inset
+
+catch
+\begin_inset Quotes erd
+\end_inset
+
+ block at line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{endaborted_lst}{391}
+\end_layout
+
+\end_inset
+
+; however, since nothing is actually being done in that 
+\begin_inset Quotes eld
+\end_inset
+
+catch
+\begin_inset Quotes erd
+\end_inset
+
+ block except for logging the exception without any explanation, it is quite
+ likely that it's not an appropriate way to handle the exception that was
+ being expected there.
+\end_layout
+
 \end_body
 \end_document

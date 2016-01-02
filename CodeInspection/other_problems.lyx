@@ -129,121 +129,19 @@ tabsize=2
 \begin_body
 
 \begin_layout Section
-Assigned class and methods
+Other problems found
 \end_layout
 
-\begin_layout Standard
-The class assigned to us is called “
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{
-\end_layout
-
+\begin_layout Enumerate
+As already highlighted in section 2.3 
+\begin_inset Quotes eld
 \end_inset
 
-CurrentTransaction
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+endAborted method
+\begin_inset Quotes erd
 \end_inset
 
-” (namespace: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-path{
-\end_layout
-
-\end_inset
-
-com.sun.jts.CosTransactions.CurrentTransaction
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-) and is located in the following path, relative to the root of GlassFish
- project: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-path{
-\end_layout
-
-\end_inset
-
-appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CurrentTrans
-action.java
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The following are the methods of the “
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{
-\end_layout
-
-\end_inset
-
-CurrentTransaction
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-” class assigned to us:
-\end_layout
-
-\begin_layout Itemize
-Name: 
+, the function 
 \begin_inset ERT
 status open
 
@@ -280,7 +178,7 @@ status open
 
 \end_inset
 
-( boolean [ ] aborted , boolean endAssociation )
+( boolean [/*1*/] aborted , boolean endAssociation )
 \begin_inset ERT
 status open
 
@@ -291,15 +189,55 @@ status open
 
 \end_inset
 
-
-\begin_inset Newline newline
+ should be using an object of type 
+\begin_inset Quotes eld
 \end_inset
 
-Start Line: 374
+Boolean
+\begin_inset Quotes erd
+\end_inset
+
+ instead of a boolean array of a single element to be passed the 
+\begin_inset Quotes eld
+\end_inset
+
+aborted
+\begin_inset Quotes erd
+\end_inset
+
+ parameter and allowed to modify it.
+ Improperly using an array is dangerous, and differently from the correct
+ Boolean object it might lead to issues related with array indexing mistakes.
+ 
 \end_layout
 
-\begin_layout Itemize
-Name: 
+\begin_layout Enumerate
+As already pointed out in section 2.3 
+\begin_inset Quotes eld
+\end_inset
+
+endAborted method
+\begin_inset Quotes erd
+\end_inset
+
+, this method is actually performing two very different functions depending
+ on the value of 
+\begin_inset Quotes eld
+\end_inset
+
+endAssociation
+\begin_inset Quotes erd
+\end_inset
+
+ parameter: if it's set to 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ when 
 \begin_inset ERT
 status open
 
@@ -312,7 +250,32 @@ textit{
 
 \end_inset
 
+endAborted
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ is called, it means that the method has to actually perform the complex
+ duty it was written for (described in detail in section 2.3), while if it's
+ set to 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+ it means that it's being used just as a very simple transaction's status
+ checker.
+ Since the two functions performed are very different, it should be implemented
+ and used a new method explicitly designed to just perform the transaction's
+ status check, while 
 \begin_inset ERT
 status open
 
@@ -320,12 +283,12 @@ status open
 
 
 \backslash
-textbf{
+textit{
 \end_layout
 
 \end_inset
 
-sendingReply
+endAborted
 \begin_inset ERT
 status open
 
@@ -336,22 +299,17 @@ status open
 
 \end_inset
 
-( int id , PropagationContextHolder holder )
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ should be rewritten without the 
+\begin_inset Quotes eld
 \end_inset
 
-
-\begin_inset Newline newline
+endAssociation
+\begin_inset Quotes erd
 \end_inset
 
-Start Line: 1035
+ parameter, meaning that it would just perform its specific duty, without
+ the potential worry of causing any mistake because of a wrong parameter
+ value.
 \end_layout
 
 \end_body
