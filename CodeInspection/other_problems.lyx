@@ -145,7 +145,7 @@ Other problems found
 As already highlighted in section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Method-analysis:-“endAborted”-1"
+reference "sub:endAborted-method"
 
 \end_inset
 
@@ -231,7 +231,7 @@ aborted
 As already pointed out in section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Method-analysis:-“endAborted”-1"
+reference "sub:endAborted-method"
 
 \end_inset
 
@@ -288,7 +288,7 @@ status open
  duty it was written for (described in detail in section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Method-analysis:-“endAborted”-1"
+reference "sub:endAborted-method"
 
 \end_inset
 
