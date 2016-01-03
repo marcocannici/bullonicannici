@@ -504,23 +504,13 @@ textbf{
 
 \end_inset
 
-The class or interface declarations shall be in the following order:
+The class or interface declarations shall be in the following order: [...]
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
 }
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-descrizione troppo lunga, come fare?
 \end_layout
 
 \end_inset
