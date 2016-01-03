@@ -457,8 +457,7 @@ status open
 
 \end_inset
 
-”, which is an improperly used single element array instead of a proper
- Boolean object) by checking the transaction's status.
+”) by checking the transaction's status.
  If that's the case, and if the method is called with “
 \begin_inset ERT
 status open
