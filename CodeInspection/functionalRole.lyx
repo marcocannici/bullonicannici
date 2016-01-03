@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -74,13 +74,13 @@ tabsize=2
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -100,24 +100,15 @@ tabsize=2
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -336,7 +327,7 @@ status open
 
 \begin_layout Standard
 The following is a class diagram showing the main classes with which CurrentTran
-saction class interact with:
+saction class interacts with:
 \end_layout
 
 \begin_layout Standard
@@ -387,10 +378,12 @@ name "sub:endAborted-method"
 \end_layout
 
 \begin_layout Standard
-This is a private method of the class “CurrentTransaction”, it is used to
- ensure that the Control object associated with the current thread does
- not represent a transaction that has already been aborted, eventually terminati
-ng the current association and replacing it with an active one.
+This is a private method of the class “CurrentTransaction”, and it is used
+ to ensure that the Control object associated with the current thread does
+ not represent a transaction that has already been aborted.
+ To do so, if the Control object does represent an aborted transaction,
+ the method terminates the current association and replaces it with an active
+ (not aborted) one.
 \begin_inset ERT
 status open
 
@@ -455,8 +448,9 @@ status open
 
 \end_inset
 
-”) by checking his status.
- In that case, and if the method has been called with “
+”, which is an improperly used single element array instead of a proper
+ Boolean object) by checking the transaction's status.
+ If that's the case, and if the method is called with “
 \begin_inset ERT
 status open
 
@@ -480,8 +474,32 @@ status open
 
 \end_inset
 
-” argument set to true, the method replaces the association to the current
- thread with the first ancestor that has not been aborted by calling 
+” argument set to true, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+endAborted()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ replaces the Control object associated with the current thread with its
+ first ancestor that has not been aborted, by calling 
 \begin_inset ERT
 status open
 
@@ -505,10 +523,88 @@ status open
 
 \end_inset
 
- ‘s Control method, resuming it.
- The method also deals with informing all the registered StaticResource
- objects that the old thread association has been terminated and a new one
- has been established.
+ ‘s Control method to resume it.
+ Eventually, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+endAborted()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ method also deals with informing all the registered StaticResource objects
+ that the old thread association has been terminated and a new one has been
+ established.
+ However, if 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+endAborted()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ is called with “
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{
+\end_layout
+
+\end_inset
+
+endAssociation
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+” argument set to false instead, it means that it's being used just to check
+ that the thread is associated to an active transaction, which is not its
+ specific purpose.
+ This is kind of an improper use of the method: it would have probably been
+ better to create a method to specifically accomplish this task.
+ 
 \begin_inset ERT
 status open
 
@@ -636,8 +732,8 @@ status open
 \end_inset
 
  of CurrentTransaction class.
- To show how the method is actually used, we report the code snippets where
- it is called of the methods listed above:
+ To show how the method is actually used, we report the code snippets of
+ the methods listed above showing where it is called:
 \end_layout
 
 \begin_layout Standard
@@ -664,7 +760,7 @@ status open
 
 
 \backslash
-includecodecaption{1059}{1067}{sendingReply() callsendAborted()}
+includecodecaption{1059}{1067}{sendingReply() calls endAborted()}
 \end_layout
 
 \end_inset
@@ -689,8 +785,7 @@ includecodecaption{1256}{1262}{release() calls endAborted()}
 \end_layout
 
 \begin_layout Standard
-Whenever it is expected that the current thread is associated with an active
- transaction (not aborted) the method 
+As we can see in Listing 1, 
 \begin_inset ERT
 status open
 
@@ -714,7 +809,9 @@ status open
 
 \end_inset
 
- is invoked to check it by looking at the output parameter 
+ method is sometimes invoked just to check that the current thread is associated
+ with an active transaction; the check is performed by looking at the output
+ parameter 
 \begin_inset ERT
 status open
 
@@ -739,8 +836,34 @@ status open
 \end_inset
 
 .
- If the transaction has already been aborted the methods return, eventually
- by reasing an exception to communicate the unexpected behaviour.
+ It can also be seen that, whenever it is expected that the current thread
+ is associated with an active transaction but it turns out that it's not,
+ the methods that invoked 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+endAborted()
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ return immediately, throwing an exception to communicate the unexpected
+ behaviour.
 \end_layout
 
 \begin_layout Subsection
@@ -776,7 +899,7 @@ includecode{1021}{1037}
 
 \begin_layout Standard
 The method is responsible to check that the current transaction is actually
- still active and there are no pending computation that must be terminated.
+ still active and there are no pending computations that must be terminated.
  To accomplish the first task the 
 \begin_inset Quotes eld
 \end_inset
@@ -866,7 +989,7 @@ status open
 
 \end_inset
 
-) and the Coordinator is set is rollback only mode bu callid 
+) and the Coordinator is set to rollback only mode by calling 
 \begin_inset ERT
 status open
 
@@ -891,7 +1014,7 @@ status open
 \end_inset
 
  method.
- For what concern the second task, the method requests the status of the
+ For what concerns the second task, the method requests the status of the
  Coordinator by calling his 
 \begin_inset ERT
 status open
@@ -920,7 +1043,7 @@ status open
 \end_layout
 
 \begin_layout Itemize
-If there are still subtransactions that have not been completed yet (the
+If there are still subtransactions that haven't been completed yet (the
  value 
 \begin_inset ERT
 status open
@@ -945,7 +1068,7 @@ status open
 
 \end_inset
 
- has been returned) an 
+ has been returned), an 
 \begin_inset ERT
 status open
 
@@ -999,7 +1122,7 @@ status open
 \begin_layout Itemize
 If the transaction is still associated to a thread different from the current
  one or there are outgoing requests of the Coordinator that have not been
- completed yet an 
+ completed yet, an 
 \begin_inset ERT
 status open
 
@@ -1253,7 +1376,7 @@ status open
 
 \end_inset
 
- class are invoked passing throgh 
+ class are invoked passing through 
 \begin_inset ERT
 status open
 

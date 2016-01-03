@@ -350,9 +350,52 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Four spaces are used for indentation but in the following cases the indentation
+ rules are not applied correctly:
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1036}
+\end_layout
+
+\end_inset
+
+ not correclty indented (1 more space)
+\end_layout
+
+\begin_layout Itemize
+line 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlinelink{sendingreply_lst}{1137}
+\end_layout
+
+\end_inset
+
+ not correclty indented (2 more spaces)
+\end_layout
+
 \begin_layout Itemize
 line 
 \begin_inset ERT
@@ -760,7 +803,15 @@ lstlinelink{sendingreply_lst}{1159}
 
 \end_inset
 
-: “current.isOutgoing()” should be indented at a lower level
+: “current.isOutgoing()” should be indented at the same same level of 
+\begin_inset Quotes eld
+\end_inset
+
+current.isAssociated()
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1459,16 +1510,6 @@ lstlinelink{sendingreply_lst}{1062}
  boolean argument by reference.
  It should be better to use the object type Boolean in order to avoid indexes
  from going out-of-bounds
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-da spostare in sezione endAborted
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -1528,6 +1569,15 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In some cases instead of catching a specific exception a more general one
+ is caught:
 \end_layout
 
 \begin_deeper

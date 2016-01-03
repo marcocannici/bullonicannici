@@ -149,6 +149,10 @@ filename "inspection_class.lyx"
 \end_inset
 
 
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \begin_inset CommandInset include
 LatexCommand input
 filename "inspection_endAborted.lyx"
@@ -156,12 +160,24 @@ filename "inspection_endAborted.lyx"
 \end_inset
 
 
-\end_layout
+\begin_inset Newpage pagebreak
+\end_inset
 
-\begin_layout Standard
+
 \begin_inset CommandInset include
 LatexCommand input
 filename "inspection_sendingReply.lyx"
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "other_problems.lyx"
 
 \end_inset
 

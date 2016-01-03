@@ -207,8 +207,8 @@ method variables:
 
 \begin_deeper
 \begin_layout Itemize
-line 750: the argument “id” of the method “sendingRequest” is never been
- used inside the function so it could be removed
+line 750: the argument “id” of the method “sendingRequest” is never being
+ used inside the function, so it could be removed
 \begin_inset Newline newline
 \end_inset
 
@@ -275,7 +275,7 @@ status open
 \begin_deeper
 \begin_layout Itemize
 line 111: the variable “m_tid” doesn’t respect the naming convention because
- the underscore could only appear at the beginning of the name
+ the underscore should only appear at the beginning of the name
 \begin_inset Newline newline
 \end_inset
 
@@ -524,7 +524,7 @@ status open
 \end_inset
 
 The following class variables should be declared before the private ones
- because they are friendly (as described in the point 
+ because they are friendly (and moreover, as described in the point 
 \begin_inset ERT
 status open
 
@@ -539,7 +539,7 @@ hyperlink{28_class}{28.}}
 
 \end_inset
 
- these variables could be declared private because they are used only inside
+, these variables could be declared private because they are used only inside
  this class)
 \end_layout
 
