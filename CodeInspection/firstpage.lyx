@@ -112,7 +112,7 @@ status open
 \backslash
 
 \backslash
-[1cm]
+[0.5cm]
 \end_layout
 
 \end_inset
@@ -133,9 +133,39 @@ status open
 \end_inset
 
 Code Inspection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Author
+version 1.0
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
 Matteo Bulloni (852676), Marco Cannici (852527)
 \end_layout
 
